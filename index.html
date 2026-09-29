@@ -128,6 +128,11 @@ section.block{padding-block:56px}
 .benefit .bd{padding:20px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
 .benefit .icb{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-soft-ink);margin-top:-38px;border:3px solid var(--surface);box-sizing:content-box}
 .benefit h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
+.benefit .bd{position:relative}
+.tag{position:absolute;top:14px;right:16px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.tag.free{background:var(--sky);color:var(--ink)} .tag.soon{background:var(--pink);color:var(--ink)}
+.benefit.is-soon{border-style:dashed;box-shadow:none;opacity:.85}
+.benefit.is-soon:hover{transform:none;box-shadow:none}
 .benefit p{margin:0;color:var(--muted);font-size:15px;flex:1}
 .benefit .go{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--link);margin-top:6px}
 .benefit .go .ic{width:16px;height:16px}
@@ -191,17 +196,20 @@ section.block{padding-block:56px}
 .illu .st-f{stroke:var(--i-a)} .illu .st-g{stroke:var(--i-d)} .illu .st-r{stroke:var(--i-c)}
 
 /* Chapitre */
-.chapter{display:grid;grid-template-columns:240px minmax(0,1fr);gap:56px;padding-block:44px 72px}
-.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 88px);align-self:start;font-size:14px;padding:16px}
+.chapter{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:56px;padding-block:44px 72px;max-width:1000px;margin-inline:auto}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 88px);align-self:start;font-size:13px;padding:2px 0 2px 16px;border-left:1px solid var(--line);max-height:calc(100vh - 120px);overflow:auto}
+.toc-h{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;padding-inline:6px}
 .toc ol{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
-.toc a{display:flex;gap:10px;align-items:center;text-decoration:none;padding:6px 8px;border-radius:8px;color:var(--muted);line-height:1.3}
+.toc a{display:flex;gap:8px;align-items:center;text-decoration:none;padding:4px 6px;border-radius:6px;color:var(--muted);line-height:1.3}
+.toc a .tt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.toc a .tn{font-family:var(--mono);font-size:11px;opacity:.7;flex:none}
 .toc a:hover{color:var(--ink);background:var(--surface-2)}
 .toc a[aria-current="true"]{background:var(--sky);color:var(--ink);font-weight:600}
-.toc .dot{width:14px;height:14px;flex:none}
-.toc .dot .ic{width:9px;height:9px}
-.toc .grp{margin-top:16px}
+.toc .dot{width:12px;height:12px;flex:none;margin-left:auto}
+.toc .dot .ic{width:8px;height:8px}
+.toc .grp{margin-top:10px}
 .toc .grp:first-child{margin-top:0}
-.toc .small-label{padding-inline:8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.toc .small-label{padding-inline:6px;font-size:11px;font-weight:600}
 article.ch{max-width:44rem;min-width:0}
 article.ch .crumb{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;color:var(--muted)}
 article.ch .crumb span{display:inline-flex;align-items:center;gap:6px}
@@ -232,6 +240,47 @@ article.ch .prose b{font-weight:600}
 .todo ul{margin:8px 0 0 !important}
 .ch-foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line)}
 .ch-foot .nav{display:flex;gap:10px;flex-wrap:wrap}
+
+/* Ranges */
+.ranges-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;padding-bottom:72px;align-items:start}
+.rpreview{position:relative;padding:22px;overflow:hidden}
+.rgrid{display:grid;grid-template-columns:repeat(13,1fr);gap:3px;filter:blur(3px);opacity:.75}
+.rgrid i{aspect-ratio:1;border-radius:3px;background:var(--cell)}
+.rgrid i.a{background:var(--i-b)} .rgrid i.b{background:var(--i-a)} .rgrid i.p{background:var(--i-c)}
+.rlock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;background:color-mix(in srgb,var(--surface) 35%,transparent)}
+.rlock .icb{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--surface);box-shadow:var(--shadow);color:var(--ink)}
+.rlock b{font-family:var(--ui);font-size:20px} .rlock span{color:var(--muted);font-size:14px}
+.rfeat{display:flex;flex-direction:column;gap:12px}
+.rf{display:flex;gap:14px;align-items:flex-start;padding:18px}
+.rf .icb{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--sky);color:var(--ink);flex:none}
+.rf:nth-child(2) .icb{background:var(--pink)} .rf:nth-child(3) .icb{background:var(--blue2)}
+.rf b{display:block;font-family:var(--ui);font-size:18px;margin-bottom:2px} .rf span{color:var(--muted);font-size:15px}
+.rwait{background:var(--surface-2)} .rwait .ctas{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+@media (max-width:900px){.ranges-wrap{grid-template-columns:1fr}}
+
+/* Glossaire */
+.gl-bar{display:flex;flex-direction:column;gap:14px;padding:20px;margin-bottom:16px}
+.gl-search input{font-family:var(--read)}
+.gl-cats{display:flex;flex-wrap:wrap;gap:6px}
+.chipf{font:600 13px var(--read);padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.chipf:hover{color:var(--ink)}
+.chipf.on{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.gl-letters{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:24px}
+.gl-letters a{font:600 13px var(--mono);min-width:30px;text-align:center;padding:5px 6px;border-radius:8px;text-decoration:none;color:var(--link);background:var(--surface);border:1px solid var(--line)}
+.gl-letters a:hover{background:var(--sky);color:var(--ink)}
+.gl-group{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;margin-bottom:28px;scroll-margin-top:90px}
+.gl-letter{font-family:var(--ui);font-weight:800;font-size:34px;line-height:1;color:var(--blue)}
+.gl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gl-item{padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.gl-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.gl-top b{font-family:var(--ui);font-size:18px}
+.gl-cat{font-size:11px;font-weight:600;color:var(--muted);background:var(--cell);padding:2px 8px;border-radius:999px;white-space:nowrap}
+.gl-item p{margin:0;font-size:15px;color:var(--ink);line-height:1.55}
+.gl-link{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--link);text-decoration:none;margin-top:2px}
+.gl-link .ic{width:14px;height:14px}
+.gl-empty{padding:24px;display:flex;flex-direction:column;gap:4px} .gl-empty span{color:var(--muted)}
+@media (max-width:760px){.gl-grid{grid-template-columns:1fr}.gl-group{grid-template-columns:1fr;gap:8px}.gl-letter{font-size:26px}}
+article.ch .prose a{color:var(--link)}
 
 /* Outils */
 .tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding-bottom:72px}
@@ -271,7 +320,7 @@ footer b{color:var(--ink)}
   .toc{display:none}
   .teaser,.tools{grid-template-columns:1fr}
 }
-@media (max-width:760px){
+@media (max-width:1000px){
   nav.main,.top-right{display:none}
   .burger{display:inline-flex}
   .mobile-menu:not([hidden]){display:flex;flex-direction:column;gap:4px;padding:10px 16px 16px;border-bottom:1px solid var(--line);background:var(--bg)}
@@ -300,8 +349,10 @@ footer b{color:var(--ink)}
     <a class="brand" href="#accueil" aria-label="Spinlab, accueil"><span class="chip" aria-hidden="true"></span>Spinlab <small>Gratuit</small></a>
     <nav class="main" aria-label="Navigation principale">
       <a href="#accueil" data-nav="accueil">Accueil</a>
-      <a href="#programme" data-nav="programme">Le programme</a>
-      <a href="#outils" data-nav="outils">Les outils</a>
+      <a href="#programme" data-nav="programme">Formation</a>
+      <a href="#ranges" data-nav="ranges">Ranges</a>
+      <a href="#outils" data-nav="outils">Outils</a>
+      <a href="#glossaire" data-nav="glossaire">Glossaire</a>
     </nav>
     <div class="top-right">
       <div class="prog-pill" title="Chapitres lus"><div class="bar"><i class="barFill"></i></div><span class="num progTxt">0/14</span></div>
@@ -311,8 +362,10 @@ footer b{color:var(--ink)}
   </div>
   <nav class="mobile-menu" id="mmenu" hidden aria-label="Menu">
     <a href="#accueil" data-nav="accueil">Accueil</a>
-    <a href="#programme" data-nav="programme">Le programme</a>
-    <a href="#outils" data-nav="outils">Les outils</a>
+    <a href="#programme" data-nav="programme">Formation</a>
+    <a href="#ranges" data-nav="ranges">Ranges</a>
+    <a href="#outils" data-nav="outils">Outils</a>
+    <a href="#glossaire" data-nav="glossaire">Glossaire</a>
     <div class="prog-pill"><span>Progression</span><div class="bar"><i class="barFill"></i></div><span class="num progTxt">0/14</span></div>
   </nav>
 </header>
@@ -330,10 +383,10 @@ footer b{color:var(--ink)}
 (function(){
 "use strict";
 
-/* Roue d'exemple */
+/* Grille Betclic Spin & Rush, buy-ins de 0,20 € à 100 € (occurrences sur 1 000 000 parties) */
 const DIST=[
-  {m:2,p:0.76},{m:3,p:0.15},{m:5,p:0.06},{m:10,p:0.025},
-  {m:25,p:0.004},{m:100,p:0.0009},{m:1000,p:0.0001}
+  {m:2,p:0.478185},{m:3,p:0.34621},{m:4,p:0.13},{m:5,p:0.04},{m:10,p:0.005},
+  {m:20,p:0.0005},{m:100,p:0.0001},{m:1000,p:0.000005}
 ];
 const EM=DIST.reduce((s,d)=>s+d.m*d.p,0);
 const BUYIN=5;
@@ -400,15 +453,22 @@ const IL=(()=>{
   /* 12 heads-up */ ()=>bg+table(160,70,116,40)+seat(28,70)+seat(292,70)+card(66,70,"A",false,-8,false,24,34)+card(88,70,"5",true,8,false,24,34)+
     card(232,70,"",false,-8,true,24,34)+card(254,70,"",false,8,true,24,34)+stack(160,84,5,"g",14)+dealer(66,100),
   /* 13 aller plus loin */ ()=>bg+[[60,3],[110,6],[160,9],[210,12],[260,15]].map(([x,n],i)=>stack(x,122,n,["a","f","rd","g","a"][i],15)).join("")+
-    `<line x1="260" y1="46" x2="260" y2="16" class="ks2"/><polygon points="260,16 284,24 260,32" class="rd"/>`
+    `<line x1="260" y1="46" x2="260" y2="16" class="ks2"/><polygon points="260,16 284,24 260,32" class="rd"/>`,
+  /* 14 ranges */ ()=>{let g=bg;for(let r=0;r<13;r++)for(let c=0;c<13;c++){const x=97+c*9.7,y=7+r*9.7,sc=r===c?(r<9?"rd":"a"):(Math.max(r,c)+Math.min(r,c)*0.6<(c>r?11:8)?"f":(Math.max(r,c)+Math.min(r,c)*0.6<(c>r?14:11)?"a":"dot0"));
+      g+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="8.2" height="8.2" rx="1.6" class="${sc}"/>`;}
+    return g+`<circle cx="262" cy="104" r="20" class="s ks1"/><rect x="253" y="102" width="18" height="13" rx="2" class="k"/><path d="M256 102 v-5 a6 6 0 0 1 12 0 v5" class="ks2"/>`;},
+  /* 15 outils */ ()=>bg+`<rect x="112" y="14" width="96" height="116" rx="12" class="s ks2"/><rect x="124" y="26" width="72" height="26" rx="5" class="f"/><text x="188" y="45" text-anchor="end" class="t tw" font-size="14">35,8 %</text>`+
+    [0,1,2].map(r=>[0,1,2,3].map(c=>`<rect x="${124+c*19}" y="${62+r*20}" width="14" height="14" rx="3" class="${c===3?"a":"dot0"}"/>`).join("")).join("")+stack(248,112,6,"rd",14)+stack(70,112,4,"g",14),
+  /* 16 bientôt */ ()=>bg+[[110,"a"],[160,"rd"],[210,"g"]].map(([x,cl])=>`<circle cx="${x}" cy="70" r="24" class="${cl}"/><circle cx="${x}" cy="70" r="16" class="dash"/>`).join("")+
+    `<text x="110" y="77" text-anchor="middle" class="t" font-size="20">A</text><text x="160" y="77" text-anchor="middle" class="t" font-size="20">B</text><text x="210" y="77" text-anchor="middle" class="t" font-size="20">C</text>`
   ];
 })();
 
 
 const PARTS=[
-  {id:1,title:"Est-ce qu'on peut vraiment gagner ?",desc:"Les trois grands formats, puis le Spin en détail : le rake et le nombre de parties qu'il faut gagner. À lire avant de jouer la moindre main.",time:"environ 3 h 30"},
-  {id:2,title:"Tenir sur la durée",desc:"Bankroll, sessions, tilt, suivi des résultats. Ce qui fait qu'on est encore là dans six mois.",time:"environ 4 h"},
-  {id:3,title:"Jouer mieux, dès ce soir",desc:"Des règles simples pour ta prochaine session, puis ce qui fait la différence ensuite.",time:"environ 8 h"}
+  {id:1,title:"Est-ce qu'on peut vraiment gagner ?",desc:"Les trois grands formats, puis le Spin en détail : rake, win%, cEV et variance. À lire avant de jouer la moindre main.",time:"environ 3 h 30"},
+  {id:2,title:"Tenir sur la durée",desc:"Bankroll management, sessions, tilt, suivi de ta cEV. Ce qui fait qu'on est encore là dans six mois.",time:"environ 4 h"},
+  {id:3,title:"Jouer mieux, dès ce soir",desc:"3-max, push or fold et HU : des règles simples pour ta prochaine session, puis ce qui fait la différence ensuite.",time:"environ 8 h"}
 ];
 
 const note=(txt,big)=>`<div class="margin-note"><span class="hand">${txt}</span>${big?`<span class="big">${big}</span>`:""}</div>`;
@@ -428,6 +488,7 @@ const ICONS={
   list:'<path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/>',
   userx:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" x2="22" y1="8" y2="13"/><line x1="22" x2="17" y1="8" y2="13"/>',
   gift:'<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>',
+  lock:'<rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
   zap:'<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>'
 };
 const ic=(n,cls="")=>`<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]}</svg>`;
@@ -436,175 +497,192 @@ const todo=items=>`<div class="todo"><div class="todo-h">${ic("list")}À faire a
 
 const CH=[
 /* PARTIE 1 */
-{part:1,title:"Cash game, tournoi, Spin : trois façons de jouer",sub:"Les trois grands formats du poker en ligne, et pourquoi on a choisi le Spin.",html:`
-<p>Avant de plonger dans le Spin, prenons quelques minutes pour le situer. En ligne, tu vas croiser trois grands formats : le cash game, le tournoi et le Spin. Les règles du poker sont les mêmes partout. Ce qui change, c'est ce que valent tes jetons, combien de temps tu joues et à quel point la chance pèse sur tes résultats.</p>
-<p>Comprendre ces différences t'évitera une erreur fréquente : appliquer au Spin des conseils pensés pour un autre format. Un conseil de cash game du genre « ne mets jamais ton tapis préflop avec une main moyenne » est très bon à 100 bb, et catastrophique à 8 bb en Spin.</p>
+{part:1,title:"Cash game, MTT, Spin : trois façons de jouer",sub:"Les trois grands formats du poker en ligne, et pourquoi on a choisi le Spin.",html:`
+<p>Avant de plonger dans le Spin, prenons quelques minutes pour le situer. En ligne, tu vas croiser trois grands formats : le cash game, le tournoi (MTT) et le Spin. Les règles du poker sont les mêmes partout. Ce qui change, c'est ce que valent tes jetons, combien de temps tu joues et à quel point la variance pèse sur tes résultats.</p>
+<p>Comprendre ces différences t'évitera une erreur fréquente : appliquer au Spin des conseils pensés pour un autre format. Un conseil de cash game du genre « ne mets jamais ton stack préflop avec une main moyenne » est très bon à 100 bb, et catastrophique à 8 bb en Spin.</p>
 <h2>Le cash game</h2>
-<p>En cash game, tes jetons, c'est de l'argent réel. Si tu as 50 € devant toi, tu as 50 €. Les blindes ne montent jamais, tu t'assois quand tu veux et tu te lèves quand tu veux, en gardant ce que tu as sur la table. Tu peux aussi recaver si tu perds ton tapis.</p>
-<p>Les tapis sont profonds, souvent 100 grosses blindes. Il y a donc beaucoup de jeu après le flop : c'est le format le plus technique sur le postflop, avec des décisions sur trois rues et des pots qui grossissent vite. La salle prend une petite commission sur chaque pot, avec un plafond. On mesure son niveau en grosses blindes gagnées pour 100 mains (bb/100).</p>
-<p>Le gros avantage du cash game, c'est la variance plus faible : il n'y a pas de gros prix rare qui concentre la valeur. Son défaut pour un débutant, c'est qu'il faut maîtriser beaucoup de situations postflop avant d'être gagnant.</p>
-<h2>Le tournoi</h2>
-<p>En tournoi (on dit souvent MTT, pour <i>multi-table tournament</i>), tout le monde paie le même buy-in et reçoit le même nombre de jetons. Ces jetons n'ont aucune valeur en argent : ils servent seulement à rester en vie. Les blindes montent à intervalles réguliers, et le tournoi continue jusqu'à ce qu'un seul joueur ait tous les jetons.</p>
-<p>Il peut y avoir des centaines ou des milliers d'inscrits. En général, seuls 10 à 15 % des joueurs sont payés, et l'essentiel de la cagnotte va aux quelques places de la table finale. Un tournoi peut durer plusieurs heures, parfois toute une soirée.</p>
-<p>Un tournoi se joue en plusieurs phases : le début avec des tapis profonds (proche du cash game), le milieu où les blindes pèsent de plus en plus, la bulle (juste avant les places payées) où beaucoup de joueurs se crispent, puis la table finale. Chaque phase demande une stratégie différente. Et plus on approche de l'argent, plus survivre compte : c'est là que l'ICM entre en jeu.</p>
-${note("En tournoi, la plupart des joueurs repartent sans rien","85 à 90 %")}
-<p>C'est le format où la variance est la plus forte. Tu peux jouer très bien pendant des mois sans faire de grosse performance, puis tout rattraper en un soir.</p>
+<p>En cash game, tes jetons, c'est de l'argent réel. Si tu as 50 € devant toi, tu as 50 €. Les blindes ne montent jamais, tu t'assois quand tu veux et tu te lèves quand tu veux, en gardant ce que tu as sur la table. Tu peux aussi recaver si tu perds ton stack.</p>
+<p>Les stacks sont profonds, souvent 100 bb. Il y a donc beaucoup de jeu postflop : c'est le format le plus technique sur le flop, la turn et la river, avec des pots qui grossissent vite. La salle prend un rake sur chaque pot, avec un plafond. On mesure son winrate en bb/100 (big blinds gagnées pour 100 mains).</p>
+<p>Le gros avantage du cash game, c'est une variance plus faible : il n'y a pas de gros prix rare qui concentre la valeur. Son défaut pour un débutant, c'est qu'il faut maîtriser beaucoup de spots postflop avant d'être gagnant.</p>
+<h2>Le tournoi (MTT)</h2>
+<p>En MTT (<i>multi-table tournament</i>), tout le monde paie le même buy-in et reçoit le même stack. Ces jetons n'ont aucune valeur en argent : ils servent seulement à rester en vie. Les blindes montent à intervalles réguliers, et le tournoi continue jusqu'à ce qu'un seul joueur ait tous les jetons.</p>
+<p>Il peut y avoir des centaines ou des milliers d'inscrits. En général, seuls 10 à 15 % du field est ITM (<i>in the money</i>, dans les places payées), et l'essentiel du prizepool va aux quelques places de la table finale. Un MTT peut durer plusieurs heures, parfois toute une soirée.</p>
+<p>Un MTT se joue en plusieurs phases : le début avec des stacks profonds (proche du cash game), le milieu où les blindes et les antes pèsent de plus en plus, la bulle (juste avant l'ITM) où beaucoup de joueurs se crispent, puis la table finale. Chaque phase demande une stratégie différente. Et plus on approche de l'argent, plus survivre compte : c'est là que l'ICM entre en jeu.</p>
+${note("En MTT, la plupart des joueurs repartent sans rien","85 à 90 %")}
+<p>C'est le format où la variance est la plus forte. Tu peux très bien jouer pendant des mois sans faire de deep run, puis tout rattraper en un soir.</p>
 <h2>Le Spin</h2>
-<p>Le Spin, c'est un tournoi miniature et ultra-rapide : trois joueurs, des tapis courts et des blindes qui montent toutes les 1 à 2 minutes en fonction de la room. Une roue fixe le prix avant la première carte, et dans la grande majorité des cas le vainqueur prend tout. Une partie dure moins de dix minutes. Comme en tournoi, tes jetons ne valent pas de l'argent tant que tu n'as pas gagné.</p>
-<p>En pratique, le Spin emprunte au tournoi (jetons sans valeur directe, blindes qui montent) mais ressemble beaucoup à la fin d'un tournoi jouée en boucle : peu de joueurs, peu de blindes, beaucoup de push or fold.</p>
+<p>Le Spin (Spin & Go, Expresso, Spin & Rush ou Twister selon la salle), c'est un tournoi miniature en hyper-turbo : trois joueurs, des stacks courts et des blindes qui montent toutes les quelques minutes. Une roue fixe le prizepool avant la première carte, et dans la grande majorité des cas le vainqueur prend tout. Une partie dure moins de dix minutes. Comme en MTT, tes jetons ne valent pas de l'argent tant que tu n'as pas gagné.</p>
+<p>En pratique, le Spin ressemble beaucoup à la fin d'un MTT jouée en boucle : peu de joueurs, peu de blindes, beaucoup de push or fold et de heads-up (HU).</p>
 <h2>Les trois côte à côte</h2>
-<div class="tbl"><table style="min-width:600px"><thead><tr><th></th><th>Cash game</th><th>Tournoi</th><th>Spin</th></tr></thead><tbody>
+<div class="tbl"><table style="min-width:600px"><thead><tr><th></th><th>Cash game</th><th>MTT</th><th>Spin</th></tr></thead><tbody>
 <tr><td><b>Joueurs</b></td><td>2 à 9 par table</td><td>Des dizaines à des milliers</td><td>3</td></tr>
 <tr><td><b>Durée</b></td><td>Libre</td><td>Plusieurs heures</td><td>Moins de 10 min</td></tr>
-<tr><td><b>Tapis de départ</b></td><td>Souvent 100 bb</td><td>Souvent 50 à 200 bb</td><td>Environ 25 bb</td></tr>
+<tr><td><b>Stack de départ</b></td><td>Souvent 100 bb</td><td>Souvent 50 à 200 bb</td><td>Environ 25 bb</td></tr>
 <tr><td><b>Blindes</b></td><td>Fixes</td><td>Montent régulièrement</td><td>Montent très vite</td></tr>
 <tr><td><b>Tes jetons</b></td><td>De l'argent réel</td><td>Pas de valeur directe</td><td>Pas de valeur directe</td></tr>
-<tr><td><b>Qui est payé</b></td><td>Tu gardes ton tapis</td><td>10 à 15 % des joueurs</td><td>Le vainqueur, le plus souvent</td></tr>
-<tr><td><b>Variance</b></td><td>La plus faible</td><td>Très forte</td><td>Forte (la roue)</td></tr>
-<tr><td><b>Compétence clé</b></td><td>Le jeu après le flop</td><td>L'adaptation à chaque phase</td><td>Le push or fold et le heads-up</td></tr>
-<tr><td><b>Stat à suivre</b></td><td>bb/100</td><td>ROI et % de places payées</td><td>Win%</td></tr>
+<tr><td><b>Qui est payé</b></td><td>Tu gardes ton stack</td><td>10 à 15 % du field</td><td>Le vainqueur, le plus souvent</td></tr>
+<tr><td><b>Variance</b></td><td>La plus faible</td><td>Très forte</td><td>Forte</td></tr>
+<tr><td><b>Compétence clé</b></td><td>Le jeu postflop</td><td>L'adaptation à chaque phase</td><td>Le push or fold et le HU</td></tr>
+<tr><td><b>Stat à suivre</b></td><td>bb/100</td><td>ROI et % d'ITM</td><td>cEV et win%</td></tr>
 </tbody></table></div>
 <h2>Pourquoi on commence par le Spin</h2>
-<p>Pour apprendre, le Spin a plusieurs avantages :</p>
 <ul>
-<li><b>Tu apprends vite.</b> Tu joues énormément de parties en peu de temps. Les mêmes situations (tapis court, heads-up) reviennent sans cesse, donc tu les travailles encore et encore.</li>
-<li><b>La stratégie de base est accessible.</b> À moins de 15 bb, une bonne partie des décisions se résume à des règles qu'on peut apprendre et vérifier.</li>
+<li><b>Tu apprends vite.</b> Tu joues énormément de parties en peu de temps. Les mêmes spots (stack court, HU, blind vs blind) reviennent sans cesse, donc tu les travailles encore et encore.</li>
+<li><b>La stratégie de base est accessible.</b> Sous 15 bb, une bonne partie des décisions se résume à des règles qu'on peut apprendre et vérifier.</li>
 <li><b>Les sessions sont courtes.</b> Une heure suffit pour faire une vraie session, facile à caser après le travail.</li>
-<li><b>Les compétences se transfèrent.</b> Le jeu à tapis court et le heads-up te serviront aussi en fin de tournoi.</li>
+<li><b>Les compétences se transfèrent.</b> Le jeu short stack et le HU te serviront aussi en fin de MTT.</li>
 </ul>
-<p>La contrepartie, c'est la roue : elle ajoute beaucoup de variance, et le rake pèse lourd parce que tu joues beaucoup de parties. C'est exactement ce que la suite de cette partie t'aide à mesurer.</p>
-${todo(["Ouvre le lobby Spin de ta salle et note le buy-in que tu vises.","Regarde combien de temps dure une partie : observe-en une ou deux sans jouer."])}`},
+<p>La contrepartie, c'est la roue et le rake : tu joues beaucoup de parties, donc le rake pèse lourd. C'est exactement ce que la suite de cette partie t'aide à mesurer.</p>
+${todo(["Ouvre le lobby Spin de ta salle et note le buy-in que tu vises.","Observe une ou deux parties sans jouer pour sentir le rythme."])}`},
 
 {part:1,title:"Le Spin en cinq minutes",sub:"Trois joueurs, des blindes qui montent vite, une roue qui fixe le prix.",html:`
-<p>Tu t'assois avec deux inconnus. Chacun a payé le même buy-in. Avant la première carte, une roue tourne et fixe le prix : la plupart du temps deux fois la mise, parfois trois, cinq ou dix, et de temps en temps beaucoup plus.</p>
-<p>Ensuite, ça va très vite. Tu démarres avec environ 25 grosses blindes (souvent 500 jetons à 10/20). Les niveaux durent deux ou trois minutes. Au bout de quelques tours, tout le monde a moins de 15 bb. Dans la très grande majorité des parties, le gagnant prend tout.</p>
+<p>Tu t'assois avec deux inconnus. Chacun a payé le même buy-in. Avant la première carte, une roue tourne et fixe le prizepool : la plupart du temps deux ou trois fois le buy-in, parfois quatre, cinq ou dix, et très rarement beaucoup plus.</p>
+<p>Ensuite, ça va très vite. Tu démarres avec environ 25 bb (souvent 500 jetons à 10/20). Les niveaux durent quelques minutes, parfois moins selon la salle et le multiplicateur. Au bout de quelques niveaux, tout le monde a moins de 15 bb. Dans la très grande majorité des parties, le vainqueur prend tout.</p>
 ${note("Le chiffre à garder en tête","25 bb au départ")}
-<h2>Comment les tapis fondent</h2>
-<p>Voici une structure d'exemple avec 500 jetons chacun. Elle varie selon la salle, mais l'idée est toujours la même : la taille des tapis, mesurée en grosses blindes, s'effondre en quelques minutes.</p>
-<div class="tbl"><table><thead><tr><th>Niveau</th><th>Blindes</th><th class="r">Tapis moyen à 3 joueurs</th><th class="r">Tapis moyen en heads-up</th></tr></thead><tbody>
+<h2>Comment les stacks fondent</h2>
+<p>Voici une structure d'exemple avec 500 jetons chacun. Elle varie selon la salle, mais l'idée est toujours la même : ton stack, mesuré en big blinds, s'effondre en quelques minutes.</p>
+<div class="tbl"><table><thead><tr><th>Niveau</th><th>Blindes</th><th class="r">Stack moyen à 3</th><th class="r">Stack moyen en HU</th></tr></thead><tbody>
 <tr><td>1</td><td>10/20</td><td class="r">25 bb</td><td class="r">37,5 bb</td></tr>
 <tr><td>2</td><td>15/30</td><td class="r">16,7 bb</td><td class="r">25 bb</td></tr>
 <tr><td>3</td><td>20/40</td><td class="r">12,5 bb</td><td class="r">18,8 bb</td></tr>
 <tr><td>4</td><td>25/50</td><td class="r">10 bb</td><td class="r">15 bb</td></tr>
 <tr><td>5</td><td>30/60</td><td class="r">8,3 bb</td><td class="r">12,5 bb</td></tr>
 </tbody></table></div>
-<p>Au bout de dix minutes environ, on est déjà dans la zone du push or fold. Ce qui compte, c'est donc moins ton nombre de jetons que ton nombre de grosses blindes. Prends l'habitude de toujours raisonner en bb.</p>
+<p>Très vite, on est dans la zone du push or fold. Ce qui compte, c'est donc moins ton nombre de jetons que ton nombre de big blinds. Prends l'habitude de toujours raisonner en bb.</p>
 <h2>Ce que ça change</h2>
-<p>Le Spin ne ressemble pas à du cash game en accéléré. Avec des tapis aussi courts, il reste peu de jeu après le flop. Les décisions qui comptent se prennent avant, et la partie se termine presque toujours en tête-à-tête.</p>
-<p>Bonne nouvelle : ça veut dire que tu peux progresser vite. Si tu maîtrises les règles du push or fold et le heads-up, tu as déjà fait une bonne partie du chemin. C'est pour ça que la partie 3 y passe autant de temps.</p>
+<p>Le Spin ne ressemble pas à du cash game en accéléré. Avec des stacks aussi courts, il reste peu de jeu postflop. Les décisions qui comptent se prennent préflop, et la partie se termine presque toujours en HU.</p>
+<p>Bonne nouvelle : tu peux progresser vite. Si tu maîtrises les règles du push or fold et le HU, tu as déjà fait une bonne partie du chemin. C'est pour ça que la partie 3 y passe autant de temps.</p>
 <h2>Le vocabulaire de base</h2>
+<p>Voici les termes les plus utiles. Tu les retrouveras tous, et bien d'autres, dans le <a href="#glossaire">glossaire</a>.</p>
 <ul>
-<li><b>bb</b> : grosse blinde. On compte les tapis en bb : 400 jetons à 20/40, c'est 10 bb.</li>
-<li><b>Tapis effectif</b> : le plus petit des deux tapis en jeu. Si tu as 20 bb et ton adversaire 6 bb, vous jouez en réalité pour 6 bb.</li>
-<li><b>Heads-up</b> : le tête-à-tête, quand il ne reste que deux joueurs.</li>
-<li><b>Push or fold</b> : la stratégie des tapis courts, où l'on part à tapis ou on se couche.</li>
-<li><b>Hyper-turbo</b> : un tournoi dont les blindes montent très vite. Le Spin en fait partie.</li>
+<li><b>BTN, SB, BB</b> : le bouton (button), la small blind et la big blind. À trois, ce sont les seules positions.</li>
+<li><b>bb</b> : big blind, l'unité de mesure. 400 jetons à 20/40, c'est 10 bb.</li>
+<li><b>Stack effectif</b> : le plus petit des deux stacks en jeu. Si tu as 20 bb et ton adversaire 6 bb, vous jouez en réalité pour 6 bb.</li>
+<li><b>Open, limp, call, fold, 3-bet</b> : ouvrir en raise, compléter la blinde, suivre, se coucher, relancer une relance.</li>
+<li><b>Push (ou shove)</b> : partir all-in. <b>Push or fold</b> : la stratégie short stack où l'on push ou on fold.</li>
+<li><b>HU</b> : le heads-up, quand il ne reste que deux joueurs.</li>
+<li><b>cEV</b> : chip EV, le nombre moyen de jetons que tu gagnes par partie. La stat de référence en Spin (chapitre 4).</li>
+<li><b>Streets</b> : les étapes d'un coup (préflop, flop, turn, river).</li>
 </ul>
-<p>Dernière chose : les règles changent d'une salle à l'autre (taille des tapis, durée des niveaux, table des multiplicateurs). Jette un œil au lobby de la tienne avant de lire la suite, tu pourras refaire tous les calculs avec tes chiffres.</p>
-${todo(["Note la taille des tapis, la durée des niveaux et la structure de blindes de ta salle.","Pendant ta prochaine partie, convertis ton tapis en bb à chaque niveau."])}`},
+<p>Dernière chose : les règles changent d'une salle à l'autre (stacks, durée des niveaux, grille des multiplicateurs). Jette un œil au lobby de la tienne, tu pourras refaire tous les calculs avec tes chiffres.</p>
+${todo(["Note le stack de départ, la durée des niveaux et la structure de blindes de ta salle.","Pendant ta prochaine partie, convertis ton stack en bb à chaque niveau."])}`},
 
 {part:1,title:"Le rake, ce qu'il te coûte vraiment",sub:"Il est caché dans la roue. On va le sortir de là.",html:`
 <p>Personne n'aime parler du rake. C'est pourtant lui qui décide si tu peux gagner ou pas.</p>
-<p>En Spin, tu ne le vois pas sur le ticket. Il est caché dans la roue : en moyenne, la salle redistribue un peu moins que ce que les trois joueurs ont misé. La différence, c'est sa commission.</p>
+<p>En Spin, tu ne le vois pas sur le ticket. Il est caché dans la roue : en moyenne, la salle redistribue un peu moins que ce que les trois joueurs ont payé. La différence, c'est sa commission.</p>
 <h2>Le calculer toi-même</h2>
-<p>Trois joueurs misent 1 buy-in chacun, donc 3 au total. Si le multiplicateur moyen de la roue vaut E[m], la salle rend en moyenne E[m] buy-ins. Le reste lui revient :</p>
+<p>Trois joueurs paient 1 buy-in chacun, donc 3 au total. Si le multiplicateur moyen de la roue vaut E[m], la salle rend en moyenne E[m] buy-ins. Le reste lui revient :</p>
 <div class="formula">rake = 1 − E[m] / 3</div>
-<p>Pour trouver E[m], prends la table officielle de ta salle et fais la somme de chaque multiplicateur multiplié par sa probabilité. Avec la roue d'exemple de l'accueil :</p>
-<div class="formula">2 × 0,76 + 3 × 0,15 + 5 × 0,06 + 10 × 0,025 + 25 × 0,004 + 100 × 0,0009 + 1 000 × 0,0001 ≈ 2,81</div>
-<p>Ça fait environ 6,3 % de rake.</p>
-${ex("Exemple : une partie à 5 €",`<p>Les trois joueurs mettent 15 € au total. En moyenne, la roue rend 2,81 × 5 = 14,05 €. La salle garde donc 0,95 € par partie, soit environ 0,32 € par joueur. Ça paraît peu. Sur 1 000 parties, ça fait 317 € de rake pour toi.</p>`)}
+<p>Pour trouver E[m], prends la grille officielle de ta salle et fais la somme de chaque multiplicateur multiplié par sa probabilité. Avec la grille Betclic (Spin & Rush, buy-ins de 0,20 € à 100 €) affichée sur l'accueil :</p>
+<div class="formula">2 × 0,478185 + 3 × 0,34621 + 4 × 0,13 + 5 × 0,04 + 10 × 0,005 + 20 × 0,0005 + 100 × 0,0001 + 1 000 × 0,000005 = 2,79</div>
+<p>Soit exactement 7 % de rake.</p>
+${ex("Exemple : un Spin à 5 €",`<p>Les trois joueurs mettent 15 € au total. En moyenne, la roue rend 2,79 × 5 = 13,95 €. La salle garde donc 1,05 € par partie, soit 0,35 € par joueur. Ça paraît peu. Sur 1 000 parties, ça fait 350 € de rake pour toi.</p>`)}
 <h2>Combien de parties il faut gagner</h2>
-<p>Si le gagnant prend tout, tu es à zéro quand tu gagnes une partie sur E[m]. Autrement dit :</p>
-<div class="formula">win% pour être à zéro = 1 / (3 × (1 − rake))</div>
-<div class="tbl"><table><thead><tr><th>Rake</th><th class="r">Multiplicateur moyen</th><th class="r">Win% pour être à zéro</th></tr></thead><tbody>
+<p>Si le vainqueur prend tout, tu es break-even (à zéro) quand tu gagnes une partie sur E[m]. Autrement dit :</p>
+<div class="formula">win% break-even = 1 / (3 × (1 − rake))</div>
+<div class="tbl"><table><thead><tr><th>Rake</th><th class="r">Multiplicateur moyen</th><th class="r">Win% break-even</th></tr></thead><tbody>
 <tr><td>5 %</td><td class="r">2,85</td><td class="r">35,1 %</td></tr>
 <tr><td>6 %</td><td class="r">2,82</td><td class="r">35,5 %</td></tr>
-<tr><td>7 %</td><td class="r">2,79</td><td class="r">35,8 %</td></tr>
+<tr><td><b>7 % (Betclic)</b></td><td class="r">2,79</td><td class="r">35,8 %</td></tr>
 <tr><td>8 %</td><td class="r">2,76</td><td class="r">36,2 %</td></tr>
 <tr><td>10 %</td><td class="r">2,70</td><td class="r">37,0 %</td></tr>
 </tbody></table></div>
-<p>Sans rake, un joueur moyen gagnerait une partie sur trois, soit 33,3 %. Chaque point de rake t'oblige à faire un peu mieux que ça, juste pour ne pas perdre d'argent.</p>
-${note("Le rake est souvent plus lourd sur les petites limites. Refais le calcul pour chaque buy-in que tu joues.")}
+<p>Sans rake, un joueur moyen gagnerait une partie sur trois, soit 33,3 %. Chaque point de rake t'oblige à faire un peu mieux que ça, juste pour être break-even.</p>
+${note("Le rake n'est pas le même partout ni à toutes les limites. Refais le calcul pour chaque buy-in que tu joues.")}
 <h2>Ce que ça veut dire pour toi</h2>
-<p>Le rake n'est pas un détail. À 7 %, tu dois battre tes adversaires assez nettement pour simplement récupérer ta mise. Ça a trois conséquences pratiques :</p>
 <ul>
-<li><b>Choisis ta salle en connaissant son rake.</b> Deux salles avec des roues différentes peuvent avoir un point de rake d'écart, ce qui change beaucoup sur un an.</li>
+<li><b>Choisis ta salle en connaissant son rake.</b> Deux salles avec des grilles différentes peuvent avoir un point de rake d'écart, ce qui change beaucoup sur un an.</li>
 <li><b>Regarde plusieurs limites.</b> Monter d'une limite peut faire baisser le rake. Mais ne monte jamais pour ça si ta bankroll ne suit pas (chapitre 7).</li>
 <li><b>Ne te compare pas à 33 %.</b> Un win% de 34 % n'est pas « un peu au-dessus de la moyenne » : c'est perdant.</li>
 </ul>
-${todo(["Trouve la table des multiplicateurs de ta salle pour ton buy-in.","Calcule E[m], puis ton rake et ton win% pour être à zéro. L'outil « Suis-je rentable ? » peut t'aider."])}`},
+${todo(["Trouve la grille des multiplicateurs de ta salle pour ton buy-in.","Calcule E[m], ton rake et ton win% break-even. L'outil « Suis-je rentable ? » peut t'aider."])}`},
 
-{part:1,title:"Le win% à viser",sub:"Combien de parties gagner pour être un joueur rentable.",html:`
-<p>On pourrait suivre des dizaines de stats. Au début, une seule compte vraiment : le pourcentage de parties que tu gagnes. Tout le reste en découle.</p>
-<p>Pour chaque buy-in misé, tu récupères en moyenne ton win% multiplié par E[m]. Ton ROI, c'est ce qui dépasse :</p>
+{part:1,title:"Win% et cEV : ce qu'il faut viser",sub:"Les deux stats qui disent si tu es un joueur gagnant.",html:`
+<p>En Spin, deux stats comptent vraiment : ton win% (le pourcentage de parties gagnées) et ta cEV (les jetons gagnés en moyenne par partie). Elles disent la même chose de deux façons, et les regs parlent surtout en cEV.</p>
+<h2>Du win% au ROI</h2>
+<p>Pour chaque buy-in payé, tu récupères en moyenne ton win% multiplié par E[m]. Ton ROI, c'est ce qui dépasse :</p>
 <div class="formula">ROI = win% × E[m] − 1</div>
-<div class="tbl"><table><thead><tr><th>Win%</th><th class="r">ROI (E[m] = 2,81)</th><th class="r">Sur 1 000 parties à 5 €</th></tr></thead><tbody>
-<tr><td>34 %</td><td class="r">−4,5 %</td><td class="r">−223 €</td></tr>
-<tr><td>36 %</td><td class="r">+1,2 %</td><td class="r">+58 €</td></tr>
-<tr><td>38 %</td><td class="r">+6,8 %</td><td class="r">+339 €</td></tr>
-<tr><td>40 %</td><td class="r">+12,4 %</td><td class="r">+620 €</td></tr>
+<div class="tbl"><table><thead><tr><th>Win%</th><th class="r">ROI (E[m] = 2,79)</th><th class="r">Sur 1 000 parties à 5 €</th></tr></thead><tbody>
+<tr><td>34 %</td><td class="r">−5,1 %</td><td class="r">−257 €</td></tr>
+<tr><td>36 %</td><td class="r">+0,4 %</td><td class="r">+22 €</td></tr>
+<tr><td>38 %</td><td class="r">+6,0 %</td><td class="r">+301 €</td></tr>
+<tr><td>40 %</td><td class="r">+11,6 %</td><td class="r">+580 €</td></tr>
 </tbody></table></div>
-<p>Regarde l'écart entre 34 et 38 %. Quatre points, c'est quatre parties gagnées de plus sur cent. C'est pourtant ce qui sépare quelqu'un qui perd doucement de quelqu'un qui gagne correctement.</p>
+<p>Regarde l'écart entre 34 et 38 %. Quatre points, c'est quatre parties gagnées de plus sur cent. C'est pourtant ce qui sépare un joueur qui perd doucement d'un joueur qui gagne correctement.</p>
 ${note("Un point de win% en plus, c'est à peu près","+2,8 pts de ROI")}
+<h2>La cEV, la stat des joueurs de Spin</h2>
+<p>La cEV (<i>chip EV</i>), c'est le nombre moyen de jetons que tu gagnes par partie. Comme le vainqueur prend tout, tes jetons ont une valeur proportionnelle à tes chances de gagner : avoir la moitié des jetons, c'est avoir une chance sur deux de gagner. Win% et cEV sont donc directement liés.</p>
+<p>Avec 500 jetons chacun (1 500 au total) :</p>
+<div class="formula">cEV par partie = 1 500 × win% − 500</div>
+<div class="tbl"><table><thead><tr><th>Win%</th><th class="r">cEV par partie</th><th></th></tr></thead><tbody>
+<tr><td>33,3 %</td><td class="r">0</td><td>Joueur moyen, avant rake</td></tr>
+<tr><td>35,8 %</td><td class="r">+38</td><td>Break-even avec 7 % de rake</td></tr>
+<tr><td>37 %</td><td class="r">+55</td><td>Légèrement gagnant</td></tr>
+<tr><td>38 %</td><td class="r">+70</td><td>Solide</td></tr>
+<tr><td>40 %</td><td class="r">+100</td><td>Très bon</td></tr>
+</tbody></table></div>
+<p>Pourquoi la cEV plutôt que le win% ? Parce que les trackers savent la calculer « ajustée all-in » : quand tu es all-in, ils comptent les jetons que tu aurais gagnés en moyenne selon ton équité, pas ceux que tu as réellement gagnés. Ça retire une grosse partie de la chance, et ta cEV ajustée devient fiable bien plus vite que ton win%.</p>
+${note("Break-even sur une grille à 7 % de rake, avec 500 jetons :","+38 cEV")}
+<p>Si ta salle donne un autre stack de départ, adapte la formule : cEV = 3 × stack × win% − stack.</p>
 <h2>D'où vient ton win%</h2>
-<p>Pour gagner une partie, il faut deux choses : arriver en heads-up, puis gagner ce heads-up. Ton win% est le produit des deux :</p>
-<div class="formula">win% = % de parties où tu arrives en heads-up × % de heads-up gagnés</div>
-<p>Un joueur moyen arrive en heads-up deux fois sur trois (deux joueurs sur trois y arrivent) et gagne la moitié de ses heads-up : 66,7 % × 50 % = 33,3 %. Pour atteindre 38 %, il faut améliorer l'un ou l'autre, ou les deux.</p>
-<div class="tbl"><table><thead><tr><th>Arrivée en heads-up</th><th class="r">Heads-up gagnés</th><th class="r">Win%</th></tr></thead><tbody>
+<p>Pour gagner une partie, il faut arriver en HU, puis gagner ce HU :</p>
+<div class="formula">win% = % de parties où tu arrives en HU × % de HU gagnés</div>
+<p>Un joueur moyen arrive en HU deux fois sur trois et gagne la moitié de ses HU : 66,7 % × 50 % = 33,3 %. Pour atteindre 38 %, il faut améliorer l'un ou l'autre, ou les deux.</p>
+<div class="tbl"><table><thead><tr><th>Arrivée en HU</th><th class="r">HU gagnés</th><th class="r">Win%</th></tr></thead><tbody>
 <tr><td>66,7 % (moyenne)</td><td class="r">50 %</td><td class="r">33,3 %</td></tr>
 <tr><td>66,7 %</td><td class="r">57 %</td><td class="r">38,0 %</td></tr>
 <tr><td>70 %</td><td class="r">54 %</td><td class="r">37,8 %</td></tr>
 <tr><td>72 %</td><td class="r">56 %</td><td class="r">40,3 %</td></tr>
 </tbody></table></div>
-<p>C'est une façon très utile de diagnostiquer ton jeu. Si tu sors souvent troisième, travaille le jeu à trois (chapitre 11). Si tu arrives souvent en heads-up mais que tu le perds, travaille le heads-up (chapitre 13).</p>
-<h2>Et quand le deuxième est payé ?</h2>
-<p>Sur les gros multiplicateurs, plusieurs places sont payées et le calcul change un peu. Ces tirages sont rares, donc au quotidien ton win% reste la meilleure boussole.</p>
+<p>C'est un très bon outil de diagnostic. Si tu sors souvent troisième, travaille le 3-max (chapitre 11). Si tu arrives souvent en HU mais que tu le perds, travaille le HU (chapitre 13).</p>
 <h2>Un objectif réaliste</h2>
-<p>Ne vise pas 45 % dès le premier mois. Un bon premier objectif, c'est de dépasser nettement ton seuil de rentabilité, par exemple de deux points. Une fois que c'est stable sur plusieurs milliers de parties, vise le point suivant.</p>
-${todo(["Calcule ton win% sur tes dernières parties, même s'il y en a peu.","Si ta salle ou ton logiciel le permet, sépare ton taux d'arrivée en heads-up et ton taux de heads-up gagnés."])}`},
+<p>Ne vise pas +150 cEV dès le premier mois. Un bon premier objectif, c'est de dépasser nettement le break-even, par exemple +60 cEV. Une fois que c'est stable sur plusieurs milliers de parties, vise le palier suivant.</p>
+${todo(["Calcule ton win% et ta cEV sur tes dernières parties, même s'il y en a peu.","Si ton tracker le permet, regarde ta cEV ajustée all-in et compare-la à ta cEV réelle."])}`},
 
-{part:1,title:"La variance de la roue",sub:"Pourquoi tu peux bien jouer et perdre pendant des semaines.",html:`
-<p>Un jour, tu vas enchaîner 2 000 parties en jouant bien et finir perdant. Ça arrive à tout le monde, et c'est surtout la faute de la roue.</p>
-<p>Une partie de ce que tu peux espérer gagner est concentrée dans des tirages très rares. Avec la roue d'exemple, voici d'où vient la valeur :</p>
+{part:1,title:"La variance",sub:"Pourquoi tu peux bien jouer et perdre pendant des semaines.",html:`
+<p>Un jour, tu vas enchaîner des centaines de parties en jouant bien et finir perdant. Ça arrive à tout le monde. En Spin, la variance vient de deux sources : les all-in (tu peux perdre un flip ou un 80/20) et la roue (tu ne gagnes pas toujours les parties à gros multiplicateur).</p>
+<h2>Ce que pèse la roue</h2>
+<p>Avec la grille Betclic, voici d'où vient la valeur du multiplicateur moyen de 2,79 :</p>
 <div class="tbl"><table><thead><tr><th>Multiplicateur</th><th class="r">Fréquence</th><th class="r">Un tirage tous les…</th><th class="r">Part de la valeur</th></tr></thead><tbody>
-<tr><td>×2</td><td class="r">76 %</td><td class="r">1,3 partie</td><td class="r">54 %</td></tr>
-<tr><td>×3</td><td class="r">15 %</td><td class="r">7 parties</td><td class="r">16 %</td></tr>
-<tr><td>×5</td><td class="r">6 %</td><td class="r">17 parties</td><td class="r">11 %</td></tr>
-<tr><td>×10</td><td class="r">2,5 %</td><td class="r">40 parties</td><td class="r">9 %</td></tr>
-<tr><td>×25</td><td class="r">0,4 %</td><td class="r">250 parties</td><td class="r">4 %</td></tr>
-<tr><td>×100</td><td class="r">0,09 %</td><td class="r">1 111 parties</td><td class="r">3 %</td></tr>
-<tr><td>×1 000</td><td class="r">0,01 %</td><td class="r">10 000 parties</td><td class="r">4 %</td></tr>
+<tr><td>×2</td><td class="r">47,8 %</td><td class="r">2,1 parties</td><td class="r">34 %</td></tr>
+<tr><td>×3</td><td class="r">34,6 %</td><td class="r">2,9 parties</td><td class="r">37 %</td></tr>
+<tr><td>×4</td><td class="r">13 %</td><td class="r">7,7 parties</td><td class="r">19 %</td></tr>
+<tr><td>×5</td><td class="r">4 %</td><td class="r">25 parties</td><td class="r">7 %</td></tr>
+<tr><td>×10</td><td class="r">0,5 %</td><td class="r">200 parties</td><td class="r">1,8 %</td></tr>
+<tr><td>×20</td><td class="r">0,05 %</td><td class="r">2 000 parties</td><td class="r">0,4 %</td></tr>
+<tr><td>×100</td><td class="r">0,01 %</td><td class="r">10 000 parties</td><td class="r">0,4 %</td></tr>
+<tr><td>×1 000</td><td class="r">0,0005 %</td><td class="r">200 000 parties</td><td class="r">0,2 %</td></tr>
 </tbody></table></div>
-<p>Environ 10 % de la valeur vient des tirages ×25 et plus. Ils tombent quelques fois par millier de parties, et il faut encore les gagner. Tant que tu n'as pas eu ta part, tes résultats en euros ne disent pas grand-chose de ton niveau.</p>
-${note("Un ×1 000 tous les 10 000 spins en moyenne. N'organise pas ta vie autour.")}
+<p>Sur cette grille, les gros multiplicateurs pèsent très peu : moins de 1 % de la valeur vient des ×20 et plus. L'essentiel se joue sur les ×2, ×3 et ×4. C'est une grille plutôt « régulière ». D'autres salles mettent beaucoup plus de valeur dans les jackpots, et leur variance est nettement plus forte.</p>
+${note("Part de la valeur qui vient des ×20 et plus sur la grille Betclic","moins de 1 %")}
 <h2>À quoi ça ressemble en vrai</h2>
-<p>On a simulé 5 000 joueurs qui gagnent tous 38 % de leurs parties, avec la roue d'exemple. Ils ont exactement le même niveau. Voici ce qui leur arrive :</p>
-<div class="tbl"><table><thead><tr><th>Après…</th><th class="r">Joueurs encore perdants</th></tr></thead><tbody>
-<tr><td>1 000 parties</td><td class="r">37 %</td></tr>
-<tr><td>5 000 parties</td><td class="r">17 %</td></tr>
-<tr><td>10 000 parties</td><td class="r">8 %</td></tr>
+<p>On a simulé 4 000 joueurs avec la grille Betclic, qui jouent 10 000 parties chacun. Tous ont exactement le même niveau. Voici combien sont encore perdants au fil du temps :</p>
+<div class="tbl"><table><thead><tr><th>Après…</th><th class="r">Joueurs à 37 %</th><th class="r">Joueurs à 38 %</th></tr></thead><tbody>
+<tr><td>1 000 parties</td><td class="r">27 %</td><td class="r">11 %</td></tr>
+<tr><td>5 000 parties</td><td class="r">8 %</td><td class="r">0,2 %</td></tr>
+<tr><td>10 000 parties</td><td class="r">3 %</td><td class="r">moins de 0,1 %</td></tr>
 </tbody></table></div>
-<p>Plus d'un joueur gagnant sur trois est dans le rouge après 1 000 parties. Et sur 10 000 parties, la moitié de ces joueurs connaissent à un moment une baisse de plus de 165 buy-ins par rapport à leur plus haut. Un sur dix dépasse 270 buy-ins.</p>
-${note("Plus gros « downswing » d'un joueur à 38 % sur 10 000 parties, dans la moitié des cas","165 buy-ins")}
-<p>Ces chiffres dépendent de la roue de ta salle, mais l'ordre de grandeur est le bon. Si ça te semble énorme, c'est normal : c'est la réalité du format, et c'est pour ça que la bankroll compte autant.</p>
+<p>Et même quand ils finissent gagnants, ils traversent des downswings. Sur 10 000 parties, la moitié des joueurs à 38 % connaissent à un moment une baisse de plus de 72 buy-ins par rapport à leur plus haut. Pour les joueurs à 37 %, c'est 100 buy-ins.</p>
+${note("Plus gros downswing d'un joueur à 38 % sur 10 000 parties, dans la moitié des cas","72 buy-ins")}
+<p>Sur une grille avec plus de gros jackpots, ces chiffres sont bien pires : dans une simulation similaire, plus d'un joueur à 38 % sur trois était encore perdant après 1 000 parties.</p>
 <h2>Comment vivre avec</h2>
 <ul>
-<li>Juge ton niveau sur ton win%, pas sur ton compte en banque.</li>
-<li>Regarde ton résultat « ajusté au multiplicateur » (chapitre 10), qui retire la chance de la roue.</li>
-<li>Prévois une bankroll qui encaisse de longues périodes sans gros tirage. On en parle au chapitre 7.</li>
+<li>Juge ton niveau sur ta cEV ajustée all-in, pas sur ton compte en banque.</li>
+<li>Regarde aussi ton résultat ajusté au multiplicateur (chapitre 10), qui retire la chance de la roue.</li>
+<li>Prévois une bankroll qui encaisse les downswings. On en parle au chapitre 7.</li>
 <li>Si tu gagnes un gros multiplicateur, profites-en. Ça ne veut pas dire que tu es prêt à monter de limite.</li>
-<li>Ne change pas ta stratégie après une mauvaise semaine. Change-la parce qu'une revue de tes coups t'a montré une erreur.</li>
+<li>Ne change pas ta stratégie après une mauvaise semaine. Change-la parce qu'une revue de tes mains t'a montré une erreur.</li>
 </ul>
-${todo(["Écris sur une feuille : « Une baisse de 150 buy-ins peut arriver en jouant bien. » Relis-la le jour où ça arrive.","Regarde combien de gros multiplicateurs (×25 et plus) tu as joués et gagnés jusqu'ici."])}`},
+${todo(["Écris sur une feuille : « Un downswing de 70 buy-ins peut arriver en jouant bien. » Relis-la le jour où ça arrive.","Compare la grille de ta salle à celle de Betclic : quelle part de la valeur vient des jackpots ?"])}`},
 
 {part:1,title:"Rakeback et fidélité",sub:"Le petit levier que les débutants oublient.",html:`
-<p>La plupart des salles rendent une partie du rake : points de fidélité, cashback, bonus, missions. Ce n'est pas un cadeau, c'est une partie de ta commission qui revient. Et ça change directement le nombre de parties qu'il te faut gagner.</p>
+<p>La plupart des salles rendent une partie du rake : points de fidélité, cashback, bonus, missions. Ce n'est pas un cadeau, c'est une partie de ta commission qui revient. Et ça change directement ton break-even.</p>
 <h2>Le calcul</h2>
 <p>Le rakeback est versé sur ton volume, que tu gagnes ou non. Il s'ajoute donc directement à ton ROI :</p>
 <div class="formula">ROI = win% × E[m] − 1 + rake × rakeback</div>
-<p>Un exemple : 7 % de rake (E[m] = 2,79) avec 20 % de rakeback. Le rakeback te rapporte 7 % × 20 % = 1,4 % de chaque buy-in. Le win% pour être à zéro passe de 35,8 % à environ 35,3 %.</p>
-${note("Un demi-point de moins. Pour un joueur juste à la limite, c'est la différence entre perdre et gagner.")}
-${ex("Exemple : un mois de jeu",`<p>Tu joues 3 000 parties à 5 € dans le mois, soit 15 000 € de buy-ins. Avec 7 % de rake, tu as payé 1 050 € de commission. Avec 20 % de rakeback, il t'en revient 210 €.</p><p>Avec un win% de 38 %, ton ROI passe de 6,0 % à 7,4 %. Sur le mois, ça fait environ 1 110 € de bénéfice au lieu de 900 €. Le rakeback représente près d'un cinquième de ton gain.</p>`)}
+<p>Un exemple : 7 % de rake (E[m] = 2,79) avec 20 % de rakeback. Le rakeback te rapporte 7 % × 20 % = 1,4 % de chaque buy-in. Ton win% break-even passe de 35,8 % à environ 35,3 %.</p>
+${note("Un demi-point de moins. Pour un joueur juste break-even, c'est la différence entre perdre et gagner.")}
+${ex("Exemple : un mois de grind",`<p>Tu joues 3 000 parties à 5 € dans le mois, soit 15 000 € de buy-ins. Avec 7 % de rake, tu as payé 1 050 € de commission. Avec 20 % de rakeback, il t'en revient 210 €.</p><p>Avec un win% de 38 %, ton ROI passe de 6,0 % à 7,4 %. Sur le mois, ça fait environ 1 110 € de bénéfice au lieu de 900 €. Le rakeback représente près d'un cinquième de ton gain.</p>`)}
 <h2>Comparer les offres</h2>
 <ul>
 <li>Compare le rake net (rake × (1 − rakeback)), pas le pourcentage de rakeback affiché tout seul.</li>
@@ -612,77 +690,75 @@ ${ex("Exemple : un mois de jeu",`<p>Tu joues 3 000 parties à 5 € dans le mois
 <li>Vérifie sous quelle forme il est versé : argent réel, tickets, bonus à débloquer. Un bonus qu'il faut « jouer » vaut moins que de l'argent direct.</li>
 <li>Si un objectif de volume te pousse à jouer fatigué ou trop haut, laisse tomber le bonus. Perdre deux points de win% coûte bien plus que ce qu'il rapporte.</li>
 </ul>
-<h2>Les pièges</h2>
-<p>Le rakeback peut rendre rentable un joueur légèrement perdant. C'est une bonne chose, mais attention à ne pas t'endormir dessus : ton objectif reste de progresser. Un joueur qui ne gagne que grâce au rakeback est à la merci d'un changement de programme de la salle.</p>
+<h2>Le piège</h2>
+<p>Le rakeback peut rendre rentable un joueur légèrement perdant. C'est une bonne chose, mais ne t'endors pas dessus : ton objectif reste de progresser. Un joueur qui ne gagne que grâce au rakeback est à la merci d'un changement de programme de la salle.</p>
 ${todo(["Lis les conditions du programme de fidélité de ta salle et note ton taux de rakeback réel.","Refais le calcul de l'outil « Suis-je rentable ? » avec ce taux."])}`},
 
 /* PARTIE 2 */
-{part:2,title:"Gérer ta bankroll",sub:"Combien de buy-ins, quand monter, quand redescendre.",html:`
+{part:2,title:"Bankroll management",sub:"Combien de buy-ins, quand monter, quand redescendre.",html:`
 <p>C'est la règle la plus ennuyeuse du poker. C'est aussi celle qui te garde dans le jeu.</p>
-<p>Ta bankroll, c'est l'argent que tu réserves au poker, séparé de celui du loyer et des courses. Sa taille décide de la limite que tu peux jouer sans risquer de tout perdre sur une mauvaise série. Et en Spin, avec la roue, les mauvaises séries peuvent être longues.</p>
-<div class="tbl"><table><thead><tr><th>Ta situation</th><th class="r">Bankroll conseillée</th><th class="r">À 5 € le spin</th></tr></thead><tbody>
+<p>Ta bankroll, c'est l'argent que tu réserves au poker, séparé de celui du loyer et des courses. Sa taille décide de la limite que tu peux jouer sans risquer de tout perdre sur un downswing.</p>
+<div class="tbl"><table><thead><tr><th>Ta situation</th><th class="r">Bankroll conseillée</th><th class="r">À 5 € le Spin</th></tr></thead><tbody>
 <tr><td>Tu débutes, ton win% est encore inconnu</td><td class="r">200 buy-ins</td><td class="r">1 000 €</td></tr>
 <tr><td>Tu es gagnant sur plus de 5 000 parties</td><td class="r">150 buy-ins</td><td class="r">750 €</td></tr>
 <tr><td>Tu acceptes de redescendre vite</td><td class="r">100 buy-ins</td><td class="r">500 €</td></tr>
 </tbody></table></div>
-${note("En dessous de ça, on redescend. Sans discuter.","100 buy-ins")}
+${note("En dessous, on redescend. Sans discuter.","100 buy-ins")}
 <h2>Pourquoi autant ?</h2>
-<p>On a repris la simulation du chapitre 5 : un joueur qui gagne 38 % de ses parties, avec la roue d'exemple, joue 10 000 parties à la même limite sans jamais redescendre. Voici combien de fois il perd toute sa bankroll en route :</p>
-<div class="tbl"><table><thead><tr><th>Bankroll de départ</th><th class="r">Joueur à 38 %</th><th class="r">Joueur à 40 %</th></tr></thead><tbody>
-<tr><td>50 buy-ins</td><td class="r">53 %</td><td class="r">13 %</td></tr>
-<tr><td>100 buy-ins</td><td class="r">28 %</td><td class="r">1,5 %</td></tr>
-<tr><td>150 buy-ins</td><td class="r">13 %</td><td class="r">0,2 %</td></tr>
-<tr><td>200 buy-ins</td><td class="r">6 %</td><td class="r">moins de 0,1 %</td></tr>
+<p>On a repris la simulation du chapitre 5, avec la grille Betclic : des joueurs jouent 10 000 parties à la même limite sans jamais redescendre. Voici combien perdent toute leur bankroll en route (risque de ruine) :</p>
+<div class="tbl"><table><thead><tr><th>Bankroll de départ</th><th class="r">36 %</th><th class="r">37 %</th><th class="r">38 %</th><th class="r">40 %</th></tr></thead><tbody>
+<tr><td>50 buy-ins</td><td class="r">70 %</td><td class="r">27 %</td><td class="r">7 %</td><td class="r">0,4 %</td></tr>
+<tr><td>100 buy-ins</td><td class="r">46 %</td><td class="r">6,7 %</td><td class="r">0,4 %</td><td class="r">~0 %</td></tr>
+<tr><td>150 buy-ins</td><td class="r">27 %</td><td class="r">1,5 %</td><td class="r">~0 %</td><td class="r">~0 %</td></tr>
+<tr><td>200 buy-ins</td><td class="r">15 %</td><td class="r">0,4 %</td><td class="r">~0 %</td><td class="r">~0 %</td></tr>
 </tbody></table></div>
-<p>Même un joueur gagnant a plus d'une chance sur quatre de tout perdre avec 100 buy-ins s'il ne redescend jamais. C'est pour ça que la règle de descente compte autant que la taille de la bankroll : elle te protège quand les choses tournent mal.</p>
+<p>Un joueur solide (38 % et plus) ne risque presque rien avec 100 buy-ins sur cette grille. Le danger, c'est d'être un joueur juste au-dessus du break-even sans le savoir : à 36 %, près d'une chance sur deux de tout perdre avec 100 buy-ins. Comme tu ne connais pas ton vrai win% au début, prends de la marge. Et sur une salle avec une grille plus violente, il faut encore plus de buy-ins.</p>
 <h2>Écris tes règles avant de jouer</h2>
-<p>Les décisions de bankroll se prennent mal en pleine session. Fixe-les à froid :</p>
 <ul>
 <li><b>Monter</b> quand tu as le nombre de buy-ins choisi pour la limite au-dessus.</li>
 <li><b>Redescendre</b> dès que tu passes sous 100 buy-ins de ta limite actuelle.</li>
-<li><b>Tenter ta chance</b> au-dessus avec un budget fixé à l'avance, par exemple 20 buy-ins. S'il part, tu redescends, sans le vivre comme un échec.</li>
+<li><b>Prendre un shot</b> à la limite au-dessus avec un budget fixé à l'avance, par exemple 20 buy-ins. S'il part, tu redescends, sans le vivre comme un échec.</li>
 </ul>
-${ex("Exemple : un plan de progression",`<p>Tu as 1 000 € et tu suis la règle des 150 buy-ins.</p><ul><li>Tu peux jouer à 5 € (150 × 5 = 750 €).</li><li>Tu montes à 10 € quand tu atteins 1 500 €.</li><li>Tu redescends à 2 € si tu passes sous 500 € (100 × 5).</li><li>Tu peux tenter 10 € avec 200 € de budget (20 buy-ins) dès que tu dépasses 1 200 €. Si les 200 € partent, retour à 5 €.</li></ul>`)}
+${ex("Exemple : un plan de progression",`<p>Tu as 1 000 € et tu suis la règle des 150 buy-ins.</p><ul><li>Tu peux jouer à 5 € (150 × 5 = 750 €).</li><li>Tu montes à 10 € quand tu atteins 1 500 €.</li><li>Tu redescends à 2 € si tu passes sous 500 € (100 × 5).</li><li>Tu peux prendre un shot à 10 € avec 200 € de budget (20 buy-ins) dès que tu dépasses 1 200 €. Si les 200 € partent, retour à 5 €.</li></ul>`)}
 <h2>Les erreurs classiques</h2>
 <ul>
-<li>Mélanger l'argent du poker et celui du quotidien, puis « recharger » après une mauvaise série.</li>
+<li>Mélanger l'argent du poker et celui du quotidien, puis « recharger » après un downswing.</li>
 <li>Monter de limite juste après un gros multiplicateur gagné.</li>
-<li>Retirer tous ses gains dès qu'on en a, et rester bloqué à la même limite avec une bankroll trop juste.</li>
+<li>Faire un cashout de tous ses gains dès qu'on en a, et rester bloqué à la même limite avec une bankroll trop juste.</li>
 <li>Refuser de redescendre par fierté.</li>
 </ul>
-<p>Le calculateur de bankroll, dans les outils, te dit jusqu'où tu peux aller.</p>
-${todo(["Décide du montant exact de ta bankroll et mets-le à part.","Écris tes trois règles : quand monter, quand redescendre, quel budget pour tenter la limite au-dessus."])}`},
+${todo(["Décide du montant exact de ta bankroll et mets-le à part.","Écris tes trois règles : quand monter, quand redescendre, quel budget pour un shot."])}`},
 
-{part:2,title:"Volume et sessions",sub:"Jouer beaucoup, oui. Mais dans de bonnes conditions.",html:`
-<p>Tu vas entendre partout qu'il faut faire du volume. C'est vrai : il faut beaucoup de parties pour que la chance s'équilibre. Mais 500 parties jouées fatigué valent moins que 200 jouées concentré.</p>
+{part:2,title:"Volume et sessions",sub:"Grinder beaucoup, oui. Mais dans de bonnes conditions.",html:`
+<p>Tu vas entendre partout qu'il faut faire du volume. C'est vrai : il faut beaucoup de parties pour que la variance s'équilibre. Mais 500 parties jouées fatigué valent moins que 200 jouées concentré.</p>
 <h2>Combien de parties par heure ?</h2>
-<p>Une partie dure en général cinq à huit minutes. Sur une table, tu en joues donc environ huit à dix par heure. À quatre tables, une trentaine. Sur un mois à raison d'une heure par jour, ça fait environ 1 000 parties : de quoi commencer à y voir clair, sans plus.</p>
+<p>Une partie dure en général cinq à huit minutes. Sur une table, tu en joues donc environ huit à dix par heure. En 4-tabling, une trentaine. Sur un mois à raison d'une heure par jour, ça fait environ 1 000 parties : de quoi commencer à y voir clair, sans plus.</p>
 <h2>Une session type</h2>
 <ol>
-<li><b>Cinq minutes pour se mettre dedans.</b> Relis tes notes de la veille et les trois règles du push or fold.</li>
-<li><b>Une heure à une heure et demie de jeu</b>, avec un nombre de tables décidé avant.</li>
-<li><b>Dix minutes de pause.</b> Lève-toi, bois de l'eau, pas d'écran.</li>
-<li><b>Un quart d'heure de revue.</b> Note trois coups qui t'ont fait hésiter et regarde-les à tête reposée.</li>
+<li><b>Warm-up (5 min).</b> Relis tes notes de la veille et les trois règles du push or fold.</li>
+<li><b>Grind (60 à 90 min)</b>, avec un nombre de tables décidé avant.</li>
+<li><b>Pause (10 min).</b> Lève-toi, bois de l'eau, pas d'écran.</li>
+<li><b>Review (15 à 20 min).</b> Note trois mains qui t'ont fait hésiter et revois-les à tête reposée.</li>
 </ol>
 <h2>Les bonnes conditions</h2>
 <ul>
 <li><b>Un endroit calme.</b> Pas de télé en fond, pas de téléphone à côté. En Spin, une décision se prend en quelques secondes : la moindre distraction coûte.</li>
 <li><b>Un bon moment.</b> Joue quand tu es reposé. Une session après une grosse journée de travail sera moins bonne, et c'est normal.</li>
-<li><b>Un écran bien organisé.</b> Les tables côte à côte, sans chevauchement, avec la taille des tapis en bb bien visible si ta salle le permet.</li>
+<li><b>Un écran bien organisé.</b> Les tables côte à côte, sans chevauchement, avec les stacks affichés en bb si ta salle le permet.</li>
 <li><b>Une heure de fin.</b> Décide-la avant de t'asseoir.</li>
 </ul>
 <h2>Ajouter des tables</h2>
-<p>Commence à deux. Passe à trois, puis quatre, seulement quand tes décisions restent rapides et que ton win% ne baisse pas. Si tu rates des timers ou que tu cliques sans réfléchir, enlève une table. Il n'y a aucune honte à ça.</p>
+<p>Commence à deux tables. Passe à trois, puis quatre, seulement quand tes décisions restent rapides et que ta cEV ne baisse pas. Si tu timeout ou que tu cliques sans réfléchir, retire une table. Il n'y a aucune honte à ça.</p>
 ${note("Pour les premiers mois,","2 à 4 tables")}
-<p>Garde aussi une partie de ton temps pour le travail hors table. Un bon ratio pour débuter : une heure de revue ou d'étude pour trois à quatre heures de jeu. C'est là que tu progresses vraiment.</p>
+<p>Garde aussi du temps pour le travail hors table. Un bon ratio pour débuter : une heure de review ou d'étude pour trois à quatre heures de grind. C'est là que tu progresses vraiment.</p>
 ${todo(["Fixe ton planning de la semaine : quels jours, à quelle heure, combien de tables.","Prépare une petite fiche « avant session » avec tes règles principales."])}`},
 
-{part:2,title:"Garder la tête froide",sub:"Tout le monde tilte. Ce qui compte, c'est combien de temps.",html:`
+{part:2,title:"Gérer le tilt",sub:"Tout le monde tilte. Ce qui compte, c'est combien de temps.",html:`
 <p>Le tilt, c'est quand tu joues moins bien que d'habitude à cause d'une émotion : la frustration, la fatigue, l'envie de te refaire. En Spin, les parties s'enchaînent en quelques minutes. Le tilt aussi.</p>
 <h2>Les différentes formes de tilt</h2>
 <ul>
 <li><b>Le tilt de perte.</b> Tu as perdu plusieurs parties d'affilée et tu veux te refaire vite.</li>
-<li><b>Le tilt d'injustice.</b> Tu as perdu un tapis avec 80 % d'équité, en plus sur un ×25. Tu trouves ça injuste, et tu joues ensuite plus large.</li>
+<li><b>Le tilt « injustice ».</b> Tu as pris un bad beat avec 80 % d'équité, en plus sur un ×10. Tu trouves ça injuste, et tu joues ensuite trop loose.</li>
 <li><b>Le tilt contre un joueur.</b> Un adversaire t'agace, et tu veux absolument le battre, quitte à prendre de mauvaises décisions.</li>
 <li><b>Le tilt de fatigue.</b> Tu ne ressens rien de particulier, mais tu décides mal et lentement.</li>
 <li><b>Le tilt du gagnant.</b> Tout va bien, tu te crois intouchable et tu relâches ta discipline.</li>
@@ -690,8 +766,8 @@ ${todo(["Fixe ton planning de la semaine : quels jours, à quelle heure, combien
 <h2>Les signes qui ne trompent pas</h2>
 <ul>
 <li>Tu relances une table juste après une défaite, sans attendre.</li>
-<li>Tu paies un tapis « pour voir » que tu aurais couché à froid.</li>
-<li>Tu penses au résultat de la session plus qu'au coup en cours.</li>
+<li>Tu call un shove « pour voir » que tu aurais fold à froid.</li>
+<li>Tu penses au résultat de la session plus qu'à la main en cours.</li>
 <li>L'heure de fin prévue est passée et tu es toujours là.</li>
 <li>Tu ajoutes des tables pour « rattraper » plus vite.</li>
 </ul>
@@ -704,14 +780,15 @@ ${todo(["Fixe ton planning de la semaine : quels jours, à quelle heure, combien
 </ul>
 ${note("Choisis ton stop-loss aujourd'hui, pas en pleine session.","15 buy-ins")}
 <h2>Changer ton regard sur les bad beats</h2>
-<p>Quand tu mets ton tapis avec 80 % d'équité, tu as pris une excellente décision. Tu perdras quand même une fois sur cinq. Ce n'est pas une anomalie, c'est prévu dans le calcul. Si tu juges tes décisions à leur qualité plutôt qu'à leur résultat, la plupart des bad beats perdent leur pouvoir de te faire tilter.</p>
-<p>Un exercice simple : après chaque session, note tes trois meilleures décisions, qu'elles aient gagné ou perdu. Ça t'entraîne à regarder la qualité du jeu, pas le résultat.</p>
+<p>Quand tu es all-in avec 80 % d'équité, tu as pris une excellente décision. Tu perdras quand même une fois sur cinq. Ce n'est pas une anomalie, c'est prévu dans le calcul, et ta cEV ajustée all-in le compte comme un gain. Si tu juges tes décisions à leur qualité plutôt qu'à leur résultat, la plupart des bad beats perdent leur pouvoir de te faire tilter.</p>
+<p>Un exercice simple : après chaque session, note tes trois meilleures décisions, qu'elles aient gagné ou perdu.</p>
 <h2>Le jeu doit rester un plaisir</h2>
 <p>Si le jeu devient une source de stress ou de dettes, que tu joues pour te refaire ou que tu caches tes pertes à tes proches, c'est le moment de faire une pause et d'en parler. Joueurs Info Service répond au <span class="num">09 74 75 13 13</span>. La plupart des salles permettent aussi de fixer des limites de dépôt ou de s'exclure temporairement.</p>
 ${todo(["Choisis ton stop-loss et ton heure de fin pour la semaine.","Commence ton carnet de tilt : une ligne par session."])}`},
 
 {part:2,title:"Suivre tes résultats",sub:"À partir de combien de parties tu peux savoir si tu gagnes.",html:`
 <p>Ton win% sur 300 parties, c'est une impression. Sur 5 000, ça commence à être une mesure. Voici comment savoir où tu en es.</p>
+<h2>La marge d'erreur du win%</h2>
 <p>Pour un win% autour de 36 %, la marge d'erreur (à 95 %) vaut à peu près ± 1,96 × √(p × (1 − p) / n). En clair :</p>
 <div class="tbl"><table><thead><tr><th>Parties jouées</th><th class="r">Marge d'erreur</th><th class="r">Si tu mesures 38 %, tu es en fait…</th></tr></thead><tbody>
 <tr><td>500</td><td class="r">± 4,2 pts</td><td class="r">entre 33,8 et 42,2 %</td></tr>
@@ -719,21 +796,22 @@ ${todo(["Choisis ton stop-loss et ton heure de fin pour la semaine.","Commence t
 <tr><td>5 000</td><td class="r">± 1,3 pt</td><td class="r">entre 36,7 et 39,3 %</td></tr>
 <tr><td>10 000</td><td class="r">± 0,9 pt</td><td class="r">entre 37,1 et 38,9 %</td></tr>
 </tbody></table></div>
-<p>À 1 000 parties, un joueur à 38 % peut en réalité être juste à l'équilibre. Il faut être patient.</p>
-${note("Avant de conclure que tu bats ta limite :","5 000 parties")}
-<h2>Le résultat ajusté</h2>
-<p>Ton bénéfice en euros mélange deux choses : ton niveau et la chance de la roue. Pour retirer la roue, calcule ce que tu aurais gagné si chaque partie avait payé le multiplicateur moyen :</p>
+<p>À 1 000 parties, un joueur à 38 % peut en réalité être juste break-even. C'est pour ça que les regs regardent leur cEV ajustée all-in : elle retire la chance des all-in et devient fiable plus vite que le win% brut.</p>
+${note("Avant de conclure que tu bats ta limite sur ton win% brut :","5 000 parties")}
+<h2>Le résultat ajusté au multiplicateur</h2>
+<p>Ton bénéfice en euros mélange ton niveau et la chance de la roue. Pour retirer la roue, calcule ce que tu aurais gagné si chaque partie avait payé le multiplicateur moyen :</p>
 <div class="formula">résultat ajusté = parties gagnées × E[m] × buy-in − parties jouées × buy-in</div>
-${ex("Exemple",`<p>Tu as joué 1 000 parties à 5 € et tu en as gagné 380. Ton résultat ajusté vaut 380 × 2,81 × 5 − 1 000 × 5 = +339 €.</p><p>Ton résultat réel peut être de +50 € si tu n'as gagné que des ×2, ou de +1 500 € si tu as gagné un ×100. Dans les deux cas, ton niveau est le même : c'est le +339 € qui le reflète.</p>`)}
+${ex("Exemple",`<p>Tu as joué 1 000 parties à 5 € et tu en as gagné 380. Ton résultat ajusté vaut 380 × 2,79 × 5 − 1 000 × 5 = +301 €.</p><p>Ton résultat réel peut être de +100 € si tu n'as gagné que des ×2, ou de +800 € si tu as gagné un ×100. Dans les deux cas, ton niveau est le même : c'est le +301 € qui le reflète.</p>`)}
 <h2>Ce qu'on suit</h2>
 <ul>
+<li>Ta cEV par partie, réelle et ajustée all-in.</li>
 <li>Ton win% par limite et par salle.</li>
-<li>Ton résultat ajusté, en plus du résultat réel.</li>
-<li>Ton taux d'arrivée en heads-up et ton win% en heads-up, séparément (chapitre 4).</li>
+<li>Ton résultat ajusté au multiplicateur, en plus du résultat réel.</li>
+<li>Ton taux d'arrivée en HU et ton win% en HU, séparément (chapitre 4).</li>
 <li>Ton volume par semaine, pour vérifier que tu tiens ton planning.</li>
 </ul>
 <h2>Les outils</h2>
-<p>Un simple tableur suffit pour commencer : une ligne par session avec la date, la limite, le nombre de parties, le nombre de victoires, le résultat réel et quelques mots sur ton état. Plus tard, un logiciel de suivi (tracker) récupère tout automatiquement à partir de l'historique des mains et te donne des statistiques bien plus fines.</p>
+<p>Un simple tableur suffit pour commencer : une ligne par session avec la date, la limite, le nombre de parties, le nombre de victoires, le résultat réel et quelques mots sur ton état. Ensuite, un tracker récupère tout automatiquement à partir de tes hand histories et calcule ta cEV ajustée all-in.</p>
 <div class="tbl"><table><thead><tr><th>Date</th><th>Limite</th><th class="r">Parties</th><th class="r">Victoires</th><th class="r">Résultat</th><th>Notes</th></tr></thead><tbody>
 <tr><td>Lundi</td><td>5 €</td><td class="r">32</td><td class="r">13</td><td class="r">+45 €</td><td>Bonne concentration</td></tr>
 <tr><td>Mardi</td><td>5 €</td><td class="r">28</td><td class="r">9</td><td class="r">−50 €</td><td>Fatigué, arrêté au stop-loss</td></tr>
@@ -741,141 +819,141 @@ ${ex("Exemple",`<p>Tu as joué 1 000 parties à 5 € et tu en as gagné 380. To
 ${todo(["Crée ton tableur de suivi avec ces colonnes.","Remplis-le à la fin de chaque session, même les mauvaises."])}`},
 
 /* PARTIE 3 */
-{part:3,title:"Les bases du jeu à trois",sub:"Bouton, petite blinde, grosse blinde : qui fait quoi.",html:`
-<p>À trois, il n'y a que trois places : le bouton, la petite blinde et la grosse blinde. Le bouton parle en premier avant le flop, et c'est lui qui a le plus d'occasions de voler les blindes. Après le flop, il parle en dernier : c'est la meilleure position.</p>
-<h2>Au bouton, ouvre large</h2>
-<p>Tu n'as que deux joueurs derrière toi, et ils n'ont pas choisi leurs mains : ils ont juste posté les blindes. Avec 20 bb ou plus, relance petit (2 bb) une bonne partie de tes mains et couche les plus mauvaises. Plus les tapis baissent, plus cette relance devient un tapis direct.</p>
-<div class="tbl"><table><thead><tr><th>Tapis effectif</th><th>Au bouton, pour commencer</th></tr></thead><tbody>
-<tr><td>Plus de 15 bb</td><td>Relance à 2 bb avec une large partie des mains</td></tr>
-<tr><td>10 à 15 bb</td><td>Relance à 2 bb avec tes meilleures mains, tapis direct avec les mains moyennes qui supportent mal une relance</td></tr>
+{part:3,title:"Les bases du 3-max",sub:"BTN, SB, BB : qui fait quoi.",html:`
+<p>À trois, il n'y a que trois positions : le BTN (bouton), la SB (small blind) et la BB (big blind). Le BTN parle en premier préflop, et c'est lui qui a le plus d'occasions de voler les blindes. Postflop, il parle en dernier : c'est la meilleure position.</p>
+<h2>Au BTN, open large</h2>
+<p>Tu n'as que deux joueurs derrière toi, et ils n'ont pas choisi leurs mains : ils ont juste posté les blindes. Avec 20 bb ou plus, open à 2 bb (min-raise) une grosse partie de ta range et fold les pires mains. Plus les stacks baissent, plus cet open se transforme en push.</p>
+<div class="tbl"><table><thead><tr><th>Stack effectif</th><th>Au BTN, pour commencer</th></tr></thead><tbody>
+<tr><td>Plus de 15 bb</td><td>Open à 2 bb avec une range large</td></tr>
+<tr><td>10 à 15 bb</td><td>Open à 2 bb avec tes meilleures mains, push avec les mains moyennes qui supportent mal un 3-bet</td></tr>
 <tr><td>Moins de 10 bb</td><td>Push or fold</td></tr>
 </tbody></table></div>
-<h2>En petite blinde contre la grosse</h2>
-<p>Quand le bouton se couche, tu te retrouves seul contre la grosse blinde, et tu parleras en premier après le flop. Les joueurs forts mélangent limps, relances et tapis. Pour commencer, fais simple : relance tes bonnes mains, couche le reste, et passe au tapis direct dès que ton tapis descend vers 10 bb. Tu ajouteras le limp plus tard.</p>
-<p>Si le bouton a relancé, sois plus prudent en petite blinde : il reste un joueur derrière toi, et tu seras hors de position. Joue surtout tes bonnes mains, en relançant fort ou en partant à tapis.</p>
-<h2>En grosse blinde, défends</h2>
-<p>Le bouton relance à 2 bb, la petite blinde se couche. Il y a 3,5 bb au milieu. Tu dois payer 1 bb pour un pot final de 4,5 bb. Il te suffit donc de gagner 22 % du temps pour que ce soit rentable.</p>
-${note("1 ÷ 4,5, et beaucoup de mains y arrivent. Ne te couche pas trop vite.","22 %")}
-<p>La cote change avec la taille de la relance. Retiens le principe : plus la relance est petite, plus tu dois défendre.</p>
-<div class="tbl"><table><thead><tr><th>Relance du bouton</th><th class="r">Tu paies</th><th class="r">Pot final</th><th class="r">Équité nécessaire</th></tr></thead><tbody>
+<h2>En SB contre la BB (blind vs blind)</h2>
+<p>Quand le BTN fold, tu te retrouves en BvB contre la BB, et tu seras hors de position postflop. Les bons joueurs mélangent limp, raise et push. Pour commencer, fais simple : raise tes bonnes mains, fold le reste, et passe au push dès que ton stack descend vers 10 bb. Tu ajouteras le limp plus tard.</p>
+<p>Si le BTN a open, sois plus prudent en SB : il reste un joueur derrière toi, et tu seras hors de position. Joue surtout tes bonnes mains, en 3-bet ou en push.</p>
+<h2>En BB, défends</h2>
+<p>Le BTN open à 2 bb, la SB fold. Il y a 3,5 bb au milieu. Tu dois call 1 bb pour un pot final de 4,5 bb. Tes pot odds te demandent donc seulement 22 % d'équité.</p>
+${note("1 ÷ 4,5, et beaucoup de mains y arrivent. Ne fold pas trop vite.","22 %")}
+<p>Les pot odds changent avec la taille de l'open. Retiens le principe : plus l'open est petit, plus tu dois défendre.</p>
+<div class="tbl"><table><thead><tr><th>Open du BTN</th><th class="r">Tu call</th><th class="r">Pot final</th><th class="r">Équité nécessaire</th></tr></thead><tbody>
 <tr><td>2 bb</td><td class="r">1 bb</td><td class="r">4,5 bb</td><td class="r">22 %</td></tr>
 <tr><td>2,5 bb</td><td class="r">1,5 bb</td><td class="r">5,5 bb</td><td class="r">27 %</td></tr>
 <tr><td>3 bb</td><td class="r">2 bb</td><td class="r">6,5 bb</td><td class="r">31 %</td></tr>
 </tbody></table></div>
-<p>Attention : ce calcul suppose que tu joues bien après le flop. Hors de position, tu réalises un peu moins ton équité, donc ne paie pas n'importe quoi non plus. Et avec un tapis court, la relance à tapis (sur-relance) est souvent meilleure que de payer.</p>
-${ex("Exemple de coup",`<p>Niveau 2, 15/30. Tout le monde a environ 16 bb. Le bouton relance à 60 (2 bb), la petite blinde se couche. Tu as <b>J8 assorti</b> en grosse blinde. Tu dois payer 30 pour un pot de 135 : 22 % suffisent, et J8s a largement ça contre une range de bouton large. Tu paies. Au flop, si tu touches une paire ou un tirage, tu peux souvent engager ton tapis. Si tu rates tout et que le bouton mise, tu peux te coucher sans regret.</p>`)}
-<h2>Les erreurs classiques à trois</h2>
+<p>Attention : ce calcul suppose que tu joues bien postflop. Hors de position, tu réalises un peu moins ton équité, donc ne call pas n'importe quoi. Et short stack, le 3-bet all-in (reshove) est souvent meilleur que le call.</p>
+${ex("Exemple de main",`<p>Niveau 2, 15/30. Tout le monde a environ 16 bb. Le BTN open à 60 (2 bb), la SB fold. Tu as <b>J8s</b> en BB. Tu dois call 30 pour un pot de 135 : 22 % suffisent, et J8s a largement ça contre une range d'open BTN large. Tu call. Au flop, si tu touches une paire ou un tirage, tu peux souvent mettre ton stack. Si tu whiff et que le BTN c-bet, tu peux fold sans regret.</p>`)}
+<h2>Les erreurs classiques en 3-max</h2>
 <ul>
-<li>Jouer trop serré au bouton, comme à une table de neuf joueurs.</li>
-<li>Payer une relance en petite blinde avec une main moyenne, alors que la grosse blinde peut encore relancer.</li>
-<li>Se coucher trop souvent en grosse blinde face aux petites relances.</li>
-<li>Relancer à 3 ou 4 bb : ça coûte cher et n'apporte rien de plus à ces profondeurs.</li>
+<li>Jouer trop tight au BTN, comme à une table full ring.</li>
+<li>Call un open en SB avec une main moyenne, alors que la BB peut encore squeeze.</li>
+<li>Overfold en BB face aux min-raises.</li>
+<li>Open à 3 ou 4 bb : ça coûte cher et n'apporte rien de plus à ces profondeurs.</li>
 </ul>
-${todo(["Pendant ta prochaine session, compte combien de fois tu relances au bouton quand on te laisse la main.","Chaque fois que tu te couches en grosse blinde face à une relance de 2 bb, demande-toi si ta main avait 22 % d'équité."])}`},
+${todo(["Pendant ta prochaine session, compte combien de fois tu open au BTN quand on te fold la main.","Chaque fois que tu fold en BB face à un open à 2 bb, demande-toi si ta main avait 22 % d'équité."])}`},
 
 {part:3,title:"Les règles du push or fold",sub:"La compétence qui rapporte le plus, et le plus vite.",html:`
-<p>Sous 10 grosses blindes environ, relancer puis te coucher te coûte trop cher. Il ne reste que deux options : push (tapis) ou fold (couché). C'est le push or fold. C'est mathématique, ça s'apprend, et beaucoup de joueurs le font mal. Tant mieux pour toi.</p>
+<p>Sous 10 bb environ, open puis fold face à un 3-bet te coûte trop cher. Il ne reste que deux options : push (all-in) ou fold. C'est le push or fold. C'est mathématique, ça s'apprend, et beaucoup de joueurs le font mal. Tant mieux pour toi.</p>
 <h2>Pourquoi le push marche</h2>
 <ul>
-<li>L'adversaire se couche souvent, et tu ramasses les blindes sans voir de flop. C'est ce qu'on appelle la <i>fold equity</i>.</li>
-<li>Tu ne peux pas faire d'erreur après le flop sur une main que tu ne joues pas après le flop.</li>
-<li>Si tu es payé, les cinq cartes tombent. Tu profites de toute ton équité.</li>
+<li>L'adversaire fold souvent, et tu ramasses les blindes sans voir de flop. C'est ta <i>fold equity</i>.</li>
+<li>Tu ne peux pas faire d'erreur postflop sur une main que tu ne joues pas postflop.</li>
+<li>Si tu es call, les cinq cartes du board tombent. Tu réalises toute ton équité.</li>
 </ul>
-<h2>Trois règles</h2>
+<h2>Les trois règles</h2>
 <ol>
-<li>Plus ton tapis est court, plus tu peux partir à tapis avec beaucoup de mains.</li>
-<li>En heads-up depuis la petite blinde, tu peux pousser beaucoup plus large qu'à trois.</li>
-<li>Tu paies un tapis avec moins de mains que tu n'en pousses. Celui qui paie ne peut pas faire coucher l'autre.</li>
+<li>Plus ton stack est court, plus ta range de push s'élargit.</li>
+<li>En HU depuis la SB, tu peux push beaucoup plus large qu'en 3-max.</li>
+<li>Ta range de call est plus serrée que ta range de push. Celui qui call n'a pas de fold equity.</li>
 </ol>
-<h2>Calculer l'intérêt d'un push</h2>
-<p>La bonne question n'est pas « est-ce que ce tapis va gagner de l'argent ? » mais « est-ce qu'il perd moins que de me coucher ? ». Quand tu te couches en petite blinde, tu perds ta demi-blinde. C'est ta référence.</p>
-${ex("Exemple : K5o en petite blinde, heads-up, 10 bb",`<p>Imagine que ton adversaire paie avec ses 30 % meilleures mains et se couche le reste du temps. Contre ces 30 %, K5o gagne environ 35 % du temps (on l'a simulé).</p><ul><li>70 % du temps, il se couche : tu gagnes sa grosse blinde, soit +1 bb.</li><li>30 % du temps, il paie : le pot fait 20 bb, tu en récupères 35 % en moyenne, soit 7,1 bb pour 10 bb investis, donc −2,9 bb.</li></ul><p>Au total : 0,7 × 1 + 0,3 × (−2,9) ≈ −0,18 bb. Ça a l'air négatif, mais te coucher te coûte −0,5 bb. Le tapis te fait donc gagner environ 0,3 bb par rapport au couché. On pousse.</p>`)}
-<p>C'est tout l'esprit du push or fold : beaucoup de mains qui semblent « trop faibles » sont en fait rentables à pousser, parce que l'adversaire se couche souvent et que tu n'es jamais très loin derrière quand il paie.</p>
-<h2>Payer ou pas : un calcul de cote</h2>
-<p>En heads-up, la petite blinde fait tapis 10 bb. Tu es en grosse blinde avec 1 bb déjà dedans. Tu paies 9 bb pour un pot final de 20 bb. Il te faut donc au moins 45 % d'équité.</p>
-${note("9 ÷ 20. Contre quelqu'un qui pousse très large, A2o ou K9o y arrivent.","45 %")}
-<p>Pour te donner une idée, voici l'équité de quelques mains contre un adversaire qui pousse ses 60 % meilleures mains (simulé) :</p>
-<div class="tbl"><table><thead><tr><th>Ta main</th><th class="r">Équité contre le top 60 %</th><th class="r">Tu paies ?</th></tr></thead><tbody>
-<tr><td>K9o</td><td class="r">52,5 %</td><td class="r">Oui</td></tr>
-<tr><td>A2o</td><td class="r">50,5 %</td><td class="r">Oui</td></tr>
-<tr><td>K5o</td><td class="r">46,7 %</td><td class="r">Oui, de justesse</td></tr>
-<tr><td>Q7o</td><td class="r">43,1 %</td><td class="r">Non</td></tr>
+<h2>Calculer l'EV d'un push</h2>
+<p>La bonne question n'est pas « est-ce que ce push gagne de l'argent ? » mais « est-ce qu'il perd moins que fold ? ». Quand tu fold en SB, tu perds ta demi-blinde. C'est ta référence.</p>
+${ex("Exemple : K5o en SB, HU, 10 bb",`<p>Imagine que ton adversaire call avec le top 30 % de ses mains et fold le reste. Contre ces 30 %, K5o a environ 35 % d'équité (on l'a simulé).</p><ul><li>70 % du temps, il fold : tu gagnes sa BB, soit +1 bb.</li><li>30 % du temps, il call : le pot fait 20 bb, tu en récupères 35 % en moyenne, soit 7,1 bb pour 10 bb investis, donc −2,9 bb.</li></ul><p>Au total : 0,7 × 1 + 0,3 × (−2,9) ≈ −0,18 bb. Ça a l'air négatif, mais fold te coûte −0,5 bb. Le push te fait donc gagner environ 0,3 bb par rapport au fold. On push.</p>`)}
+<p>C'est tout l'esprit du push or fold : beaucoup de mains qui semblent « trop faibles » sont rentables à push, parce que l'adversaire fold souvent et que tu n'es jamais très loin derrière quand il call.</p>
+<h2>Call ou fold : les pot odds</h2>
+<p>En HU, la SB push 10 bb. Tu es en BB avec 1 bb déjà dedans. Tu call 9 bb pour un pot final de 20 bb. Il te faut donc au moins 45 % d'équité.</p>
+${note("9 ÷ 20. Face à quelqu'un qui push très large, A2o ou K9o y arrivent.","45 %")}
+<p>Pour te donner une idée, voici l'équité de quelques mains contre un adversaire qui push le top 60 % de sa range (simulé) :</p>
+<div class="tbl"><table><thead><tr><th>Ta main</th><th class="r">Équité contre le top 60 %</th><th>Décision</th></tr></thead><tbody>
+<tr><td>K9o</td><td class="r">52,5 %</td><td>Call</td></tr>
+<tr><td>A2o</td><td class="r">50,5 %</td><td>Call</td></tr>
+<tr><td>K5o</td><td class="r">46,7 %</td><td>Call, de justesse</td></tr>
+<tr><td>Q7o</td><td class="r">43,1 %</td><td>Fold</td></tr>
 </tbody></table></div>
-<p>Contre quelqu'un de plus serré, qui ne pousse que 30 % de ses mains, ces mêmes mains deviennent des couchés : K9o tombe à 41,7 % et A2o à 43,5 %. Tout dépend de la range de l'adversaire.</p>
+<p>Face à quelqu'un de plus tight, qui ne push que 30 % de ses mains, ces mêmes mains deviennent des folds : K9o tombe à 41,7 % et A2o à 43,5 %. Tout dépend de la range de l'adversaire.</p>
 <h2>Les erreurs classiques</h2>
 <ul>
-<li><b>Relancer petit puis se coucher à 8 bb.</b> Tu perds 2 bb au lieu de gagner les blindes.</li>
+<li><b>Open-fold à 8 bb.</b> Tu perds 2 bb au lieu de voler les blindes.</li>
 <li><b>Attendre une « bonne main ».</b> À 6 bb, les blindes te grignotent vite. Attendre AK, c'est souvent mourir à petit feu.</li>
-<li><b>Payer trop large.</b> Payer un tapis demande plus qu'en pousser un.</li>
-<li><b>Limper à tapis court sans plan.</b> Limper puis se coucher face à un tapis te coûte des jetons précieux.</li>
+<li><b>Call trop large.</b> Call un shove demande plus d'équité qu'en push un.</li>
+<li><b>Limp short stack sans plan.</b> Limp puis fold face à un push te coûte des jetons précieux.</li>
 </ul>
-<p>Pour des ranges précises selon ta position et ton tapis, il faut passer par un outil de calcul d'équilibre (Nash). Commence par retenir les trois règles ci-dessus : elles couvrent déjà l'essentiel.</p>
-${todo(["Refais le calcul de l'exemple avec une autre main, comme Q7o contre un adversaire qui paie 30 % de ses mains (elle gagne environ 33,5 % du temps).","Pendant ta prochaine session, note chaque fois que tu te couches à moins de 10 bb en petite blinde, et demande-toi si le tapis était meilleur."])}`},
+<p>Pour des ranges précises selon ta position et ton stack, il faut passer par des charts Nash ou un solveur. Commence par retenir les trois règles ci-dessus : elles couvrent déjà l'essentiel.</p>
+${todo(["Refais le calcul de l'exemple avec Q7o face à un adversaire qui call 30 % de ses mains (elle a environ 33,5 % d'équité).","Pendant ta prochaine session, note chaque fold à moins de 10 bb en SB, et demande-toi si le push était meilleur."])}`},
 
 {part:3,title:"Le heads-up",sub:"La plupart des parties se gagnent ici.",html:`
-<p>Dès qu'un joueur saute, on passe en tête-à-tête. Celui qui gagne ce duel gagne la partie. C'est là que ton win% se construit, bien plus qu'à trois.</p>
+<p>Dès qu'un joueur saute, on passe en HU. Celui qui gagne ce duel gagne la partie. C'est là que ton win% se construit, bien plus qu'en 3-max.</p>
 <h2>La position</h2>
-<p>En heads-up, la petite blinde est aussi le bouton. Elle parle en premier avant le flop et en dernier après. C'est la bonne place : joue beaucoup de mains depuis la petite blinde.</p>
-${note("Environ la moitié des mains ont plus de 50 % contre une main au hasard. Jouer serré au bouton coûte cher.")}
-<h2>Adapter ta relance au tapis</h2>
-<div class="tbl"><table><thead><tr><th>Tapis effectif</th><th>En petite blinde, pour commencer</th></tr></thead><tbody>
-<tr><td>Plus de 15 bb</td><td>Relance à 2 bb ou limp avec beaucoup de mains, jeu simple après le flop</td></tr>
-<tr><td>10 à 15 bb</td><td>Relance à 2 bb, tapis direct avec les mains qui n'aiment pas se faire relancer</td></tr>
-<tr><td>Moins de 10 bb</td><td>Push or fold, avec beaucoup de mains</td></tr>
+<p>En HU, la SB est aussi le BTN. Elle parle en premier préflop et en dernier postflop. C'est la bonne place : joue une range très large depuis la SB.</p>
+${note("Environ la moitié des mains ont plus de 50 % d'équité contre une main aléatoire. Jouer tight au BTN coûte cher.")}
+<h2>Adapter ton open au stack</h2>
+<div class="tbl"><table><thead><tr><th>Stack effectif</th><th>En SB, pour commencer</th></tr></thead><tbody>
+<tr><td>Plus de 15 bb</td><td>Min-raise ou limp avec une range très large, jeu postflop simple</td></tr>
+<tr><td>10 à 15 bb</td><td>Min-raise, push direct avec les mains qui supportent mal un 3-bet</td></tr>
+<tr><td>Moins de 10 bb</td><td>Push or fold, avec une range large</td></tr>
 </tbody></table></div>
-<h2>En grosse blinde</h2>
-<p>Face à une relance à 2 bb, tu dois payer 1 bb pour un pot final de 4 bb : 25 % d'équité suffisent. Défends donc beaucoup de mains. Avec tes meilleures mains, et avec certaines mains moyennes quand le tapis est court, relance à tapis : ton adversaire devra se coucher souvent.</p>
-<p>Face à un limp, tu peux relancer tes bonnes mains pour punir, et checker le reste pour voir le flop gratuitement.</p>
-<h2>Après le flop</h2>
+<h2>En BB</h2>
+<p>Face à un min-raise, tu dois call 1 bb pour un pot final de 4 bb : 25 % d'équité suffisent. Défends donc beaucoup de mains. Avec tes meilleures mains, et avec certaines mains moyennes quand les stacks sont courts, 3-bet all-in : ton adversaire devra fold souvent.</p>
+<p>Face à un limp, tu peux raise tes bonnes mains pour punir (iso-raise), et check le reste pour voir le flop gratuitement.</p>
+<h2>Postflop</h2>
 <ul>
-<li>Si tu as relancé avant le flop, mise petit (un tiers du pot environ) et souvent. Ton adversaire a raté le flop la plupart du temps.</li>
-<li>Face à une mise, pense en cote du pot plutôt qu'en « j'ai touché ou pas ». Une mise d'un tiers du pot ne te demande que 20 % d'équité pour payer.</li>
-<li>En heads-up, une paire est souvent une très bonne main. Ne te couche pas trop vite avec une paire moyenne.</li>
-<li>Avec un petit tapis, cherche les coups où tu peux mettre tout ton tapis sans regret : paire correcte, bon tirage, ou les deux.</li>
+<li>Si tu as raise préflop, c-bet petit (environ un tiers du pot) et souvent. Ton adversaire a raté le flop la plupart du temps.</li>
+<li>Face à un bet, raisonne en pot odds plutôt qu'en « j'ai touché ou pas ». Un bet d'un tiers du pot ne te demande que 20 % d'équité pour call.</li>
+<li>En HU, une paire est souvent une très bonne main. Ne fold pas trop vite une middle pair.</li>
+<li>Short stack, cherche les spots où tu peux mettre tout ton stack sans regret : top pair, bon tirage, ou les deux.</li>
 </ul>
-${ex("Exemple de coup",`<p>Heads-up, 14 bb effectifs. Tu es en petite blinde avec <b>Q6 dépareillé</b>. Tu relances à 2 bb, la grosse blinde paie. Pot : 4 bb. Flop : <b>K 7 2</b> de trois couleurs. Tu as raté, mais ce flop a aussi raté la plupart des mains de ton adversaire. Tu mises 1,3 bb (un tiers du pot). S'il se couche plus d'une fois sur quatre, ta mise est déjà rentable. S'il relance, tu te couches sans hésiter.</p>`)}
-<h2>Observer ton adversaire</h2>
-<p>En heads-up, tu joues toujours contre la même personne pendant plusieurs minutes. Regarde vite comment il joue :</p>
+${ex("Exemple de main",`<p>HU, 14 bb effectifs. Tu es en SB avec <b>Q6o</b>. Tu min-raise, la BB call. Pot : 4 bb. Flop : <b>K 7 2</b> rainbow. Tu as whiff, mais ce board a aussi raté la plupart des mains de ton adversaire. Tu c-bet 1,3 bb (un tiers du pot). S'il fold plus d'une fois sur quatre, ton bet est déjà rentable. S'il check-raise, tu fold sans hésiter.</p>`)}
+<h2>Lire ton adversaire</h2>
+<p>En HU, tu joues toujours contre la même personne pendant plusieurs minutes. Repère vite ses tendances :</p>
 <ul>
-<li>Est-ce qu'il se couche souvent quand tu relances ? Relance plus.</li>
-<li>Est-ce qu'il paie tous tes tapis ? Pousse moins de bluffs, garde tes tapis pour les mains fortes.</li>
-<li>Est-ce qu'il limpe beaucoup ? Relance tes bonnes mains quand tu es en grosse blinde.</li>
+<li>Il fold beaucoup face à tes raises ? Raise plus.</li>
+<li>Il call tous tes shoves ? Push moins de bluffs, garde tes push pour les mains fortes.</li>
+<li>Il limp beaucoup ? Iso-raise tes bonnes mains quand tu es en BB.</li>
 </ul>
-${todo(["Après chaque heads-up perdu, note le coup décisif et demande-toi si tu referais le même choix.","Pendant une session, relance au moins 80 % de tes mains en petite blinde en heads-up quand les tapis dépassent 10 bb, et observe ce qui se passe."])}`},
+${todo(["Après chaque HU perdu, note la main décisive et demande-toi si tu referais le même choix.","Pendant une session, open au moins 80 % de ta range en SB en HU quand les stacks dépassent 10 bb, et observe ce qui se passe."])}`},
 
-{part:3,title:"Aller plus loin",sub:"Exploiter les erreurs des autres, gérer les gros tirages, progresser seul.",html:`
-<p>Une fois que les bases tiennent, tu gagnes surtout en profitant des erreurs des autres et en jouant bien les tirages qui paient plusieurs places.</p>
-<h2>Profiter des erreurs du pool</h2>
-<p>Sur les petites limites, beaucoup de joueurs font les mêmes erreurs. Repère-les et adapte-toi :</p>
+{part:3,title:"Aller plus loin",sub:"Exploiter le field, gérer les gros multiplicateurs, progresser seul.",html:`
+<p>Une fois que les bases tiennent, tu gagnes surtout en exploitant les erreurs des autres et en jouant bien les parties qui paient plusieurs places.</p>
+<h2>Exploiter le field</h2>
+<p>Aux petites limites, beaucoup de joueurs font les mêmes erreurs. Repère-les et adapte-toi :</p>
 <ul>
-<li><b>Ils paient trop de tapis ?</b> Pousse moins de bluffs et plus de mains fortes.</li>
-<li><b>Ils se couchent trop quand on relance ?</b> Relance plus souvent, surtout depuis la grosse blinde.</li>
-<li><b>Ils limpent beaucoup en petite blinde ?</b> Punis ça avec tes bonnes mains.</li>
-<li><b>Ils poussent rarement ?</b> Quand ils le font, respecte leur tapis et couche davantage.</li>
+<li><b>Ils call trop de shoves ?</b> Push moins de bluffs et plus de mains en value.</li>
+<li><b>Ils overfold face aux raises ?</b> Raise plus souvent, surtout depuis la BB.</li>
+<li><b>Ils limp beaucoup en SB ?</b> Iso-raise tes bonnes mains.</li>
+<li><b>Ils push rarement ?</b> Quand ils le font, respecte leur range et fold davantage.</li>
 </ul>
-<p>Attention : pour exploiter, il faut d'abord observer. Une seule main ne dit rien. Attends de voir une tendance se répéter avant de changer ton jeu.</p>
-<h2>Quand plusieurs places sont payées</h2>
-<p>Sur les gros multiplicateurs, le deuxième et le troisième touchent aussi quelque chose. Tes jetons ne valent plus exactement de l'argent : perdre ton tapis te coûte plus que ce que doubler te rapporte. C'est ce qu'on appelle l'ICM (<i>Independent Chip Model</i>).</p>
-${ex("Exemple : un prix partagé 70 / 20 / 10",`<p>Imagine un prix réparti ainsi : 70 % au premier, 20 % au deuxième, 10 % au troisième. Trois joueurs avec le même tapis valent chacun 33,3 % du prix.</p><ul><li>Si tu doubles contre un joueur qui saute, tu as les deux tiers des jetons en heads-up. Tu vaux alors environ 53,3 % du prix (+20 points) et le troisième est assuré.</li><li>Si tu perds, tu finis troisième avec 10 % (−23,3 points).</li></ul><p>Tu risques plus que ce que tu peux gagner. Pour payer un tapis dans cette situation, il te faut environ 54 % d'équité, contre 50 % quand le gagnant prend tout.</p>`)}
-<p>En pratique : paie les tapis avec moins de mains, évite les coups limites en début de partie, et mets la pression sur les autres, qui ont les mêmes contraintes. Les pourcentages de paiement dépendent de ta salle : vérifie-les dans le lobby.</p>
-${note("Quand le gagnant prend tout, tu peux oublier l'ICM. Jetons et argent vont ensemble.")}
+<p>Attention : pour exploiter, il faut d'abord observer. Une seule main ne dit rien. Attends de voir une tendance se répéter avant d'ajuster.</p>
+<h2>Quand plusieurs places sont payées : l'ICM</h2>
+<p>Sur les gros multiplicateurs, le 2<sup>e</sup> et le 3<sup>e</sup> sont aussi payés. Chez Betclic, à partir du ×20, le prizepool est réparti 75 % / 15 % / 10 %. Tes jetons ne valent plus exactement de l'argent : perdre ton stack te coûte plus que ce que doubler te rapporte. C'est ce que mesure l'ICM (<i>Independent Chip Model</i>).</p>
+${ex("Exemple : un ×20 réparti 75 / 15 / 10",`<p>Trois joueurs avec le même stack valent chacun 33,3 % du prizepool.</p><ul><li>Si tu doubles contre un joueur qui saute, tu as les deux tiers des jetons en HU. Tu vaux alors environ 55 % du prizepool (+21,7 points), et ta 2<sup>e</sup> place est assurée.</li><li>Si tu perds, tu finis 3<sup>e</sup> avec 10 % (−23,3 points).</li></ul><p>Tu risques plus que ce que tu peux gagner. Pour call un shove dans ce spot, il te faut environ 52 % d'équité, contre 50 % en « winner takes all ».</p>`)}
+<p>En pratique : call les shoves plus tight, évite les spots marginaux en début de partie, et mets la pression sur les autres, qui ont les mêmes contraintes.</p>
+${note("En « winner takes all », oublie l'ICM : la cEV suffit.")}
 <h2>Progresser seul</h2>
 <ol>
-<li>Pendant la session, marque les coups où tu as hésité.</li>
-<li>Après, revois-les avec une calculatrice d'équité ou un solveur.</li>
+<li>Pendant la session, tag les mains où tu as hésité.</li>
+<li>Après, revois-les avec un calculateur d'équité ou un solveur.</li>
 <li>Écris ce que tu as appris en une phrase dans ton carnet.</li>
 <li>Relis ce carnet avant chaque session.</li>
 </ol>
-<p>Tu peux aussi progresser à plusieurs : échanger des mains avec d'autres joueurs de ton niveau oblige à expliquer ses choix, et c'est souvent en expliquant qu'on voit ses erreurs.</p>
+<p>Tu peux aussi progresser à plusieurs : échanger des mains avec d'autres joueurs de ton niveau oblige à expliquer ses choix, et c'est souvent en expliquant qu'on voit ses leaks.</p>
 <h2>Un plan pour les 30 prochains jours</h2>
 <div class="tbl"><table><thead><tr><th>Semaine</th><th>Objectif</th></tr></thead><tbody>
 <tr><td>1</td><td>Mettre en place ta bankroll, ton tableur de suivi et ta routine de session.</td></tr>
-<tr><td>2</td><td>Travailler le push or fold : aucune relance-couché sous 10 bb.</td></tr>
-<tr><td>3</td><td>Travailler le heads-up : relancer beaucoup en petite blinde, défendre en grosse blinde.</td></tr>
-<tr><td>4</td><td>Faire le bilan : win%, résultat ajusté, carnet de tilt. Choisir le prochain point à travailler.</td></tr>
+<tr><td>2</td><td>Travailler le push or fold : zéro open-fold sous 10 bb.</td></tr>
+<tr><td>3</td><td>Travailler le HU : open large en SB, défendre en BB.</td></tr>
+<tr><td>4</td><td>Faire le bilan : cEV, win%, résultat ajusté, carnet de tilt. Choisir le prochain leak à travailler.</td></tr>
 </tbody></table></div>
-<p>Voilà, tu as fait le tour. Reviens aux chapitres quand un coup te pose question, et sers-toi des outils pour tes propres chiffres. Bon jeu.</p>
-${todo(["Choisis une erreur du pool que tu as déjà remarquée et note comment tu vas l'exploiter.","Vérifie la répartition des prix sur les gros multiplicateurs de ta salle."])}`}
+<p>Voilà, tu as fait le tour. Reviens aux chapitres quand une main te pose question, et sers-toi des outils pour tes propres chiffres. Bon grind.</p>
+${todo(["Choisis une erreur du field que tu as déjà remarquée et note comment tu vas l'exploiter.","Vérifie la répartition du prizepool sur les gros multiplicateurs de ta salle."])}`}
 ];
 const svg=(i,label)=>`<svg class="illu" viewBox="0 0 320 140" role="img" aria-label="${label}">${IL[i]()}</svg>`;
 CH.forEach((c,i)=>{c.n=i+1;c.id="ch"+(i+1);
@@ -916,10 +994,10 @@ function nextUnread(){const c=CH.find(c=>!read.has(c.id));return c?c.id:"ch1";}
 function viewHome(){
   const started=read.size>0;
   const BEN=[
-    {i:3,icon:"percent",t:"Savoir si tu peux gagner",d:"Calcule le rake de ta salle, ton seuil de rentabilité et le win% à viser avant de jouer.",ch:4},
-    {i:6,icon:"shield",t:"Protéger ta bankroll",d:"Combien de buy-ins garder, quand monter, quand redescendre, chiffres simulés à l'appui.",ch:7},
-    {i:11,icon:"zap",t:"Les règles du push or fold",d:"Des règles claires sous 10 bb et des exemples calculés pas à pas, sans rien retenir par cœur.",ch:12},
-    {i:12,icon:"target",t:"Gagner plus de heads-up",d:"La position, les tailles de relance et le jeu après le flop là où se décident la plupart des parties.",ch:13}
+    {i:1,icon:"book",t:"Commencer les Spins",d:"La formation gratuite en 14 chapitres : les maths du format, la bankroll, le push or fold et le HU.",href:"#programme",go:"Voir la formation",tag:"Gratuit"},
+    {i:14,icon:"target",t:"Les ranges",d:"Des charts de ranges prêtes à l'emploi pour le 3-max et le HU, selon ton stack et ta position.",href:"#ranges",go:"Découvrir",tag:"Bientôt"},
+    {i:15,icon:"calc",t:"Les outils",d:"Calcule ton win% break-even, ton ROI et la limite que ta bankroll te permet de jouer.",href:"#outils",go:"Ouvrir les outils",tag:"Gratuit"},
+    {i:16,icon:"book",t:"Le glossaire",d:"Tout le vocabulaire du poker expliqué simplement, de 3-bet à winner takes all, avec une recherche.",href:"#glossaire",go:"Ouvrir le glossaire",tag:"Gratuit"}
   ];
   $app.innerHTML=`
   <div class="hero-band"><div class="wrap">
@@ -930,24 +1008,25 @@ function viewHome(){
         <p class="lede">14 chapitres pour comprendre le rake et la variance, gérer ta bankroll, appliquer les règles du push or fold et gagner plus de heads-up, avec des chiffres à l'appui. Avec des exemples, des exercices et deux calculateurs.</p>
         <div class="ctas">
           <a class="btn primary big" href="#${nextUnread()}">${started?"Reprendre la formation":"Commencer la formation"}${ic("arrow")}</a>
-          <a class="btn big" href="#programme">Voir le programme</a>
+          <a class="btn big" href="#outils">Les outils</a>
         </div>
         <div class="trust"><span>${ic("book")}14 chapitres</span><span>${ic("clock")}Environ 2 jours de lecture</span><span>${ic("userx")}Aucun compte à créer</span></div>
       </div>
       <div class="machine card" aria-label="Simulateur de roue">
-        <div class="head"><b>Essaie la roue</b><span class="small-label num" id="spinCount">buy-in ${BUYIN} €</span></div>
+        <div class="head"><b>Essaie la roue Betclic</b><span class="small-label num" id="spinCount">buy-in ${BUYIN} €</span></div>
         <div class="reel" id="reel"><div class="mult" id="mult">×2</div><div class="prize" id="prize">Le gagnant touche ${2*BUYIN} €</div></div>
         <button class="btn primary" id="spinBtn" type="button">Lancer un spin</button>
-        <p class="hand" id="quip">Trois fois sur quatre, ce sera un ×2. Désolé.</p>
+        <p class="hand" id="quip">Presque une fois sur deux, ce sera un ×2.</p>
         <div class="stats"><span>Moyenne de tes tirages : <b class="num" id="avgObs">–</b></span><span>Moyenne attendue : <b class="num">${fmt(EM,2)}</b></span></div>
-        <table class="dist" id="distTbl">${DIST.map(d=>`<tr data-m="${d.m}"><td class="num">×${d.m.toLocaleString("fr-FR")}</td><td class="num">${fmt(d.p*100,d.p<0.01?2:1)} %</td></tr>`).join("")}</table>
-        <p class="note">Roue d'exemple, avec un rake d'environ ${fmt((1-EM/3)*100,1)} %. Chaque salle a la sienne.</p>
+        <table class="dist" id="distTbl">${DIST.map(d=>`<tr data-m="${d.m}"><td class="num">×${d.m.toLocaleString("fr-FR")}</td><td class="num">${d.p<0.0001?fmt(d.p*100,4):d.p<0.01?fmt(d.p*100,2):fmt(d.p*100,1)} %</td></tr>`).join("")}</table>
+        <p class="note">Grille officielle Betclic Spin &amp; Rush (buy-ins de 0,20 € à 100 €) : multiplicateur moyen ${fmt(EM,2)}, soit ${fmt((1-EM/3)*100,1)} % de rake. À partir du ×20, le prizepool est partagé 75 / 15 / 10 %.</p>
       </div>
     </section>
   </div></div>
   <section class="block"><div class="wrap">
-    <div class="sec-head"><div><span class="kicker">Ce que tu vas apprendre</span><h2>Quatre compétences qui font un joueur gagnant</h2></div><p>Chaque chapitre part d'un vrai problème de joueur et se termine par un exercice à faire à ta prochaine session.</p></div>
-    <div class="benefits">${BEN.map(b=>`<a class="benefit card" href="#ch${b.ch}">${svg(b.i,"")}<div class="bd"><span class="icb">${ic(b.icon)}</span><h3>${b.t}</h3><p>${b.d}</p><span class="go">Chapitre ${b.ch}${ic("arrow")}</span></div></a>`).join("")}</div>
+    <div class="sec-head"><div><span class="kicker">Spinlab</span><h2>Tout pour devenir un joueur gagnant</h2></div><p>Commence par la formation gratuite, puis sers-toi des outils quand tu joues. D'autres rubriques arrivent.</p></div>
+    <div class="benefits">${BEN.map(b=>{const inner=`${svg(b.i,"")}<div class="bd"><span class="icb">${ic(b.icon)}</span><span class="tag ${b.tag==="Gratuit"?"free":"soon"}">${b.tag}</span><h3>${b.t}</h3><p>${b.d}</p>${b.go?`<span class="go">${b.go}${ic("arrow")}</span>`:""}</div>`;
+      return b.href?`<a class="benefit card" href="${b.href}">${inner}</a>`:`<div class="benefit card is-soon" aria-disabled="true">${inner}</div>`;}).join("")}</div>
   </div></section>
   <section class="block"><div class="wrap">
     <div class="letter card">
@@ -960,17 +1039,7 @@ function viewHome(){
       </div>
     </div>
   </div></section>
-  <section class="block"><div class="wrap">
-    <div class="sec-head"><div><span class="kicker">Le programme</span><h2>Trois parties, quatorze chapitres</h2></div><p>À lire dans l'ordre. Une coche verte apparaît à côté de chaque chapitre lu.</p></div>
-    ${programmeHTML()}
-  </div></section>
-  <section class="block"><div class="wrap">
-    <div class="sec-head"><div><span class="kicker">Les outils</span><h2>Refais les calculs avec tes chiffres</h2></div></div>
-    <div class="teaser">
-      <a class="card" href="#outils"><span class="icb">${ic("calc")}</span><div><b>Suis-je rentable ?</b><span>Le win% qu'il te faut selon le rake et ton rakeback, et ton ROI.</span></div></a>
-      <a class="card" href="#outils"><span class="icb">${ic("shield")}</span><div><b>Ma bankroll</b><span>La limite la plus haute que tu peux jouer sans prendre de risque inutile.</span></div></a>
-    </div>
-  </div></section>`;
+`;
   bindSpin();
 }
 
@@ -979,12 +1048,12 @@ function bindSpin(){
     mult=document.getElementById("mult"),prize=document.getElementById("prize"),quip=document.getElementById("quip");
   let n=0,sum=0,busy=false;
   const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const QUIPS={2:["Encore un ×2. C'est la vie.","×2, comme d'habitude.","Tu vas en voir beaucoup, des ×2."],3:["Un ×3, c'est déjà ça."],5:["Un ×5 ! Ça commence à parler."],10:["×10. Là, on se concentre."],25:["×25 : le 2e et le 3e sont payés aussi."],100:["×100. Respire."],1000:["×1 000. Tu peux faire une capture d'écran."]};
+  const QUIPS={2:["Encore un ×2. C'est la vie.","×2, presque une fois sur deux.","Tu vas en voir beaucoup, des ×2."],3:["Un ×3, c'est déjà ça.","×3, le deuxième plus fréquent."],4:["Un ×4, sympa."],5:["Un ×5 ! Ça commence à parler."],10:["×10. Là, on se concentre."],20:["×20 : le 2e et le 3e sont payés aussi."],100:["×100. Respire."],1000:["×1 000. Tu peux faire une capture d'écran."]};
   function draw(){let r=Math.random(),acc=0;for(const d of DIST){acc+=d.p;if(r<acc)return d.m;}return 2;}
   function show(m){
     mult.textContent="×"+m.toLocaleString("fr-FR");
-    prize.textContent=(m>=25?"Prix total : ":"Le gagnant touche ")+(m*BUYIN).toLocaleString("fr-FR")+" €";
-    reel.classList.toggle("jackpot",m>=25);
+    prize.textContent=(m>=20?"Prizepool : ":"Le gagnant touche ")+(m*BUYIN).toLocaleString("fr-FR")+" €";
+    reel.classList.toggle("jackpot",m>=20);
     document.querySelectorAll("#distTbl tr").forEach(tr=>tr.classList.toggle("hit",+tr.dataset.m===m));
   }
   btn.addEventListener("click",()=>{
@@ -1002,7 +1071,7 @@ function bindSpin(){
 
 function viewProgramme(){
   $app.innerHTML=`<section class="block"><div class="wrap">
-    <div class="sec-head"><div><span class="kicker">Formation gratuite</span><h2>Le programme</h2></div><p>Tu as lu <span class="num">${read.size}</span> chapitre${read.size>1?"s":""} sur ${CH.length}. Tout est gratuit et en accès libre.</p></div>
+    <div class="sec-head"><div><span class="kicker">Formation gratuite</span><h2>Commencer les Spins</h2></div><p>14 chapitres à lire dans l'ordre, du format du Spin jusqu'au HU. Tu as lu <span class="num">${read.size}</span> chapitre${read.size>1?"s":""} sur ${CH.length}. Tout est gratuit et en accès libre.</p></div>
     ${programmeHTML()}
     <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn primary" href="#${nextUnread()}">${read.size?"Reprendre":"Commencer"}</a>${read.size?`<button class="btn" type="button" id="resetBtn">Remettre ma progression à zéro</button>`:""}</div>
   </div></section>`;
@@ -1012,12 +1081,146 @@ function viewProgramme(){
     read.clear();save();updateProgress();viewProgramme();});}
 }
 
+function viewRanges(){
+  const F=[
+    {icon:"zap",t:"Push or fold",d:"Tes ranges de push et de call de 1 à 15 bb, en 3-max et en HU."},
+    {icon:"target",t:"3-max",d:"Les opens BTN, les ranges BvB en SB et la défense de BB selon le sizing."},
+    {icon:"trend",t:"Heads-up",d:"Open, limp, 3-bet et call en SB et en BB, selon la profondeur des stacks."}
+  ];
+  $app.innerHTML=`<section class="block"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Bientôt disponible</span><h2>Les ranges Spinlab</h2></div><p>Des charts claires, pensées pour le Spin, à garder ouvertes pendant tes sessions. Cette rubrique est en préparation.</p></div>
+    <div class="ranges-wrap">
+      <div class="rpreview card"><div class="rgrid" aria-hidden="true">${(()=>{let h="";for(let r=0;r<13;r++)for(let c=0;c<13;c++){const v=Math.max(r,c)+Math.min(r,c)*0.6,lim=c>r?11:8;h+=`<i class="${r===c?"p":v<lim?"a":v<lim+3?"b":""}"></i>`;}return h;})()}</div>
+        <div class="rlock"><span class="icb">${ic("lock")}</span><b>Aperçu</b><span>Les charts arrivent bientôt.</span></div></div>
+      <div class="rfeat">${F.map(f=>`<div class="card rf"><span class="icb">${ic(f.icon)}</span><div><b>${f.t}</b><span>${f.d}</span></div></div>`).join("")}
+        <div class="card rf rwait"><div><b>En attendant</b><span>Les trois règles du push or fold couvrent déjà l'essentiel. Commence par là.</span><div class="ctas"><a class="btn primary small" href="#ch12">Lire le chapitre 12${ic("arrow")}</a><a class="btn small" href="#outils">Les outils</a></div></div></div>
+      </div>
+    </div>
+  </div></section>`;
+}
+
+/* Glossaire */
+const GL=[
+["3-bet","Actions","Relancer une relance. Préflop, le premier raise (l'open) compte comme le 2-bet, la relance suivante est le 3-bet.",11],
+["3-max","Format","Table à trois joueurs. C'est le format du Spin au début de chaque partie.",11],
+["4-bet","Actions","Relancer un 3-bet.",0],
+["All-in","Actions","Miser tout son stack. On dit aussi push ou shove.",12],
+["Ante","Format","Petite mise obligatoire payée par tous les joueurs à chaque main, en plus des blindes. Surtout présente en MTT.",0],
+["Bad beat","Mental & bankroll","Perdre un coup alors qu'on était largement favori au moment du all-in.",9],
+["Bankroll","Mental & bankroll","L'argent réservé au poker, séparé de celui du quotidien. Sa taille décide de la limite que tu peux jouer.",7],
+["bb","Stats","Big blind, l'unité de mesure des stacks. 400 jetons à 20/40, c'est 10 bb.",2],
+["bb/100","Stats","Big blinds gagnées pour 100 mains. C'est le winrate de référence en cash game.",1],
+["BB","Positions","La big blind : le joueur qui poste la grosse blinde. Il parle en dernier préflop.",11],
+["Board","Jeu","Les cartes communes posées au centre de la table, jusqu'à cinq.",0],
+["Break-even","Stats","Être à l'équilibre, ni gagnant ni perdant. En Spin avec 7 % de rake, il faut environ 35,8 % de win%.",3],
+["BTN","Positions","Le bouton (button). À 3-max, il parle en premier préflop et en dernier postflop.",11],
+["Bulle","Format","Le moment d'un MTT juste avant les places payées.",1],
+["Buy-in","Format","Le prix d'entrée d'un Spin ou d'un tournoi.",0],
+["BvB","Positions","Blind vs blind : un coup entre la SB et la BB, quand le BTN a fold.",11],
+["Call","Actions","Suivre la mise ou la relance d'un adversaire.",0],
+["Cash game","Format","Format où les jetons valent de l'argent réel, avec des blindes fixes. On peut arriver et partir quand on veut.",1],
+["C-bet","Actions","Continuation bet : la mise au flop du joueur qui a relancé préflop.",13],
+["cEV","Stats","Chip EV : le nombre moyen de jetons gagnés par partie. Avec 500 jetons chacun, cEV = 1 500 × win% − 500.",4],
+["cEV ajustée all-in","Stats","La cEV calculée avec ton équité au moment des all-in, plutôt qu'avec le résultat réel. Elle retire la chance des all-in.",4],
+["Check","Actions","Passer sans miser, quand personne n'a encore misé sur la street.",0],
+["Check-raise","Actions","Checker, puis relancer la mise d'un adversaire sur la même street.",0],
+["Downswing","Mental & bankroll","Une période de pertes, qui peut arriver même en jouant bien.",5],
+["E[m]","Stats","Le multiplicateur moyen de la roue. Il vaut 2,79 sur la grille Betclic Spin & Rush.",3],
+["Équité","Stats","La part du pot que ta main gagne en moyenne si toutes les cartes sont distribuées.",12],
+["EV","Stats","L'espérance de gain d'une décision, en moyenne sur le long terme.",12],
+["Field","Format","L'ensemble de tes adversaires dans une salle ou à une limite.",14],
+["Flip","Jeu","Un all-in où les deux mains ont environ 50 % chacune, comme une paire contre deux cartes plus hautes.",0],
+["Flop","Jeu","Les trois premières cartes communes, et la street qui suit leur distribution.",0],
+["Fold","Actions","Se coucher : abandonner la main et ce qu'on a déjà mis au pot.",0],
+["Fold equity","Stats","La valeur que tu gagnes parce que l'adversaire peut se coucher face à ta mise.",12],
+["Grind","Mental & bankroll","Jouer beaucoup de parties, de façon régulière.",8],
+["Hand history","Stats","L'historique des mains jouées, fourni par la salle. Les trackers le lisent pour calculer tes stats.",10],
+["HU","Format","Heads-up : le tête-à-tête entre deux joueurs. En Spin, la plupart des parties se décident en HU.",13],
+["Hyper-turbo","Format","Une structure où les blindes montent très vite. Le Spin en fait partie.",2],
+["ICM","Stats","Independent Chip Model : convertit les jetons en valeur réelle quand plusieurs places sont payées.",14],
+["Iso-raise","Actions","Relancer un joueur qui a limp, pour jouer le coup seul contre lui.",13],
+["ITM","Format","In the money : dans les places payées d'un tournoi.",1],
+["Leak","Mental & bankroll","Une erreur récurrente dans ton jeu, qui te coûte de l'argent.",14],
+["Limp","Actions","Compléter la big blind préflop au lieu de relancer.",11],
+["Min-raise","Actions","La relance minimale. Préflop, c'est un open à 2 bb.",11],
+["MTT","Format","Multi-table tournament : un tournoi avec beaucoup de joueurs, où seuls 10 à 15 % du field sont payés.",1],
+["Multiplicateur","Format","Le coefficient tiré avant chaque Spin, qui fixe le prizepool.",2],
+["Nash","Stratégie","Une stratégie d'équilibre en push or fold : aucun des deux joueurs ne gagne à s'en écarter.",12],
+["Offsuit (o)","Jeu","Deux cartes de couleurs différentes. K9o, c'est un roi et un neuf de couleurs différentes.",0],
+["Open","Actions","Le premier raise préflop.",11],
+["Pot odds","Stats","Le rapport entre ce que tu dois payer et le pot final. Il donne l'équité minimale pour call.",11],
+["Postflop","Jeu","Tout ce qui se passe après la distribution du flop.",0],
+["Préflop","Jeu","Le premier tour d'enchères, avant le flop.",0],
+["Prizepool","Format","La somme totale à gagner. En Spin, c'est le buy-in multiplié par le multiplicateur.",2],
+["Push","Actions","Partir all-in. Synonyme de shove.",12],
+["Push or fold","Stratégie","La stratégie short stack : on push ou on fold, sans jamais open puis fold.",12],
+["Rainbow","Jeu","Un flop de trois couleurs différentes : aucun tirage couleur possible.",0],
+["Rake","Stats","La commission de la salle. En Spin, elle est cachée dans la grille des multiplicateurs.",3],
+["Rakeback","Mental & bankroll","La part du rake que la salle te reverse, en argent, en points ou en bonus.",6],
+["Range","Stratégie","L'ensemble des mains qu'un joueur peut avoir, ou qu'il joue, dans une situation donnée.",12],
+["Reg","Format","Un joueur régulier, qui joue beaucoup et souvent bien.",0],
+["Reshove","Actions","Répondre à un open par un all-in.",11],
+["River","Jeu","La cinquième et dernière carte commune, et la dernière street.",0],
+["ROI","Stats","Retour sur investissement : ton bénéfice divisé par le total de tes buy-ins.",4],
+["SB","Positions","La small blind : le joueur qui poste la petite blinde. En HU, la SB est aussi le BTN.",11],
+["Short stack","Jeu","Un stack court, en général sous 15 à 20 bb.",12],
+["Shot","Mental & bankroll","Une tentative à la limite supérieure, avec un budget fixé à l'avance.",7],
+["Shove","Actions","Partir all-in. Synonyme de push.",12],
+["Solveur","Stratégie","Un logiciel qui calcule la stratégie optimale d'un spot.",14],
+["Spot","Jeu","Une situation de jeu précise : position, stacks, action.",0],
+["Squeeze","Actions","Un 3-bet face à un open et un call.",11],
+["Stack","Jeu","Les jetons d'un joueur. Le stack effectif est le plus petit des deux stacks engagés.",2],
+["Stop-loss","Mental & bankroll","La perte à partir de laquelle tu arrêtes ta session, fixée à l'avance.",9],
+["Street","Jeu","Chaque tour d'enchères : préflop, flop, turn et river.",2],
+["Suited (s)","Jeu","Deux cartes de la même couleur. J8s, c'est un valet et un huit de la même couleur.",0],
+["Tilt","Mental & bankroll","Jouer moins bien que d'habitude à cause d'une émotion : frustration, fatigue, envie de se refaire.",9],
+["Tracker","Stats","Un logiciel qui lit tes hand histories et calcule tes stats, dont la cEV ajustée all-in.",10],
+["Turn","Jeu","La quatrième carte commune, et la street qui suit.",0],
+["Value","Stratégie","Miser pour être payé par des mains moins fortes que la tienne.",14],
+["Variance","Stats","L'écart entre tes résultats et ton espérance, dû à la chance.",5],
+["Whiff","Jeu","Rater complètement le flop.",13],
+["Win%","Stats","Le pourcentage de parties gagnées.",4],
+["Winner takes all","Format","Seul le vainqueur est payé. C'est le cas de la plupart des Spins.",2]
+];
+const GCATS=["Format","Positions","Actions","Jeu","Stats","Stratégie","Mental & bankroll"];
+const gnorm=t=>t.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+
+function viewGlossary(){
+  $app.innerHTML=`<section class="block"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Gratuit</span><h2>Le glossaire</h2></div><p>${GL.length} termes de poker expliqués simplement, avec un lien vers le chapitre qui en parle.</p></div>
+    <div class="gl-bar card">
+      <div class="field gl-search"><label for="gl-q">Rechercher un terme</label><input id="gl-q" type="search" placeholder="Ex. cEV, 3-bet, ICM…" autocomplete="off"></div>
+      <div class="gl-cats" id="gl-cats" role="group" aria-label="Filtrer par catégorie"><button type="button" class="chipf on" data-c="">Tous</button>${GCATS.map(c=>`<button type="button" class="chipf" data-c="${c}">${c}</button>`).join("")}</div>
+    </div>
+    <nav class="gl-letters" id="gl-letters" aria-label="Aller à la lettre"></nav>
+    <div id="gl-list"></div>
+  </div></section>`;
+  let q="",cat="";
+  const list=document.getElementById("gl-list"),letters=document.getElementById("gl-letters");
+  const sorted=[...GL].sort((a,b)=>gnorm(a[0]).localeCompare(gnorm(b[0]),"fr"));
+  function letterOf(t){const c=gnorm(t)[0];return /[a-z]/.test(c)?c.toUpperCase():"#";}
+  function render(){
+    const nq=gnorm(q.trim());
+    const items=sorted.filter(g=>(!cat||g[1]===cat)&&(!nq||gnorm(g[0]).includes(nq)||gnorm(g[2]).includes(nq)));
+    const groups={};items.forEach(g=>{(groups[letterOf(g[0])]=groups[letterOf(g[0])]||[]).push(g);});
+    const keys=Object.keys(groups).sort((a,b)=>a==="#"?-1:b==="#"?1:a.localeCompare(b));
+    letters.innerHTML=keys.map(k=>`<a href="#glossaire" data-l="${k}">${k}</a>`).join("");
+    list.innerHTML=items.length?keys.map(k=>`<div class="gl-group" id="gl-${k==="#"?"num":k}"><div class="gl-letter">${k}</div><div class="gl-grid">${groups[k].map(g=>`<div class="gl-item card"><div class="gl-top"><b>${g[0]}</b><span class="gl-cat">${g[1]}</span></div><p>${g[2]}</p>${g[3]?`<a class="gl-link" href="#ch${g[3]}">Chapitre ${g[3]}${ic("arrow")}</a>`:""}</div>`).join("")}</div></div>`).join("")
+      :`<div class="gl-empty card"><b>Aucun terme trouvé</b><span>Essaie un autre mot, ou retire le filtre de catégorie.</span></div>`;
+  }
+  document.getElementById("gl-q").addEventListener("input",e=>{q=e.target.value;render();});
+  document.getElementById("gl-cats").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;
+    document.querySelectorAll("#gl-cats .chipf").forEach(x=>x.classList.toggle("on",x===b));render();});
+  letters.addEventListener("click",e=>{const a=e.target.closest("a");if(!a)return;e.preventDefault();
+    const el=document.getElementById("gl-"+(a.dataset.l==="#"?"num":a.dataset.l));if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});
+  render();
+}
+
 function viewChapter(c){
   const i=c.n-1,prev=CH[i-1],next=CH[i+1],part=PARTS[c.part-1];
   const toc=PARTS.map(p=>`<div class="grp"><div class="small-label">Partie ${p.id}</div><ol>${CH.filter(x=>x.part===p.id).map(x=>
-    `<li><a href="#${x.id}" ${x.id===c.id?'aria-current="true"':""}>${dot(read.has(x.id))}${x.title}</a></li>`).join("")}</ol></div>`).join("");
+    `<li><a href="#${x.id}" title="${x.title}" ${x.id===c.id?'aria-current="true"':""}><span class="tn">${pad(x.n)}</span><span class="tt">${x.title}</span>${dot(read.has(x.id))}</a></li>`).join("")}</ol></div>`).join("");
   $app.innerHTML=`<div class="wrap"><div class="chapter">
-    <aside class="toc card" aria-label="Sommaire">${toc}</aside>
     <article class="ch">
       <div class="crumb"><span>Partie ${part.id} · ${part.title}</span><span>${ic("book")}Chapitre ${c.n} sur ${CH.length}</span><span>${ic("clock")}${c.min} min</span></div>
       <h1>${c.title}</h1>
@@ -1031,6 +1234,7 @@ function viewChapter(c){
         </div>
       </div>
     </article>
+    <aside class="toc" aria-label="Sommaire"><div class="toc-h"><span>Sommaire</span><span class="num">${CH.filter(x=>read.has(x.id)).length}/${CH.length}</span></div>${toc}</aside>
   </div></div>`;
   const mb=document.getElementById("markBtn");
   mb.addEventListener("click",()=>{
@@ -1059,7 +1263,7 @@ function viewTools(){
           <div class="field"><label for="t-bi">Buy-in (€)</label><input id="t-bi" type="number" min="0.1" step="0.5" value="5"></div>
         </div>
         <div class="out">
-          <div><b class="num" id="o-be">–</b><span>win% pour être à zéro</span></div>
+          <div><b class="num" id="o-be">–</b><span>win% break-even</span></div>
           <div><b class="num" id="o-roi">–</b><span>ton ROI</span></div>
           <div><b class="num" id="o-k">–</b><span>sur 1 000 parties</span></div>
         </div>
@@ -1117,6 +1321,8 @@ function route(){
   if(c){viewChapter(c);nav="programme";}
   else if(h==="programme"){viewProgramme();nav="programme";}
   else if(h==="outils"){viewTools();nav="outils";}
+  else if(h==="ranges"){viewRanges();nav="ranges";}
+  else if(h==="glossaire"){viewGlossary();nav="glossaire";}
   else viewHome();
   document.querySelectorAll("nav.main a, .mobile-menu a").forEach(a=>{
     if(a.dataset.nav===nav)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
