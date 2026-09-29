@@ -342,11 +342,135 @@ footer b{color:var(--ink)}
   .btn.big{width:100%}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+/* ---------- Compte, vente et espace ranges ---------- */
+.tag.prem{background:var(--blue);color:#fff}
+.chipf.locked{display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:.75;border-style:dashed}
+.chipf.locked .ic{width:13px;height:13px}
+.chipf.locked:hover{opacity:1}
+.demo-bar{background:var(--pink);color:var(--ink);font-size:13px;text-align:center;padding:6px 16px}
+.demo-bar code{font-family:var(--mono);font-size:12px}
+.demo-note{font-size:13px;color:var(--muted);background:var(--cell);border-radius:10px;padding:10px 12px;margin:16px 0 0}
+.acct{font-size:14px;font-weight:600;text-decoration:none;color:var(--link);padding:7px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface)}
+.acct[aria-current="page"],.acct:hover{border-color:var(--link)}
+.mobile-menu .acct{border:0;background:transparent;color:var(--link)}
+.linkbtn{background:none;border:0;padding:0;font:600 14px var(--read);color:var(--link);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* Page de vente */
+.sale-hero h1{font-size:clamp(38px,5vw,62px)}
+.price-line{display:flex;align-items:center;gap:14px;margin:0 0 26px}
+.price-line b{font-family:var(--ui);font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.price-line span{font-size:14px;color:var(--muted);line-height:1.4}
+.price-line.center{justify-content:center;margin:6px 0 18px}
+.sale-preview{padding:20px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow-lg)}
+.sp-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.sp-head b{font-family:var(--ui);font-size:18px}
+.sale-grid{display:grid;gap:18px}
+.sale-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sale-grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.sale-card{padding:22px;display:flex;flex-direction:column;gap:8px}
+.sale-card .icb{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--sky);color:var(--ink);margin-bottom:4px}
+.sale-card:nth-child(2) .icb{background:var(--pink)} .sale-card:nth-child(3) .icb{background:var(--blue2)} .sale-card:nth-child(4) .icb{background:var(--cream)}
+.sale-card h3{font-size:19px;font-weight:700}
+.sale-card p{margin:0;color:var(--muted);font-size:15px}
+.sale-demo{padding:22px;display:flex;flex-direction:column;gap:18px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.steps li{padding:22px;display:flex;flex-direction:column;gap:6px}
+.steps b{font-family:var(--ui);font-size:19px} .steps span{color:var(--muted);font-size:15px}
+.step-n{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#fff !important;font-weight:700;margin-bottom:4px}
+.compare td:not(:first-child),.compare th:not(:first-child){text-align:center}
+.compare{max-width:720px}
+.faq{display:flex;flex-direction:column;gap:10px;max-width:820px}
+.faq-item button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:0;padding:18px 20px;font:700 16px var(--ui);color:var(--ink);cursor:pointer;text-align:left}
+.faq-item p{margin:0;padding:0 20px 18px;color:var(--muted)}
+.sale-final{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:32px;background:var(--sky)}
+.sale-final h2{font-size:clamp(24px,3vw,32px)} .sale-final p{margin:6px 0 0;color:var(--ink)}
+
+/* Grille de range */
+.rgd{display:flex;flex-direction:column;gap:16px;max-width:620px}
+.rgd.rg-compact{display:block}
+.rg-grid{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:2px;max-width:560px;width:100%}
+.rg-cell{position:relative;aspect-ratio:1;border-radius:4px;overflow:hidden;background:var(--cell);cursor:default}
+.rg-cell.pair{box-shadow:inset 0 0 0 1px var(--line)}
+.rg-bars{position:absolute;inset:0;display:flex}
+.rg-bars i{display:block;height:100%}
+.rg-cell span{position:relative;display:flex;align-items:center;justify-content:center;height:100%;font:600 clamp(7px,1.05vw,11px) var(--mono);color:var(--ink);text-shadow:0 0 3px var(--surface)}
+.rg-cell.dk span{color:#fff;text-shadow:none}
+.rg-side{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
+.rg-legend{display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.rg-legend div{display:grid;grid-template-columns:16px 1fr auto;gap:8px;align-items:center;font-size:14px}
+.rg-legend i{width:16px;height:16px;border-radius:4px;display:block}
+.rg-info{min-height:88px;display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px}
+.rg-info b{color:var(--ink)}
+.a-opencall{background:#3F6897} .a-openfold{background:#9AC8EB} .a-shove{background:#E79BBC} .a-push{background:#5784BA} .a-raise{background:#9AC8EB} .a-call{background:#E79BBC} .a-limp{background:#E6CE55} .a-3bet{background:#3F6897} .a-fold{background:var(--cell)}
+
+/* Connexion */
+.auth{max-width:460px;margin:0 auto;padding:28px;display:flex;flex-direction:column;gap:16px}
+.auth-head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
+.auth-head .icb,.big-ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--sky);color:var(--ink)}
+.auth-head h2{font-size:26px;font-weight:800}
+.auth-head p{margin:0;color:var(--muted);font-size:15px}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:12px;background:var(--cell)}
+.auth-tabs button{border:0;background:transparent;padding:9px;border-radius:9px;font:600 14px var(--read);color:var(--muted);cursor:pointer}
+.auth-tabs button.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.auth form{display:flex;flex-direction:column;gap:14px}
+.auth .field input{font-family:var(--read)}
+.hint{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.auth-msg{margin:0;font-size:14px;padding:10px 12px;border-radius:10px}
+.auth-msg.err{background:color-mix(in srgb,var(--red) 12%,var(--surface));color:var(--red)}
+.auth-msg.ok{background:var(--sky);color:var(--ink)}
+.auth-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.check{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:14px;color:var(--muted);align-items:start}
+.check input{width:18px;height:18px;margin-top:2px;accent-color:var(--blue)}
+.check a{color:var(--link)}
+.merci{text-align:center;align-items:center}
+.merci h2{font-size:26px} .merci p{margin:0;color:var(--muted)}
+
+/* Bibliothèque */
+.rx{display:grid;grid-template-columns:minmax(0,600px) minmax(260px,340px);gap:36px;align-items:start}
+.rx .rgd{max-width:none}.rx .rg-grid{max-width:none}
+.rx-main{display:flex;flex-direction:column;gap:14px;min-width:0}
+.rx-side{display:flex;flex-direction:column;gap:16px;min-width:0}
+.rx-side .rg-side{grid-template-columns:1fr}
+.rx-bar{display:flex;flex-direction:column;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.rx-row{flex-direction:column;align-items:flex-start !important}
+.rx-row .rx-btns{display:flex;flex-wrap:wrap;gap:6px}
+.rx-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.rx-lab{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.chipf:disabled{opacity:.45;cursor:not-allowed}
+.chipf small{font-weight:500;font-size:11px}
+.rx-title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.rx-title h3{font-family:var(--ui);font-size:22px;font-weight:800}
+.lib-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.lib-account{display:flex;align-items:center;gap:12px}
+.lib{display:grid;grid-template-columns:280px minmax(0,1fr);gap:18px;align-items:start;padding-bottom:40px}
+.lib-list{padding:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px)}
+.lib-pos{display:flex;flex-wrap:wrap;gap:6px;padding:4px 4px 12px}
+.lib-list ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;max-height:60vh;overflow:auto}
+.lib-list li button{width:100%;text-align:left;background:none;border:0;padding:10px 12px;border-radius:10px;cursor:pointer;display:flex;flex-direction:column;gap:2px;color:var(--ink)}
+.lib-list li button:hover{background:var(--surface-2)}
+.lib-list li button.on{background:var(--sky)}
+.lib-list b{font-family:var(--ui);font-size:15px} .lib-list span{font-size:13px;color:var(--muted)}
+.lib-main{padding:22px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.lib-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.lib-head h2{font-size:26px;font-weight:800}
+.lib-chips{display:flex;gap:6px}
+.lib-notes{margin:0;color:var(--muted);font-size:15px}
+
+@media (max-width:1000px){.sale-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){
+  .sale-grid.three,.steps{grid-template-columns:1fr}
+  .lib{grid-template-columns:1fr}.lib-list{position:static}
+  .rg-side{grid-template-columns:1fr}
+  .rx{grid-template-columns:1fr}
+  .rx-side{order:-1}
+}
+@media (max-width:560px){.sale-grid.four{grid-template-columns:1fr}.rg-cell span{font-size:7px}}
+
 </style>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#accueil" aria-label="Spinlab, accueil"><span class="chip" aria-hidden="true"></span>Spinlab <small>Gratuit</small></a>
+    <a class="brand" href="#accueil" aria-label="Spinlab, accueil"><span class="chip" aria-hidden="true"></span>Spinlab</a>
     <nav class="main" aria-label="Navigation principale">
       <a href="#accueil" data-nav="accueil">Accueil</a>
       <a href="#programme" data-nav="programme">Formation</a>
@@ -356,6 +480,7 @@ footer b{color:var(--ink)}
     </nav>
     <div class="top-right">
       <div class="prog-pill" title="Chapitres lus"><div class="bar"><i class="barFill"></i></div><span class="num progTxt">0/14</span></div>
+      <a class="acct" href="#connexion" data-nav="compte">Connexion</a>
       <a class="btn primary small" href="#programme" id="topCta">Commencer</a>
     </div>
     <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mmenu"><svg class="ic" viewBox="0 0 24 24"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg></button>
@@ -366,6 +491,7 @@ footer b{color:var(--ink)}
     <a href="#ranges" data-nav="ranges">Ranges</a>
     <a href="#outils" data-nav="outils">Outils</a>
     <a href="#glossaire" data-nav="glossaire">Glossaire</a>
+    <a class="acct" href="#connexion" data-nav="compte">Connexion</a>
     <div class="prog-pill"><span>Progression</span><div class="bar"><i class="barFill"></i></div><span class="num progTxt">0/14</span></div>
   </nav>
 </header>
@@ -995,7 +1121,7 @@ function viewHome(){
   const started=read.size>0;
   const BEN=[
     {i:1,icon:"book",t:"Commencer les Spins",d:"La formation gratuite en 14 chapitres : les maths du format, la bankroll, le push or fold et le HU.",href:"#programme",go:"Voir la formation",tag:"Gratuit"},
-    {i:14,icon:"target",t:"Les ranges",d:"Des charts de ranges prêtes à l'emploi pour le 3-max et le HU, selon ton stack et ta position.",href:"#ranges",go:"Découvrir",tag:"Bientôt"},
+    {i:14,icon:"target",t:"Le pack de ranges",d:"Toutes les charts push or fold, 3-max et HU, rangées par position et par stack. Paiement unique, accès à vie.",href:"#ranges",go:"Découvrir le pack",tag:"Premium"},
     {i:15,icon:"calc",t:"Les outils",d:"Calcule ton win% break-even, ton ROI et la limite que ta bankroll te permet de jouer.",href:"#outils",go:"Ouvrir les outils",tag:"Gratuit"},
     {i:16,icon:"book",t:"Le glossaire",d:"Tout le vocabulaire du poker expliqué simplement, de 3-bet à winner takes all, avec une recherche.",href:"#glossaire",go:"Ouvrir le glossaire",tag:"Gratuit"}
   ];
@@ -1025,7 +1151,7 @@ function viewHome(){
   </div></div>
   <section class="block"><div class="wrap">
     <div class="sec-head"><div><span class="kicker">Spinlab</span><h2>Tout pour devenir un joueur gagnant</h2></div><p>Commence par la formation gratuite, puis sers-toi des outils quand tu joues. D'autres rubriques arrivent.</p></div>
-    <div class="benefits">${BEN.map(b=>{const inner=`${svg(b.i,"")}<div class="bd"><span class="icb">${ic(b.icon)}</span><span class="tag ${b.tag==="Gratuit"?"free":"soon"}">${b.tag}</span><h3>${b.t}</h3><p>${b.d}</p>${b.go?`<span class="go">${b.go}${ic("arrow")}</span>`:""}</div>`;
+    <div class="benefits">${BEN.map(b=>{const inner=`${svg(b.i,"")}<div class="bd"><span class="icb">${ic(b.icon)}</span><span class="tag ${b.tag==="Gratuit"?"free":b.tag==="Premium"?"prem":"soon"}">${b.tag}</span><h3>${b.t}</h3><p>${b.d}</p>${b.go?`<span class="go">${b.go}${ic("arrow")}</span>`:""}</div>`;
       return b.href?`<a class="benefit card" href="${b.href}">${inner}</a>`:`<div class="benefit card is-soon" aria-disabled="true">${inner}</div>`;}).join("")}</div>
   </div></section>
   <section class="block"><div class="wrap">
@@ -1081,22 +1207,270 @@ function viewProgramme(){
     read.clear();save();updateProgress();viewProgramme();});}
 }
 
+/* ================= Pack de ranges : vente, compte, espace membre =================
+   Version maquette : les comptes et le paiement sont SIMULÉS dans le navigateur (localStorage).
+   Le vrai paiement (Stripe) et les vrais comptes (Supabase) se brancheront quand le site sera hébergé. */
+const PRICE_EUR=99;
+const ACC_KEY="spinlab-compte";
+const accRead=()=>{try{return JSON.parse(localStorage.getItem(ACC_KEY))||null;}catch(e){return null;}};
+const accWrite=v=>{try{v?localStorage.setItem(ACC_KEY,JSON.stringify(v)):localStorage.removeItem(ACC_KEY);}catch(e){}};
+let account=accRead(); // {email, paid, loggedIn}
+const isLogged=()=>!!(account&&account.loggedIn);
+const hasAccess=()=>isLogged()&&!!account.paid;
+function updateAccountLinks(){
+  document.querySelectorAll(".acct").forEach(a=>{a.textContent=isLogged()?"Mes ranges":"Connexion";a.href=isLogged()?"#espace":"#connexion";});
+}
+
+/* ---- Lecture des ranges : notation "22+,A2s+,K9o+:0.5" ---- */
+const RK="AKQJT98765432";
+const rki=r=>RK.indexOf(r);
+const RGRID=[];
+for(let r=0;r<13;r++)for(let c=0;c<13;c++){
+  if(r===c)RGRID.push({name:RK[r]+RK[c],combos:6,pair:true});
+  else if(c>r)RGRID.push({name:RK[r]+RK[c]+"s",combos:4});
+  else RGRID.push({name:RK[c]+RK[r]+"o",combos:12});
+}
+const RNAMES=new Set(RGRID.map(h=>h.name));
+function expandTok(t){
+  t=t.trim();if(!t)return[];
+  if(t.includes("-")){
+    const [a,b]=t.split("-").map(x=>x.trim());
+    if(a.length===2&&a[0]===a[1]){const o=[];for(let i=Math.min(rki(a[0]),rki(b[0]));i<=Math.max(rki(a[0]),rki(b[0]));i++)o.push(RK[i]+RK[i]);return o;}
+    const suf=a[2]||"",o=[];
+    for(let i=Math.min(rki(a[1]),rki(b[1]));i<=Math.max(rki(a[1]),rki(b[1]));i++)o.push(a[0]+RK[i]+suf);
+    return o.flatMap(h=>suf?[h]:[h+"s",h+"o"]);
+  }
+  const plus=t.endsWith("+"),h=plus?t.slice(0,-1):t;
+  if(h.length<2)return[];
+  if(h[0]===h[1]){if(!plus)return[h];const o=[];for(let i=rki(h[0]);i>=0;i--)o.push(RK[i]+RK[i]);return o;}
+  const suf=h[2]||"",l=[];
+  if(plus){for(let i=rki(h[1]);i>rki(h[0]);i--)l.push(h[0]+RK[i]+suf);}else l.push(h);
+  return l.flatMap(x=>suf?[x]:[x+"s",x+"o"]);
+}
+function parseNotation(str){
+  const out={};if(!str)return out;
+  for(const part of str.split(",")){const [tok,f]=part.split(":");const fr=f===undefined?1:Math.max(0,Math.min(1,parseFloat(f)));
+    for(const h of expandTok(tok))if(RNAMES.has(h))out[h]=fr;}
+  return out;
+}
+function buildRange(d){
+  const acts=d.actions,last=acts[acts.length-1].key,t={};
+  RGRID.forEach(h=>t[h.name]={});
+  if(d.hands){for(const [h,f] of Object.entries(d.hands))if(t[h])t[h]={...f};}
+  else for(const a of acts){if(a.key===last)continue;for(const [h,f] of Object.entries(parseNotation(d.ranges[a.key])))t[h][a.key]=(t[h][a.key]||0)+f;}
+  for(const h in t){const s=Object.entries(t[h]).filter(([k])=>k!==last).reduce((x,[,v])=>x+v,0);if(t[h][last]===undefined)t[h][last]=Math.max(0,1-s);}
+  return t;
+}
+function shares(t,acts){const o={};acts.forEach(a=>o[a.key]=0);RGRID.forEach(h=>acts.forEach(a=>o[a.key]+=(t[h.name][a.key]||0)*h.combos));for(const k in o)o[k]/=1326;return o;}
+
+/* Ranges d'ILLUSTRATION : elles montrent le format, ce ne sont pas de vraies ranges.
+   Remplace-les par les tiennes (même format). */
+const RCATS=[{key:"push-fold",label:"Push or fold"},{key:"3max",label:"3-max"},{key:"hu",label:"Heads-up"}];
+const RANGES_DATA=[
+  {id:"3max-btn-25",category:"3max",title:"BTN open",position:"BTN",stack_bb:25,situation:"3-way · premier à parler",free:true,
+   actions:[{key:"opencall",label:"Open / call",color:"opencall"},{key:"openfold",label:"Open / fold",color:"openfold"},{key:"shove",label:"Shove",color:"shove"},{key:"fold",label:"Fold",color:"fold"}],
+   ranges:{opencall:"55+,A9s+,KQs,ATo+",openfold:"44-22,A8s-A2s,KJs-K2s,QJs-Q4s,JTs-J5s,T9s-T6s,98s-96s,87s,86s,76s,75s,65s,54s,A9o-A2o,KQo-K8o,QJo-Q9o,JTo,J9o,T9o,98o",shove:""}},
+  {id:"3max-btn-20",category:"3max",title:"BTN open",position:"BTN",stack_bb:20,situation:"3-way · premier à parler",
+   actions:[{key:"opencall",label:"Open / call",color:"opencall"},{key:"openfold",label:"Open / fold",color:"openfold"},{key:"shove",label:"Shove",color:"shove"},{key:"fold",label:"Fold",color:"fold"}],
+   ranges:{opencall:"55+,A8s+,KJs+,ATo+",openfold:"44-22,A7s-A2s,KTs-K2s,QJs-Q4s,JTs-J5s,T9s-T6s,98s-96s,87s,86s,76s,75s,65s,54s,A9o-A2o,KQo-K8o,QJo-Q9o,JTo,J9o,T9o,98o",shove:""}},
+  {id:"3max-btn-15",category:"3max",title:"BTN open",position:"BTN",stack_bb:15,situation:"3-way · premier à parler",
+   actions:[{key:"opencall",label:"Open / call (vs 3-bet size ou shove)",color:"opencall"},{key:"openfold",label:"Open / fold",color:"openfold"},{key:"shove",label:"Shove (vs 2x)",color:"shove"},{key:"fold",label:"Fold",color:"fold"}],
+   ranges:{opencall:"88+,A9s+,KJs+,AKo,KQo",openfold:"KTs-K4s,QJs-Q5s,JTs-J6s,T9s-T6s,98s-96s,87s,86s,76s,65s,KJo,KTo,K9o,QJo,QTo,Q9o,JTo,J9o,T9o,A4o,A3o",shove:"77-22,A8s-A2s,AQo-A5o"}},
+  {id:"3max-btn-10",category:"3max",title:"BTN open",position:"BTN",stack_bb:10,situation:"3-way · premier à parler",
+   actions:[{key:"opencall",label:"Open / call",color:"opencall"},{key:"openfold",label:"Open / fold",color:"openfold"},{key:"shove",label:"Shove",color:"shove"},{key:"fold",label:"Fold",color:"fold"}],
+   ranges:{opencall:"JJ+,AKs",openfold:"",shove:"TT-22,AQs-A2s,KQs-K6s,QJs-Q8s,JTs-J8s,T9s,T8s,98s,A2o+,K9o+,QTo+,JTo"}}
+];
+
+/* Grille 13 × 13 : une couleur par action, largeur = fréquence. */
+function rangeGridHTML(r,compact){
+  const t=buildRange(r),sh=shares(t,r.actions);
+  const DARK=new Set(["opencall","3bet","push"]);
+  const cells=RGRID.map(h=>`<div class="rg-cell ${h.pair?"pair":""} ${r.actions.some(a=>DARK.has(a.color)&&t[h.name][a.key]>=0.5)?"dk":""}" data-h="${h.name}"><div class="rg-bars">${r.actions.map(a=>t[h.name][a.key]>0?`<i class="a-${a.color||a.key}" style="flex-grow:${t[h.name][a.key]}"></i>`:"").join("")}</div><span>${h.name}</span></div>`).join("");
+  return `<div class="rgd ${compact?"rg-compact":""}" data-range="${r.id}"><div class="rg-grid" role="img" aria-label="Range : ${r.title}">${cells}</div>${compact?"":`<div class="rg-side"><div class="rg-legend">${r.actions.map(a=>`<div><i class="a-${a.color||a.key}"></i><b>${a.label}</b><span class="num">${fmt(sh[a.key]*100,2)} %</span></div>`).join("")}</div><div class="rg-info"><span>Passe la souris ou touche une main pour voir ses fréquences.</span></div></div>`}</div>`;
+}
+function bindRangeGrids(root){
+  root.querySelectorAll(".rgd").forEach(g=>{
+    const r=RANGES_DATA.find(x=>x.id===g.dataset.range);if(!r)return;
+    const t=buildRange(r),info=g.querySelector(".rg-info");if(!info)return;
+    const show=h=>{info.innerHTML=`<b class="num">${h}</b>`+r.actions.map(a=>`<span>${a.label} : <b class="num">${fmt((t[h][a.key]||0)*100,0)} %</b></span>`).join("");};
+    g.querySelector(".rg-grid").addEventListener("mouseover",e=>{const c=e.target.closest(".rg-cell");if(c)show(c.dataset.h);});
+    g.querySelector(".rg-grid").addEventListener("click",e=>{const c=e.target.closest(".rg-cell");if(c)show(c.dataset.h);});
+  });
+}
+
+
+/* ---- Explorateur : format → position → stack ---- */
+const FORMATS=[{key:"3max",label:"3-way"},{key:"hu",label:"HU"}];
+const POSITIONS=["BTN","SB","BB"];
+function mountExplorer(el){
+  const avail=(f,p,s)=>RANGES_DATA.filter(r=>r.category===f&&(!p||r.position===p)&&(!s||r.stack_bb===s));
+  const first=RANGES_DATA[0];
+  const st={f:first.category,p:first.position,s:first.stack_bb};
+  const draw=()=>{
+    if(!avail(st.f).length)st.f=FORMATS.find(x=>avail(x.key).length).key;
+    if(!avail(st.f,st.p).length)st.p=POSITIONS.find(p=>avail(st.f,p).length);
+    const stacks=[...new Set(avail(st.f,st.p).map(r=>r.stack_bb))].sort((a,b)=>b-a);
+    if(!stacks.includes(st.s))st.s=stacks[0];
+    const cur=avail(st.f,st.p,st.s)[0];
+    const btn=(grp,val,label,on,dis)=>`<button type="button" class="chipf ${on?"on":""}" data-g="${grp}" data-v="${val}" ${dis?'disabled title="Bientôt disponible"':""} aria-pressed="${on}">${label}${dis?' <small>bientôt</small>':""}</button>`;
+    el.innerHTML=`<div class="rx"><div class="rx-main"><div class="rx-title"><h3>${cur.title} · ${cur.stack_bb} bb</h3><span class="small-label">${cur.situation}</span></div>${rangeGridHTML(cur)}</div><div class="rx-side"><div class="rx-bar">
+        <div class="rx-row"><span class="rx-lab">Format</span><div class="rx-btns">${FORMATS.map(f=>btn("f",f.key,f.label,st.f===f.key,!avail(f.key).length)).join("")}</div></div>
+        <div class="rx-row"><span class="rx-lab">Position</span><div class="rx-btns">${POSITIONS.map(p=>btn("p",p,p==="BTN"?"Bouton":p,st.p===p,!avail(st.f,p).length)).join("")}</div></div>
+        <div class="rx-row"><span class="rx-lab">Stack</span><div class="rx-btns">${stacks.map(x=>btn("s",x,x+" bb",st.s===x,false)).join("")}</div></div>
+      </div></div></div>`;
+    bindRangeGrids(el);
+    el.querySelector(".rx-side").appendChild(el.querySelector(".rg-side"));
+  };
+  el.addEventListener("click",e=>{const b=e.target.closest("button[data-g]");if(!b||b.disabled)return;
+    const v=b.dataset.v;if(b.dataset.g==="f")st.f=v;else if(b.dataset.g==="p")st.p=v;else st.s=+v;draw();});
+  draw();
+}
+
+/* ---- Page de vente ---- */
 function viewRanges(){
-  const F=[
-    {icon:"zap",t:"Push or fold",d:"Tes ranges de push et de call de 1 à 15 bb, en 3-max et en HU."},
-    {icon:"target",t:"3-max",d:"Les opens BTN, les ranges BvB en SB et la défense de BB selon le sizing."},
-    {icon:"trend",t:"Heads-up",d:"Open, limp, 3-bet et call en SB et en BB, selon la profondeur des stacks."}
-  ];
-  $app.innerHTML=`<section class="block"><div class="wrap">
-    <div class="sec-head"><div><span class="kicker">Bientôt disponible</span><h2>Les ranges Spinlab</h2></div><p>Des charts claires, pensées pour le Spin, à garder ouvertes pendant tes sessions. Cette rubrique est en préparation.</p></div>
-    <div class="ranges-wrap">
-      <div class="rpreview card"><div class="rgrid" aria-hidden="true">${(()=>{let h="";for(let r=0;r<13;r++)for(let c=0;c<13;c++){const v=Math.max(r,c)+Math.min(r,c)*0.6,lim=c>r?11:8;h+=`<i class="${r===c?"p":v<lim?"a":v<lim+3?"b":""}"></i>`;}return h;})()}</div>
-        <div class="rlock"><span class="icb">${ic("lock")}</span><b>Aperçu</b><span>Les charts arrivent bientôt.</span></div></div>
-      <div class="rfeat">${F.map(f=>`<div class="card rf"><span class="icb">${ic(f.icon)}</span><div><b>${f.t}</b><span>${f.d}</span></div></div>`).join("")}
-        <div class="card rf rwait"><div><b>En attendant</b><span>Les trois règles du push or fold couvrent déjà l'essentiel. Commence par là.</span><div class="ctas"><a class="btn primary small" href="#ch12">Lire le chapitre 12${ic("arrow")}</a><a class="btn small" href="#outils">Les outils</a></div></div></div>
-      </div>
+  const INC=[
+    {icon:"zap",t:"Push or fold",d:"Tes ranges de push et de call de 1 à 15 bb, en 3-max et en HU. Le cœur du jeu en Spin."},
+    {icon:"target",t:"3-max",d:"Les opens BTN, le jeu BvB en SB et la défense de BB selon le sizing, à chaque profondeur."},
+    {icon:"trend",t:"Heads-up",d:"Open, limp, 3-bet et call en SB et en BB, du stack profond jusqu'au push or fold."}];
+  const WHY=[
+    {icon:"target",t:"Lisible en un coup d'œil",d:"Une grille 13 × 13 par spot, une couleur par action, et les fréquences mixtes quand une main se joue de plusieurs façons."},
+    {icon:"book",t:"Pensé pour le Spin",d:"Des stacks courts, trois positions, le HU : uniquement les spots que tu rencontres vraiment."},
+    {icon:"clock",t:"Toujours sous la main",d:"Dans ton navigateur, sur ordinateur comme sur téléphone. Rien à installer."},
+    {icon:"check",t:"Mis à jour",d:"Les nouvelles ranges ajoutées au pack sont incluses dans ton accès."}];
+  const FAQ=[
+    ["Est-ce un abonnement ?",`Non. Tu paies ${PRICE_EUR} € une seule fois et tu gardes l'accès à vie.`],
+    ["Le paiement est-il sécurisé ?","Oui. Le paiement passe par Stripe, un des leaders du paiement en ligne. Spinlab ne voit jamais les informations de ta carte."],
+    ["Pourquoi dois-je créer un compte ?","Ton compte relie ton achat à ton accès. Tu te connectes avec ton email et ton mot de passe, depuis n'importe quel appareil."],
+    ["Sur quels appareils puis-je voir les ranges ?","Sur tout appareil avec un navigateur récent : ordinateur, tablette ou téléphone."],
+    ["Pour quel niveau est-ce fait ?","Pour les joueurs de Spin qui connaissent les bases (la formation gratuite suffit) et veulent des références claires pour chaque spot."],
+    ["Et la formation gratuite ?","Elle reste gratuite. Le pack de ranges vient en complément, pour passer des principes aux charts précises."]];
+  const cta=hasAccess()?"Ouvrir mes ranges":`Obtenir le pack · ${PRICE_EUR} €`;
+  const buyHref=hasAccess()||isLogged()?"#espace":"#connexion-achat";
+  let cur=RANGES_DATA.find(r=>r.free)||RANGES_DATA[0];
+  $app.innerHTML=`
+  <div class="hero-band"><div class="wrap"><section class="hero sale-hero">
+    <div>
+      <span class="badge">${ic("lock")}Pack de ranges Spinlab</span>
+      <h1>Chaque spot du Spin, <span>une range claire.</span></h1>
+      <p class="lede">Push or fold, 3-max et heads-up : toutes les charts dont tu as besoin en Spin, rangées par position et par stack. Tu ouvres, tu regardes, tu joues.</p>
+      <div class="price-line"><b class="num">${PRICE_EUR} €</b><span>Paiement unique<br>Accès à vie, sans abonnement</span></div>
+      <div class="ctas"><a class="btn primary big" href="${buyHref}">${cta}${ic("arrow")}</a><a class="btn big" href="#ranges" id="toPreview">Voir un aperçu</a></div>
+      <div class="trust"><span>${ic("shield")}Paiement sécurisé Stripe</span><span>${ic("check")}Accès immédiat</span></div>
     </div>
+    <div class="card sale-preview"><div class="sp-head"><b>${cur.position} · ${cur.stack_bb} bb</b><span class="small-label">${cur.situation}</span></div>${rangeGridHTML(cur,true)}<p class="note">${cur.title} · ${cur.stack_bb} bb</p></div>
+  </section></div></div>
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Dans le pack</span><h2>Tout le préflop du Spin</h2></div><p>Trois familles de charts, pour les trois phases d'une partie.</p></div>
+    <div class="sale-grid three">${INC.map(f=>`<div class="card sale-card"><span class="icb">${ic(f.icon)}</span><h3>${f.t}</h3><p>${f.d}</p></div>`).join("")}</div>
+  </div></section>
+  <section class="block" id="apercu"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Aperçu</span><h2>Explore les ranges</h2></div><p>Choisis le format, la position et ton stack. Chaque case est une main : survole-la pour voir comment la jouer.</p></div>
+    <div class="card sale-demo" id="explorer"></div>
+  </div></section>
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Pourquoi ce pack</span><h2>Fait pour être utilisé en session</h2></div></div>
+    <div class="sale-grid four">${WHY.map(f=>`<div class="card sale-card"><span class="icb">${ic(f.icon)}</span><h3>${f.t}</h3><p>${f.d}</p></div>`).join("")}</div>
+  </div></section>
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Comment ça marche</span><h2>Trois étapes, deux minutes</h2></div></div>
+    <ol class="steps">
+      <li class="card"><span class="step-n">1</span><b>Crée ton compte</b><span>Un email et un mot de passe.</span></li>
+      <li class="card"><span class="step-n">2</span><b>Paie une seule fois</b><span>${PRICE_EUR} € par carte, via Stripe.</span></li>
+      <li class="card"><span class="step-n">3</span><b>Ouvre tes ranges</b><span>Ton espace est débloqué tout de suite.</span></li>
+    </ol>
+  </div></section>
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Gratuit ou pack</span><h2>Ce que tu obtiens</h2></div></div>
+    <div class="tbl compare"><table><thead><tr><th></th><th>Gratuit</th><th>Pack ranges</th></tr></thead><tbody>
+      <tr><td>Formation en 14 chapitres</td><td>✓</td><td>✓</td></tr><tr><td>Outils de calcul</td><td>✓</td><td>✓</td></tr><tr><td>Glossaire</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Charts push or fold, 3-max et HU</td><td>–</td><td>✓</td></tr><tr><td>Mises à jour du pack</td><td>–</td><td>✓</td></tr>
+    </tbody></table></div>
+  </div></section>
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Questions fréquentes</span><h2>FAQ</h2></div></div>
+    <div class="faq" id="faq">${FAQ.map(([q,a],i)=>`<div class="card faq-item"><button type="button" aria-expanded="${i===0}">${q}<span aria-hidden="true">${i===0?"−":"+"}</span></button><p ${i===0?"":"hidden"}>${a}</p></div>`).join("")}</div>
+  </div></section>
+  <section class="block"><div class="wrap"><div class="card sale-final"><div><h2>Prêt à jouer avec les bonnes ranges ?</h2><p>${PRICE_EUR} € une seule fois, accès à vie.</p></div><a class="btn primary big" href="${buyHref}">${cta}${ic("arrow")}</a></div></div></section>`;
+  bindRangeGrids($app);
+  mountExplorer(document.getElementById("explorer"));
+  document.getElementById("toPreview").addEventListener("click",e=>{e.preventDefault();document.getElementById("apercu").scrollIntoView({behavior:"smooth"});});
+  document.getElementById("faq").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const p=b.nextElementSibling;const open=p.hidden;p.hidden=!open;b.setAttribute("aria-expanded",String(open));b.querySelector("span").textContent=open?"−":"+";});
+}
+
+/* ---- Connexion / création de compte ---- */
+function viewConnexion(intentAchat){
+  let mode=intentAchat?"signup":"signin";
+  const render=(msg)=>{
+    const titles={signin:"Connexion",signup:"Créer un compte",reset:"Mot de passe oublié"};
+    $app.innerHTML=`<section class="block"><div class="wrap"><div class="auth card">
+      <div class="auth-head"><span class="icb">${ic("lock")}</span><h2>${titles[mode]}</h2><p>${intentAchat?"Crée ton compte pour acheter le pack de ranges. Ton accès y sera rattaché.":"Ton compte Spinlab te donne accès à ton espace ranges."}</p></div>
+      ${mode!=="reset"?`<div class="auth-tabs" role="tablist"><button type="button" role="tab" data-m="signin" class="${mode==="signin"?"on":""}" aria-selected="${mode==="signin"}">J'ai un compte</button><button type="button" role="tab" data-m="signup" class="${mode==="signup"?"on":""}" aria-selected="${mode==="signup"}">Créer un compte</button></div>`:""}
+      <form id="authForm" novalidate>
+        <div class="field"><label for="au-email">Email</label><input id="au-email" type="email" autocomplete="email"></div>
+        ${mode!=="reset"?`<div class="field"><label for="au-pass">Mot de passe</label><input id="au-pass" type="password" autocomplete="${mode==="signup"?"new-password":"current-password"}">${mode==="signup"?`<span class="hint">8 caractères minimum.</span>`:""}</div>`:""}
+        ${msg?`<p class="auth-msg ${msg.err?"err":"ok"}" role="status">${msg.text}</p>`:""}
+        <button class="btn primary big" type="submit">${mode==="signin"?"Se connecter":mode==="signup"?"Créer mon compte":"Envoyer le lien"}</button>
+      </form>
+      <div class="auth-foot">${mode==="signin"?`<button type="button" class="linkbtn" data-m="reset">Mot de passe oublié ?</button>`:mode==="reset"?`<button type="button" class="linkbtn" data-m="signin">Retour à la connexion</button>`:""}</div>
+      <p class="demo-note">Maquette : aucun vrai compte n'est créé pour l'instant. Tape n'importe quel email et un mot de passe de 8 caractères.</p>
+    </div></div></section>`;
+    $app.querySelectorAll("[data-m]").forEach(b=>b.addEventListener("click",()=>{mode=b.dataset.m;render();}));
+    document.getElementById("authForm").addEventListener("submit",e=>{
+      e.preventDefault();
+      const email=document.getElementById("au-email").value.trim(),pw=document.getElementById("au-pass");
+      if(!/^\S+@\S+\.\S+$/.test(email))return render({err:true,text:"Entre une adresse email valide."});
+      if(mode==="reset")return render({text:"Si un compte existe avec cet email, tu vas recevoir un lien pour choisir un nouveau mot de passe."});
+      if(pw.value.length<8)return render({err:true,text:"Le mot de passe doit faire au moins 8 caractères."});
+      const prev=accRead();
+      account={email,paid:!!(prev&&prev.email===email&&prev.paid),loggedIn:true};accWrite(account);updateAccountLinks();
+      location.hash="#espace";
+    });
+  };
+  render();
+}
+
+/* ---- Espace membre ---- */
+function viewEspace(){
+  const head=`<div class="sec-head"><div><span class="kicker">Espace membre</span><h2>Mes ranges</h2></div></div>`;
+  if(!isLogged()){
+    $app.innerHTML=`<section class="block"><div class="wrap">${head}<div class="auth card"><div class="auth-head"><span class="icb">${ic("lock")}</span><h2>Connecte-toi</h2><p>Ton espace ranges est lié à ton compte Spinlab.</p></div><a class="btn primary big" href="#connexion">Me connecter</a><div class="auth-foot"><a class="linkbtn" href="#ranges">Découvrir le pack de ranges</a></div></div></div></section>`;
+    return;
+  }
+  if(!hasAccess()){
+    $app.innerHTML=`<section class="block"><div class="wrap">${head}<div class="auth card">
+      <div class="auth-head"><span class="icb">${ic("lock")}</span><h2>Débloque le pack de ranges</h2><p>Connecté en tant que <b></b>. Ton achat sera rattaché à ce compte.</p></div>
+      <div class="price-line center"><b class="num">${PRICE_EUR} €</b><span>Paiement unique<br>Accès à vie</span></div>
+      <label class="check"><input type="checkbox" id="cgv"><span>J'accepte les conditions générales de vente et je demande l'accès immédiat au contenu. Je reconnais perdre mon droit de rétractation une fois l'accès ouvert.</span></label>
+      <p class="auth-msg err" id="payErr" hidden></p>
+      <button class="btn primary big" type="button" id="payBtn">Payer ${PRICE_EUR} € avec Stripe${ic("arrow")}</button>
+      <div class="auth-foot"><a class="linkbtn" href="#ranges">Revoir le contenu du pack</a><button type="button" class="linkbtn" id="logout">Me déconnecter</button></div>
+      <p class="demo-note">Maquette : le paiement est simulé, aucune carte n'est demandée.</p>
+    </div></div></section>`;
+    $app.querySelector(".auth-head b").textContent=account.email;
+    document.getElementById("cgv").addEventListener("change",()=>{document.getElementById("payErr").hidden=true;});
+    document.getElementById("payBtn").addEventListener("click",()=>{
+      if(!document.getElementById("cgv").checked){const e=document.getElementById("payErr");e.textContent="Coche la case pour continuer vers le paiement.";e.hidden=false;return;}
+      account.paid=true;accWrite(account);location.hash="#merci";
+    });
+    document.getElementById("logout").addEventListener("click",logout);
+    return;
+  }
+  $app.innerHTML=`<section class="block"><div class="wrap">${head}
+    <div class="lib-top"><span></span><div class="lib-account"><span class="small-label" id="libMail"></span><button type="button" class="linkbtn" id="logout">Déconnexion</button></div></div>
+    <div class="card sale-demo" id="explorer"></div>
   </div></section>`;
+  document.getElementById("libMail").textContent=account.email;
+  document.getElementById("logout").addEventListener("click",logout);
+  mountExplorer(document.getElementById("explorer"));
+}
+function logout(){if(account){account.loggedIn=false;accWrite(account);}updateAccountLinks();location.hash="#accueil";}
+
+function viewMerci(){
+  $app.innerHTML=`<section class="block"><div class="wrap"><div class="auth card merci">
+    <span class="icb big-ic">${ic("check")}</span>
+    ${hasAccess()?`<h2>Merci, ton pack est activé</h2><p>Toutes les ranges sont disponibles dans ton espace. Bon grind.</p><a class="btn primary big" href="#espace">Ouvrir mes ranges${ic("arrow")}</a>`
+      :`<h2>Aucun achat trouvé</h2><p>Connecte-toi avec le compte utilisé pour l'achat.</p><a class="btn big" href="#connexion">Me connecter</a>`}
+  </div></div></section>`;
 }
 
 /* Glossaire */
@@ -1323,8 +1697,11 @@ function route(){
   else if(h==="outils"){viewTools();nav="outils";}
   else if(h==="ranges"){viewRanges();nav="ranges";}
   else if(h==="glossaire"){viewGlossary();nav="glossaire";}
+  else if(h==="connexion"||h==="connexion-achat"){if(isLogged()){location.hash="#espace";return;}viewConnexion(h==="connexion-achat");nav="compte";}
+  else if(h==="espace"){viewEspace();nav="compte";}
+  else if(h==="merci"){viewMerci();nav="compte";}
   else viewHome();
-  document.querySelectorAll("nav.main a, .mobile-menu a").forEach(a=>{
+  document.querySelectorAll("nav.main a, .mobile-menu a, .top-right .acct").forEach(a=>{
     if(a.dataset.nav===nav)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
   closeMenu();
   const tc=document.getElementById("topCta");tc.href="#"+nextUnread();tc.textContent=read.size?"Reprendre":"Commencer";
@@ -1335,6 +1712,7 @@ function closeMenu(){mmenu.hidden=true;burger.setAttribute("aria-expanded","fals
 burger.addEventListener("click",()=>{const open=mmenu.hidden;mmenu.hidden=!open;burger.setAttribute("aria-expanded",String(open));burger.setAttribute("aria-label",open?"Fermer le menu":"Ouvrir le menu");});
 window.addEventListener("hashchange",route);
 updateProgress();
+updateAccountLinks();
 route();
 })();
 </script>
