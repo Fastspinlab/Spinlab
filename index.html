@@ -2,220 +2,319 @@
 <title>Spinlab</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-/* Layout : un carnet de joueur — en-tête simple, accueil en deux colonnes (texte + roue), un mot d'intro, le programme en liste, des chapitres lus comme un article avec des notes manuscrites dans la marge. */
+/* Layout : SaaS épuré — en-tête collant flouté, hero en deux colonnes (promesse + roue), 4 bénéfices illustrés, programme en cartes, chapitres en colonne de lecture large avec notes manuscrites. */
 :root{
-  --bg:#F8F8F5; --surface:#FFFFFF; --ink:#1C2421; --muted:#5D6863; --line:#E1E4DE; --cell:#EEF0EB;
-  --accent:#2A56C6; --accent-ink:#FFFFFF; --felt:#1F6049; --felt-soft:#E3EFE8; --red:#C8372B; --gold:#A87708; --hand:#2A56C6;
+  --bg:#F6F7F9; --surface:#FFFFFF; --surface-2:#F9FAFB; --ink:#1B2940; --muted:#56647A; --line:#E3E7ED; --cell:#EEF1F5;
+  --accent:#5784BA; --accent-ink:#FFFFFF; --link:#3E6699; --accent-soft:#B6D8F2; --accent-soft-ink:#1F3E66;
+  --felt:#3F6897; --felt-ink:#FFFFFF; --felt-soft:#DCEBF8; --red:#B8456F; --gold:#D9B53A; --hand:#5784BA;
+  --cream:#F7F6CF; --sky:#B6D8F2; --pink:#F4CFDF; --blue:#5784BA; --blue2:#9AC8EB;
+  --i-bg:#EEF4FA; --i-table:#5784BA; --i-a:#9AC8EB; --i-b:#3F6897; --i-c:#EBA3C1; --i-d:#E6CE55; --i-band:#9AC8EB;
+  --todo-bg:#FBE7EF; --ex-h:#3F6897;
+  --shadow:0 1px 2px rgba(27,41,64,.05),0 10px 28px -14px rgba(27,41,64,.18);
+  --shadow-lg:0 2px 4px rgba(27,41,64,.04),0 24px 48px -20px rgba(27,41,64,.24);
   --ui:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
-  --read:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --read:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --script:"Caveat","Segoe Print","Bradley Hand",cursive;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:16px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#111714; --surface:#182019; --ink:#E7EBE6; --muted:#9DA9A2; --line:#2A342F; --cell:#1F2924;
-  --accent:#7C9BFF; --accent-ink:#0D1530; --felt:#4DB08A; --felt-soft:#18342A; --red:#F0685C; --gold:#E0AE3E; --hand:#8FA9FF;
+  --bg:#0F1728; --surface:#162136; --surface-2:#1B273F; --ink:#EEF2F8; --muted:#A6B2C7; --line:#28364F; --cell:#1F2C45;
+  --accent:#9AC8EB; --accent-ink:#0E1A2E; --link:#9AC8EB; --accent-soft:#223A5C; --accent-soft-ink:#CFE5F7;
+  --felt:#9AC8EB; --felt-ink:#0E1A2E; --felt-soft:#1E3552; --red:#F4A3C4; --gold:#EEDC7A; --hand:#9AC8EB;
+  --cream:#3A3924; --sky:#223A5C; --pink:#402A3A; --blue:#5784BA; --blue2:#9AC8EB;
+  --i-bg:#1F2C45; --i-table:#5784BA; --i-a:#9AC8EB; --i-b:#B6D8F2; --i-c:#F4CFDF; --i-d:#F7F6CF; --i-band:#9AC8EB;
+  --todo-bg:#33243A; --ex-h:#9AC8EB;
+  --shadow:0 1px 0 rgba(255,255,255,.03) inset,0 12px 30px -14px rgba(0,0,0,.7);
+  --shadow-lg:0 1px 0 rgba(255,255,255,.04) inset,0 30px 60px -24px rgba(0,0,0,.8);
   color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#111714; --surface:#182019; --ink:#E7EBE6; --muted:#9DA9A2; --line:#2A342F; --cell:#1F2924;
-  --accent:#7C9BFF; --accent-ink:#0D1530; --felt:#4DB08A; --felt-soft:#18342A; --red:#F0685C; --gold:#E0AE3E; --hand:#8FA9FF;
+  --bg:#0F1728; --surface:#162136; --surface-2:#1B273F; --ink:#EEF2F8; --muted:#A6B2C7; --line:#28364F; --cell:#1F2C45;
+  --accent:#9AC8EB; --accent-ink:#0E1A2E; --link:#9AC8EB; --accent-soft:#223A5C; --accent-soft-ink:#CFE5F7;
+  --felt:#9AC8EB; --felt-ink:#0E1A2E; --felt-soft:#1E3552; --red:#F4A3C4; --gold:#EEDC7A; --hand:#9AC8EB;
+  --cream:#3A3924; --sky:#223A5C; --pink:#402A3A; --blue:#5784BA; --blue2:#9AC8EB;
+  --i-bg:#1F2C45; --i-table:#5784BA; --i-a:#9AC8EB; --i-b:#B6D8F2; --i-c:#F4CFDF; --i-d:#F7F6CF; --i-band:#9AC8EB;
+  --todo-bg:#33243A; --ex-h:#9AC8EB;
+  --shadow:0 1px 0 rgba(255,255,255,.03) inset,0 12px 30px -14px rgba(0,0,0,.7);
+  --shadow-lg:0 1px 0 rgba(255,255,255,.04) inset,0 30px 60px -24px rgba(0,0,0,.8);
   color-scheme:dark}
 
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:16px;line-height:1.55;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--read);font-size:16px;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-.wrap{max-width:1100px;margin:0 auto;padding-inline:20px}
-h1,h2,h3{font-family:var(--ui);line-height:1.08;text-wrap:balance;margin:0;letter-spacing:-.015em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--ui);line-height:1.08;text-wrap:balance;margin:0;letter-spacing:-.02em}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .small-label{font-size:13px;color:var(--muted);font-weight:500}
+.ic{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
 
 /* En-tête */
-header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;gap:18px;min-height:62px;flex-wrap:wrap;padding-block:8px}
-.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;font-size:23px;letter-spacing:-.02em}
-.chip{width:22px;height:22px;border-radius:50%;background:var(--accent);border:3.5px dashed var(--surface);box-shadow:0 0 0 1.5px var(--accent);flex:none}
-.brand small{font-weight:500;font-size:12px;color:var(--felt);background:var(--felt-soft);padding:2px 8px;border-radius:999px;letter-spacing:0}
-nav.main{display:flex;gap:2px;flex-wrap:wrap;margin-left:auto}
-nav.main a{text-decoration:none;font-weight:500;font-size:15px;padding:6px 12px;border-radius:8px;color:var(--muted)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--ui);font-weight:800;font-size:22px;letter-spacing:-.02em}
+.chip{width:24px;height:24px;border-radius:50%;background:var(--accent);border:4px dashed var(--surface);box-shadow:0 0 0 1.5px var(--accent);flex:none}
+.brand small{font-family:var(--read);font-weight:600;font-size:11px;color:var(--ink);background:var(--pink);padding:3px 8px;border-radius:999px;letter-spacing:.02em;text-transform:uppercase}
+nav.main{display:flex;gap:4px;margin-left:auto;padding:4px;border-radius:999px;background:var(--cell)}
+nav.main a{text-decoration:none;font-weight:500;font-size:14px;padding:7px 14px;border-radius:999px;color:var(--muted);transition:color .15s,background .15s}
 nav.main a:hover{color:var(--ink)}
-nav.main a[aria-current="page"]{color:var(--ink);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;text-decoration-color:var(--accent)}
+nav.main a[aria-current="page"]{color:var(--ink);background:var(--surface);box-shadow:var(--shadow)}
+.top-right{display:flex;align-items:center;gap:14px}
 .prog-pill{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
-.bar{width:80px;height:6px;border-radius:3px;background:var(--cell);overflow:hidden}
+.bar{width:72px;height:6px;border-radius:3px;background:var(--cell);overflow:hidden}
 .bar i{display:block;height:100%;background:var(--felt);width:0;transition:width .4s}
+.burger{display:none;margin-left:auto;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);align-items:center;justify-content:center;cursor:pointer}
+.mobile-menu{display:none}
 
 /* Boutons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 15px var(--ui);padding:11px 18px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none}
-.btn:hover{border-color:var(--ink)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.btn.primary:hover{filter:brightness(1.08)}
-.btn.small{padding:8px 13px;font-size:14px}
-.btn.done{background:var(--felt);border-color:var(--felt);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 15px var(--read);padding:11px 18px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s,filter .15s,border-color .15s;box-shadow:var(--shadow)}
+.btn:hover{border-color:color-mix(in srgb,var(--ink) 30%,var(--line))}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);box-shadow:0 1px 2px rgba(0,0,0,.08),0 10px 24px -10px color-mix(in srgb,var(--accent) 70%,transparent)}
+.btn.primary:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.btn.big{padding:15px 24px;font-size:16px;border-radius:14px}
+.btn.small{padding:8px 14px;font-size:14px;border-radius:10px}
+.btn.done{background:var(--felt);border-color:var(--felt);color:var(--felt-ink)}
 
-/* Notes manuscrites */
 .hand{font-family:var(--script);font-size:23px;line-height:1.2;color:var(--hand);font-weight:500}
 
-/* Accueil */
-.hero{padding-block:56px 36px;display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:start}
+/* Hero */
+.hero-band{position:relative;overflow:hidden;background:var(--surface);border-bottom:1px solid var(--line)}
+.hero-band::before,.hero-band::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero-band::before{width:520px;height:520px;right:-120px;top:-160px;background:var(--sky);opacity:.55}
+.hero-band::after{width:300px;height:300px;right:30%;bottom:-170px;background:var(--pink);opacity:.6}
+.hero-band .wrap{position:relative;z-index:1}
+.hero{padding-block:72px 56px;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
 .hero > *{min-width:0}
-.hero h1{font-size:clamp(40px,5.6vw,70px);font-weight:800}
-.hero h1 span{color:var(--felt)}
-.hero p.lede{font-family:var(--read);font-size:20px;line-height:1.55;max-width:32em;color:var(--muted);margin:22px 0 28px}
-.hero .ctas{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.free-line{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px;font-size:14px;color:var(--muted)}
-.free-line span::before{content:"✓ ";color:var(--felt);font-weight:700}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ink);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);padding:6px 12px;border-radius:999px;margin-bottom:22px}
+.badge .ic{width:15px;height:15px}
+.hero h1{font-size:clamp(40px,5.4vw,68px);font-weight:800;letter-spacing:-.035em}
+.hero h1 span{color:var(--blue);background:linear-gradient(transparent 62%,var(--pink) 62%);padding-inline:2px}
+.hero p.lede{font-size:19px;line-height:1.6;max-width:31em;color:var(--muted);margin:22px 0 32px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:32px;font-size:14px;color:var(--muted)}
+.trust span{display:inline-flex;align-items:center;gap:7px}
+.trust .ic{width:16px;height:16px;color:var(--felt)}
 
-.machine{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px;position:relative}
-.machine .head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.machine .head b{font-size:17px}
-.reel{border-radius:12px;background:var(--felt);color:#fff;text-align:center;padding:16px 10px 14px;transition:background .3s}
-.reel .mult{font-family:var(--ui);font-weight:800;font-size:clamp(64px,10vw,96px);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.machine{padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-lg)}
+.machine .head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.machine .head b{font-family:var(--ui);font-size:18px}
+.reel{border-radius:14px;background:var(--felt);color:var(--felt-ink);text-align:center;padding:18px 10px 16px;transition:background .3s}
+.reel .mult{font-family:var(--ui);font-weight:800;font-size:clamp(64px,9vw,92px);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
 .reel .prize{font-size:15px;opacity:.92}
-.reel.jackpot{background:var(--gold)}
-.machine .stats{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:var(--muted);flex-wrap:wrap}
-.dist{width:100%;border-collapse:collapse;font-size:14px}
-.dist td{padding:3px 0;border-top:1px solid var(--line)}
+.reel.jackpot{background:var(--pink);color:var(--ink)}
+.machine .stats{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.dist{width:100%;border-collapse:collapse;font-size:13px}
+.dist td{padding:4px 0;border-top:1px solid var(--line)}
 .dist td:last-child{text-align:right}
-.dist tr.hit td{color:var(--accent);font-weight:700}
+.dist tr.hit td{color:var(--link);font-weight:700}
 .machine .hand{font-size:21px;margin:0}
 .note{font-size:13px;color:var(--muted);margin:0}
 
-.letter{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;padding-block:44px;border-top:1px solid var(--line)}
-.letter h2{font-size:26px;font-weight:700}
-.letter .body{font-family:var(--read);font-size:19px;line-height:1.65;max-width:36em}
+/* Sections */
+section.block{padding-block:56px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.sec-head .kicker{display:block;font-size:13px;font-weight:600;color:var(--link);margin-bottom:8px}
+.sec-head h2{font-size:clamp(30px,3.6vw,42px);font-weight:800}
+.sec-head p{margin:0;color:var(--muted);max-width:32em;font-size:16px}
+
+/* Bénéfices */
+.benefits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.benefit{display:flex;flex-direction:column;overflow:hidden;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.benefit:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.benefit .illu{border-radius:0}
+.benefit .bd{padding:20px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.benefit .icb{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-soft-ink);margin-top:-38px;border:3px solid var(--surface);box-sizing:content-box}
+.benefit h3{font-size:19px;font-weight:700;letter-spacing:-.01em}
+.benefit p{margin:0;color:var(--muted);font-size:15px;flex:1}
+.benefit .go{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--link);margin-top:6px}
+.benefit .go .ic{width:16px;height:16px}
+
+/* Mot d'intro */
+.letter{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;padding:36px 40px}
+.letter h2{font-size:28px;font-weight:800}
+.letter .body{font-size:17px;line-height:1.75;max-width:40em;color:var(--ink)}
 .letter .body p{margin:0 0 14px}
 .letter .sign{font-family:var(--script);font-size:26px;color:var(--hand)}
 
-section.block{padding-block:44px}
-.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:22px}
-.sec-head h2{font-size:clamp(30px,4vw,42px);font-weight:800}
-.sec-head p{margin:0;color:var(--muted);max-width:34em}
-
 /* Programme */
-.part{display:grid;grid-template-columns:260px minmax(0,1fr);gap:32px;padding-block:26px;border-top:1px solid var(--line)}
+.parts{display:flex;flex-direction:column;gap:20px}
+.part{display:grid;grid-template-columns:270px minmax(0,1fr);gap:32px;padding:28px}
 .part > *{min-width:0}
-.part .pn{font-family:var(--script);font-size:24px;color:var(--hand)}
-.part h3{font-size:25px;font-weight:700;margin-top:2px}
-.part .pdesc{color:var(--muted);font-size:15px;margin:8px 0 0}
-.chlist{list-style:none;margin:0;padding:0}
-.chlist li + li{border-top:1px dashed var(--line)}
-.chlist a{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:14px;align-items:baseline;padding:13px 2px;text-decoration:none}
-.chlist a:hover .t{color:var(--accent)}
+.part .pn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--sky);padding:4px 10px;border-radius:999px}
+.part h3{font-size:24px;font-weight:700;margin-top:12px}
+.part .pdesc{color:var(--muted);font-size:15px;margin:10px 0 0}
+.part .ptime{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;color:var(--muted)}
+.part .ptime .ic{width:15px;height:15px}
+.chlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.chlist a{display:grid;grid-template-columns:28px 104px minmax(0,1fr) auto;gap:16px;align-items:center;padding:10px 12px;border-radius:12px;text-decoration:none;transition:background .15s}
+.chlist a:hover{background:var(--surface-2)}
+.chlist a:hover .t{color:var(--link)}
+.part:nth-child(2) .pn{background:var(--pink)} .part:nth-child(3) .pn{background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)}
+.benefit:nth-child(2) .icb{background:var(--pink);color:var(--ink)} .benefit:nth-child(3) .icb{background:var(--cream);color:var(--ink)} .benefit:nth-child(4) .icb{background:var(--blue2);color:var(--ink)}
 .chlist .n{font-family:var(--mono);font-size:13px;color:var(--muted)}
-.chlist .t{font-weight:600;font-size:17px;line-height:1.3}
-.chlist .d{display:block;font-family:var(--read);font-weight:400;font-size:15px;color:var(--muted);margin-top:3px}
-.chlist .r{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--muted);white-space:nowrap}
-.dot{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--muted);opacity:.6;display:inline-block}
-.dot.done{background:var(--felt);border-color:var(--felt);opacity:1}
+.chlist .t{font-family:var(--ui);font-weight:700;font-size:17px;line-height:1.3}
+.chlist .d{display:block;font-family:var(--read);font-weight:400;font-size:14px;color:var(--muted);margin-top:3px}
+.chlist .r{display:flex;gap:12px;align-items:center;font-size:13px;color:var(--muted);white-space:nowrap}
+.dot{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);display:inline-grid;place-items:center;color:transparent}
+.dot .ic{width:12px;height:12px;stroke-width:3}
+.dot.done{background:var(--felt);border-color:var(--felt);color:var(--felt-ink)}
 
-.teaser{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.teaser a{display:flex;flex-direction:column;gap:6px;padding:18px 20px;background:var(--surface);border:1px solid var(--line);border-radius:12px;text-decoration:none}
-.teaser a:hover{border-color:var(--ink)}
-.teaser b{font-size:18px}
+.teaser{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.teaser a{display:flex;gap:16px;align-items:flex-start;padding:22px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.teaser a:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.teaser .icb{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--sky);color:var(--ink);flex:none}
+.teaser a:nth-child(2) .icb{background:var(--pink)}
+.teaser .icb .ic{width:22px;height:22px}
+.teaser b{display:block;font-family:var(--ui);font-size:19px;margin-bottom:4px}
 .teaser span{color:var(--muted);font-size:15px}
 
+/* Illustrations */
+.illu{display:block;width:100%;height:auto;border-radius:12px}
+.thumb .illu{border-radius:8px}
+.thumb{display:block;width:100%;aspect-ratio:320/140;max-width:100%}
+.ch-hero{margin:0 0 32px}
+.ch-hero .illu{border-radius:var(--r);box-shadow:var(--shadow)}
+.illu .bg{fill:var(--i-bg)} .illu .f{fill:var(--i-b)} .illu .a{fill:var(--i-a)} .illu .rd{fill:var(--i-c)} .illu .g{fill:var(--i-d)}
+.illu .tb{fill:var(--i-table)} .illu .s{fill:var(--surface)} .illu .k{fill:var(--ink)} .illu .rim{fill:var(--ink);opacity:.85}
+.illu .dash{fill:none;stroke:var(--surface);stroke-width:1.6;stroke-dasharray:3 3}
+.illu .ss{stroke:var(--surface);stroke-width:1.2} .illu .ss2{stroke:var(--surface);stroke-width:1.5}
+.illu .back{fill:none;stroke:var(--surface);stroke-width:1;stroke-dasharray:2 2}
+.illu .ks1{stroke:var(--ink);stroke-width:1.5} .illu .ks2{stroke:var(--ink);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round} .illu .ks3{stroke:var(--i-b);stroke-width:4;stroke-linecap:round}
+.illu .dashed{stroke-dasharray:5 5;fill:none}
+.illu .t{font-family:var(--ui);font-weight:700;fill:var(--ink)} .illu .trd{fill:var(--red)} .illu .tw{fill:#fff} .illu .ta{fill:var(--i-b)} .illu .tm{fill:var(--muted)}
+.illu .dot0{fill:none;stroke:var(--muted);stroke-width:1.2;opacity:.6}
+.illu .op{opacity:.45} .illu .jar{fill:var(--surface);stroke:var(--ink);stroke-width:2;fill-opacity:.55}
+.illu .band{fill:var(--i-band);opacity:.45}
+.illu .st-f{stroke:var(--i-a)} .illu .st-g{stroke:var(--i-d)} .illu .st-r{stroke:var(--i-c)}
+
 /* Chapitre */
-.chapter{display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px;padding-block:40px 64px}
-.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 86px);align-self:start;font-size:14px}
-.toc ol{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:1px}
-.toc a{display:flex;gap:9px;align-items:center;text-decoration:none;padding:5px 8px;border-radius:7px;color:var(--muted)}
-.toc a:hover{color:var(--ink)}
-.toc a[aria-current="true"]{background:var(--cell);color:var(--ink);font-weight:600}
-.toc .dot{width:9px;height:9px;flex:none}
+.chapter{display:grid;grid-template-columns:240px minmax(0,1fr);gap:56px;padding-block:44px 72px}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 88px);align-self:start;font-size:14px;padding:16px}
+.toc ol{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
+.toc a{display:flex;gap:10px;align-items:center;text-decoration:none;padding:6px 8px;border-radius:8px;color:var(--muted);line-height:1.3}
+.toc a:hover{color:var(--ink);background:var(--surface-2)}
+.toc a[aria-current="true"]{background:var(--sky);color:var(--ink);font-weight:600}
+.toc .dot{width:14px;height:14px;flex:none}
+.toc .dot .ic{width:9px;height:9px}
 .toc .grp{margin-top:16px}
 .toc .grp:first-child{margin-top:0}
-article.ch{max-width:40em;min-width:0}
-article.ch .crumb{font-size:14px;color:var(--muted)}
-article.ch h1{font-size:clamp(34px,5vw,52px);font-weight:800;margin:10px 0 22px}
-article.ch .prose{font-family:var(--read);font-size:19px;line-height:1.7}
-article.ch .prose p{margin:0 0 16px}
-article.ch .prose h2{font-family:var(--ui);font-weight:700;font-size:23px;margin:34px 0 10px;letter-spacing:-.01em}
-article.ch .prose ul,article.ch .prose ol{padding-left:24px;margin:0 0 16px}
-article.ch .prose li{margin:6px 0}
+.toc .small-label{padding-inline:8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+article.ch{max-width:44rem;min-width:0}
+article.ch .crumb{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;color:var(--muted)}
+article.ch .crumb span{display:inline-flex;align-items:center;gap:6px}
+article.ch .crumb .ic{width:14px;height:14px}
+article.ch h1{font-size:clamp(34px,4.6vw,50px);font-weight:800;margin:14px 0 26px;letter-spacing:-.03em}
+article.ch .prose{font-size:17.5px;line-height:1.8}
+article.ch .prose p{margin:0 0 20px}
+article.ch .prose h2{font-family:var(--ui);font-weight:700;font-size:25px;margin:44px 0 14px;letter-spacing:-.015em}
+article.ch .prose ul,article.ch .prose ol{padding-left:22px;margin:0 0 20px}
+article.ch .prose li{margin:8px 0;padding-left:4px}
+article.ch .prose li::marker{color:var(--blue)}
 article.ch .prose b{font-weight:600}
-.formula{font-family:var(--mono);font-size:16px;padding:12px 16px;background:var(--cell);border-radius:8px;margin:0 0 16px;overflow-x:auto}
-.margin-note{border-left:3px solid var(--hand);padding:4px 0 4px 16px;margin:24px 0;transform:rotate(-.6deg)}
+.formula{font-family:var(--mono);font-size:15px;padding:14px 18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:0 0 20px;overflow-x:auto;line-height:1.6}
+.margin-note{border-left:3px solid var(--hand);padding:6px 0 6px 18px;margin:30px 0;transform:rotate(-.6deg)}
 .margin-note .hand{display:block}
 .margin-note .big{font-family:var(--ui);font-weight:800;font-size:34px;color:var(--ink);letter-spacing:-.02em;display:block;line-height:1.1;margin-top:2px}
-.tbl{overflow-x:auto;margin:6px 0 20px}
-.tbl table{border-collapse:collapse;width:100%;font-family:var(--ui);font-size:15px}
-.tbl th,.tbl td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left}
-.tbl th{font-size:13px;color:var(--muted);font-weight:600}
+.tbl{overflow-x:auto;margin:8px 0 24px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.tbl table{border-collapse:collapse;width:100%;font-family:var(--read);font-size:14.5px;line-height:1.45}
+.tbl th,.tbl td{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:var(--surface-2)}
 .tbl td.r,.tbl th.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
-.ch-foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+.ex{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:26px 0;box-shadow:var(--shadow)}
+.ex-h{display:flex;align-items:center;gap:8px;font-family:var(--ui);font-weight:700;font-size:15px;color:var(--ex-h);margin-bottom:8px}
+.ex p:last-child,.ex ul:last-child{margin-bottom:0}
+.todo{background:var(--todo-bg);border-radius:14px;padding:18px 22px;margin:40px 0 0}
+.todo-h{display:flex;align-items:center;gap:8px;font-family:var(--ui);font-weight:700;font-size:15px;color:var(--ink)}
+.todo ul{margin:8px 0 0 !important}
+.ch-foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--line)}
 .ch-foot .nav{display:flex;gap:10px;flex-wrap:wrap}
 
 /* Outils */
-.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding-bottom:64px}
-.tool{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.tool.wide{grid-column:1/-1}
-.tool h3{font-size:24px;font-weight:700}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding-bottom:72px}
+.tool{padding:26px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.tool .th{display:flex;align-items:center;gap:12px}
+.tool .th .icb{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--sky);color:var(--ink)}
+.tool:nth-child(2) .th .icb{background:var(--pink)}
+.tool h3{font-size:22px;font-weight:700}
 .tool p.d{margin:0;color:var(--muted);font-size:15px}
 .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.field label{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
-.field input,.field select{width:100%;font:500 16px var(--mono);padding:10px 12px;border-radius:9px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
-.field input:focus,.field select:focus{border-color:var(--accent);outline:none}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--muted)}
+.field input,.field select{width:100%;font:500 16px var(--mono);padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink)}
+.field input:focus,.field select:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
 .out{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
-.out div{padding:12px 14px;border-radius:10px;background:var(--cell)}
-.out b{display:block;font-size:30px;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+.out div{padding:14px 16px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.out b{display:block;font-family:var(--ui);font-size:30px;font-weight:800;line-height:1.1;letter-spacing:-.02em}
 .out span{font-size:13px;color:var(--muted)}
 .pos{color:var(--felt)} .neg{color:var(--red)}
 .limits{display:flex;gap:6px;flex-wrap:wrap}
-.limits span,.limits button{font:500 13px var(--mono);padding:5px 10px;border-radius:999px;border:1.5px solid var(--line);color:var(--muted);background:transparent}
-.limits button{cursor:pointer}
-.limits button:hover{border-color:var(--ink);color:var(--ink)}
+.limits span{font:500 13px var(--mono);padding:5px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:transparent}
 .limits span.ok{border-color:var(--felt);color:var(--felt);font-weight:600}
-.limits span.max{background:var(--felt);border-color:var(--felt);color:#fff}
-.range-wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:start}
-.gridbox{overflow-x:auto}
-.grid13{display:grid;grid-template-columns:repeat(13,34px);gap:2px;width:max-content}
-.grid13 div{height:34px;display:flex;align-items:center;justify-content:center;font:600 11px var(--mono);border-radius:4px;background:var(--cell);color:var(--muted);user-select:none}
-.grid13 div.on{background:var(--felt);color:#fff}
-.grid13 div.pair{box-shadow:inset 0 0 0 1.5px var(--line)}
-.grid13 div.on.pair{box-shadow:none}
-.rangeside{display:flex;flex-direction:column;gap:14px;min-width:0}
-input[type=range]{width:100%;accent-color:var(--felt)}
-.hover-info{min-height:44px;font-size:14px;color:var(--muted)}
-.hover-info b{color:var(--ink);font-family:var(--mono)}
+.limits span.max{background:var(--felt);border-color:var(--felt);color:var(--felt-ink)}
 
-footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:14px;color:var(--muted)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+footer{border-top:1px solid var(--line);padding-block:32px 44px;font-size:14px;color:var(--muted);background:var(--surface)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px}
 footer .rg{max-width:38em}
 footer b{color:var(--ink)}
 
+@media (max-width:1000px){
+  .benefits{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media (max-width:900px){
-  .hero{grid-template-columns:1fr;gap:32px;padding-block:36px 24px}
-  .letter{grid-template-columns:1fr;gap:12px}
-  .part{grid-template-columns:1fr;gap:10px}
-  .chapter{grid-template-columns:1fr;gap:20px}
+  .hero{grid-template-columns:1fr;gap:40px;padding-block:44px 32px}
+  .letter{grid-template-columns:1fr;gap:12px;padding:26px}
+  .part{grid-template-columns:1fr;gap:16px;padding:22px}
+  .chapter{grid-template-columns:1fr;gap:20px;padding-block:28px 56px}
   .toc{display:none}
   .teaser,.tools{grid-template-columns:1fr}
-  .range-wrap{grid-template-columns:1fr}
 }
-@media (max-width:520px){
-  header.top{position:static}
+@media (max-width:760px){
+  nav.main,.top-right{display:none}
+  .burger{display:inline-flex}
+  .mobile-menu:not([hidden]){display:flex;flex-direction:column;gap:4px;padding:10px 16px 16px;border-bottom:1px solid var(--line);background:var(--bg)}
+  .mobile-menu a{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-radius:12px;text-decoration:none;font-weight:600}
+  .mobile-menu a[aria-current="page"]{background:var(--surface);box-shadow:var(--shadow)}
+  .mobile-menu .prog-pill{padding:10px 14px}
+  .mobile-menu .bar{flex:1}
+}
+@media (max-width:560px){
   .wrap{padding-inline:16px}
-  nav.main{margin-left:0;width:100%}
-  .grid13{grid-template-columns:repeat(13,24px)}
-  .grid13 div{height:24px;font-size:8px}
-  .chlist a{grid-template-columns:28px minmax(0,1fr) auto;gap:10px}
+  .benefits{grid-template-columns:1fr}
+  .hero h1{font-size:40px}
+  .chlist a{grid-template-columns:22px minmax(0,1fr) auto;gap:10px;padding:10px 6px}
+  .chlist .thumb{display:none}
+  .badge{font-size:12px}
   .chlist .r .min{display:none}
-  article.ch .prose{font-size:18px}
+  .part{padding:18px}
+  .machine{padding:18px}
+  .btn.big{width:100%}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
 </style>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#accueil" aria-label="Spinlab, accueil"><span class="chip" aria-hidden="true"></span>Spinlab <small>gratuit</small></a>
+    <a class="brand" href="#accueil" aria-label="Spinlab, accueil"><span class="chip" aria-hidden="true"></span>Spinlab <small>Gratuit</small></a>
     <nav class="main" aria-label="Navigation principale">
       <a href="#accueil" data-nav="accueil">Accueil</a>
       <a href="#programme" data-nav="programme">Le programme</a>
       <a href="#outils" data-nav="outils">Les outils</a>
     </nav>
-    <div class="prog-pill" title="Chapitres lus"><div class="bar"><i id="barFill"></i></div><span class="num" id="progTxt">0/13</span></div>
+    <div class="top-right">
+      <div class="prog-pill" title="Chapitres lus"><div class="bar"><i class="barFill"></i></div><span class="num progTxt">0/14</span></div>
+      <a class="btn primary small" href="#programme" id="topCta">Commencer</a>
+    </div>
+    <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mmenu"><svg class="ic" viewBox="0 0 24 24"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="17" y2="17"/></svg></button>
   </div>
+  <nav class="mobile-menu" id="mmenu" hidden aria-label="Menu">
+    <a href="#accueil" data-nav="accueil">Accueil</a>
+    <a href="#programme" data-nav="programme">Le programme</a>
+    <a href="#outils" data-nav="outils">Les outils</a>
+    <div class="prog-pill"><span>Progression</span><div class="bar"><i class="barFill"></i></div><span class="num progTxt">0/14</span></div>
+  </nav>
 </header>
 
 <main id="app"></main>
@@ -239,27 +338,170 @@ const DIST=[
 const EM=DIST.reduce((s,d)=>s+d.m*d.p,0);
 const BUYIN=5;
 
-/* Équité préflop contre une main aléatoire (simulation, 40 000 tirages par main) */
-const EQ={"AA":85.0,"AKs":67.4,"AQs":66.3,"AJs":65.4,"ATs":64.4,"A9s":63.1,"A8s":61.7,"A7s":60.6,"A6s":59.8,"A5s":60.1,"A4s":59.1,"A3s":58.0,"A2s":57.5,"AKo":65.5,"KK":82.2,"KQs":64.0,"KJs":62.5,"KTs":61.6,"K9s":59.8,"K8s":58.6,"K7s":57.9,"K6s":56.9,"K5s":55.8,"K4s":54.8,"K3s":53.9,"K2s":52.7,"AQo":64.9,"KQo":61.8,"QQ":79.9,"QJs":60.0,"QTs":59.6,"Q9s":57.7,"Q8s":56.0,"Q7s":54.1,"Q6s":53.7,"Q5s":53.2,"Q4s":52.1,"Q3s":50.8,"Q2s":50.4,"AJo":63.7,"KJo":60.5,"QJo":58.1,"JJ":77.8,"JTs":57.7,"J9s":55.8,"J8s":54.2,"J7s":52.8,"J6s":50.7,"J5s":49.9,"J4s":48.9,"J3s":47.8,"J2s":47.7,"ATo":62.4,"KTo":60.0,"QTo":57.1,"JTo":55.1,"TT":75.1,"T9s":53.9,"T8s":52.3,"T7s":50.6,"T6s":48.7,"T5s":47.2,"T4s":47.1,"T3s":46.0,"T2s":44.4,"A9o":60.4,"K9o":58.6,"Q9o":55.3,"J9o":53.4,"T9o":51.5,"99":71.8,"98s":51.3,"97s":49.3,"96s":47.6,"95s":45.4,"94s":43.9,"93s":43.5,"92s":42.3,"A8o":59.8,"K8o":56.0,"Q8o":53.2,"J8o":51.2,"T8o":50.3,"98o":48.5,"88":69.0,"87s":48.2,"86s":46.0,"85s":44.4,"84s":42.3,"83s":40.9,"82s":40.3,"A7o":59.0,"K7o":55.4,"Q7o":51.7,"J7o":49.5,"T7o":47.5,"97o":46.1,"87o":44.9,"77":66.5,"76s":45.8,"75s":43.8,"74s":42.0,"73s":40.2,"72s":38.5,"A6o":57.9,"K6o":54.2,"Q6o":51.2,"J6o":47.7,"T6o":46.0,"96o":44.7,"86o":42.6,"76o":42.5,"66":63.3,"65s":43.1,"64s":41.1,"63s":39.5,"62s":37.8,"A5o":58.0,"K5o":53.6,"Q5o":49.9,"J5o":46.9,"T5o":44.1,"95o":42.6,"85o":41.5,"75o":40.5,"65o":40.4,"55":60.4,"54s":41.4,"53s":39.8,"52s":37.8,"A4o":57.2,"K4o":52.6,"Q4o":49.0,"J4o":46.0,"T4o":43.5,"94o":41.0,"84o":39.6,"74o":38.5,"64o":37.9,"54o":38.4,"44":57.0,"43s":38.6,"42s":37.0,"A3o":55.8,"K3o":51.8,"Q3o":48.3,"J3o":45.4,"T3o":42.7,"93o":40.2,"83o":37.4,"73o":36.3,"63o":36.0,"53o":36.0,"43o":35.0,"33":54.0,"32s":36.1,"A2o":54.7,"K2o":50.7,"Q2o":47.0,"J2o":44.5,"T2o":41.3,"92o":39.1,"82o":37.1,"72o":34.4,"62o":34.0,"52o":34.1,"42o":33.2,"32o":32.6,"22":50.8};
+/* Illustrations des chapitres (SVG dessinés dans la page, couleurs liées au thème) */
+const IL=(()=>{
+  const chip=(x,y,r,c)=>`<circle cx="${x}" cy="${y}" r="${r}" class="${c}"/><circle cx="${x}" cy="${y}" r="${(r*0.68).toFixed(1)}" class="dash"/>`;
+  const stack=(x,y,n,c,r=13)=>{let s="";for(let i=0;i<n;i++){const yy=y-i*5;s+=`<ellipse cx="${x}" cy="${yy}" rx="${r}" ry="${(r*0.42).toFixed(1)}" class="${c} ss"/>`;}
+    const top=y-(n-1)*5;return s+`<ellipse cx="${x}" cy="${top}" rx="${(r*0.62).toFixed(1)}" ry="${(r*0.24).toFixed(1)}" class="dash"/>`;};
+  const card=(x,y,rank,red,rot=0,down=false,w=30,h=42)=>`<g transform="translate(${x} ${y}) rotate(${rot})">`+
+    (down?`<rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" rx="4" class="a ss2"/><rect x="${-w/2+4}" y="${-h/2+4}" width="${w-8}" height="${h-8}" rx="2" class="back"/>`
+    :`<rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" rx="4" class="s ks1"/><text x="0" y="6" text-anchor="middle" class="t ${red?"trd":""}" font-size="18">${rank}</text>`)+`</g>`;
+  const seat=(x,y,label)=>`<circle cx="${x}" cy="${y}" r="17" class="s ks1"/>`+(label?`<text x="${x}" y="${y+4}" text-anchor="middle" class="t" font-size="11">${label}</text>`:"");
+  const dealer=(x,y)=>`<circle cx="${x}" cy="${y}" r="8" class="s ks1"/><text x="${x}" y="${y+3.5}" text-anchor="middle" class="t" font-size="9">D</text>`;
+  const table=(cx,cy,rx,ry)=>`<ellipse cx="${cx}" cy="${cy}" rx="${rx+7}" ry="${ry+7}" class="rim"/><ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" class="tb"/>`;
+  const bg=`<rect width="320" height="140" class="bg"/>`;
+  const walk=()=>{let seed=7,y=92,p=[];const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
+    for(let x=24;x<=296;x+=8){y+= (rnd()-0.52)*16; y=Math.max(40,Math.min(118,y)); if(x===216)y-=46; p.push([x,y.toFixed(1)]);}return p;};
+  const W=walk();
+  return [
+  /* 0 formats */ ()=>bg+`<line x1="108" y1="16" x2="108" y2="124" class="ks1 dashed op"/><line x1="212" y1="16" x2="212" y2="124" class="ks1 dashed op"/>`+
+    table(56,62,30,20)+[0,60,120,180,240,300].map(a=>{const r=a*Math.PI/180;return `<circle cx="${(56+43*Math.cos(r)).toFixed(1)}" cy="${(62+33*Math.sin(r)).toFixed(1)}" r="8" class="s ks1"/>`;}).join("")+
+    `<text x="56" y="67" text-anchor="middle" class="t tw" font-size="13">€</text><text x="56" y="126" text-anchor="middle" class="t" font-size="13">Cash game</text>`+
+    `<path d="M141 32 Q126 32 128 46 Q130 58 144 58" class="st-g" fill="none" stroke-width="4"/><path d="M179 32 Q194 32 192 46 Q190 58 176 58" class="st-g" fill="none" stroke-width="4"/>`+
+    `<path d="M140 28 H180 V46 Q180 72 160 74 Q140 72 140 46 Z" class="g"/><rect x="156" y="74" width="8" height="12" class="g"/><rect x="144" y="86" width="32" height="9" rx="2" class="k"/>`+
+    `<text x="160" y="126" text-anchor="middle" class="t" font-size="13">Tournoi</text>`+
+    `<circle cx="264" cy="60" r="32" class="s ks1"/>`+[0,45,90,135].map(a=>{const r=a*Math.PI/180,dx=(32*Math.cos(r)).toFixed(1),dy=(32*Math.sin(r)).toFixed(1);return `<line x1="${264-dx}" y1="${60-dy}" x2="${264+ +dx}" y2="${60+ +dy}" class="ks1"/>`;}).join("")+
+    `<circle cx="264" cy="60" r="14" class="a"/><text x="264" y="64" text-anchor="middle" class="t tw" font-size="11">×2</text>`+
+    `<text x="264" y="126" text-anchor="middle" class="t" font-size="13">Spin</text>`,
+  /* 1 format */ ()=>bg+table(160,74,104,42)+seat(160,22)+seat(48,108)+seat(272,108)+stack(160,50,3,"a",9)+stack(82,96,3,"rd",9)+stack(238,96,3,"g",9)+
+    `<circle cx="160" cy="80" r="21" class="s ks1"/>`+[0,60,120].map(a=>`<line x1="160" y1="80" x2="${(160+21*Math.cos(a*Math.PI/180)).toFixed(1)}" y2="${(80+21*Math.sin(a*Math.PI/180)).toFixed(1)}" class="ks1"/><line x1="160" y1="80" x2="${(160-21*Math.cos(a*Math.PI/180)).toFixed(1)}" y2="${(80-21*Math.sin(a*Math.PI/180)).toFixed(1)}" class="ks1"/>`).join("")+
+    `<circle cx="160" cy="80" r="11" class="a"/><text x="160" y="84" text-anchor="middle" class="t tw" font-size="11">×2</text>`,
+  /* 2 rake */ ()=>bg+stack(46,112,6,"a")+stack(84,112,6,"rd")+stack(122,112,6,"f")+
+    `<path d="M146 92 L186 92" class="ks2 arrow"/><polygon points="186,86 196,92 186,98" class="k"/>`+stack(232,112,10,"g",17)+
+    `<path d="M252 50 Q262 28 280 26" class="ks1 dashed"/>`+chip(250,58,8,"g")+
+    `<polygon points="268,30 286,16 304,30" class="k"/><rect x="272" y="30" width="28" height="20" class="k"/><rect x="283" y="38" width="6" height="12" class="bg"/>`+
+    `<text x="286" y="68" text-anchor="middle" class="t" font-size="13">rake</text>`,
+  /* 3 win% */ ()=>{let s=bg;let k=0;for(let j=0;j<5;j++)for(let i=0;i<20;i++){s+=`<circle cx="${30+i*13.3}" cy="${30+j*20}" r="5" class="${k<36?"f":"dot0"}"/>`;k++;}
+    return s+`<rect x="24" y="118" width="${36/100*270}" height="4" rx="2" class="a"/><text x="${24+36/100*270+6}" y="124" class="t" font-size="11">36 sur 100</text>`;},
+  /* 4 variance */ ()=>bg+`<line x1="24" y1="92" x2="296" y2="92" class="ks1 dashed"/>`+
+    `<polyline points="${W.map(p=>p.join(",")).join(" ")}" class="ks2" fill="none"/>`+
+    (()=>{const pk=W.find(p=>p[0]===216);return `<circle cx="216" cy="${pk[1]}" r="9" class="g"/><text x="216" y="${pk[1]-14}" text-anchor="middle" class="t" font-size="12">×100</text>`;})(),
+  /* 5 rakeback */ ()=>bg+`<path d="M198 44 A48 48 0 1 0 208 86" class="ks3" fill="none"/><polygon points="200,34 212,50 194,52" class="a"/>`+stack(160,90,5,"f",15)+
+    chip(212,98,7,"g")+chip(228,82,6,"g")+`<text x="252" y="112" class="t" font-size="13">+20 %</text>`,
+  /* 6 bankroll */ ()=>bg+`<rect x="110" y="26" width="112" height="100" rx="14" class="jar"/><rect x="126" y="18" width="80" height="12" rx="4" class="k"/>`+
+    stack(134,118,6,"a",11)+stack(158,118,9,"f",11)+stack(182,118,7,"rd",11)+stack(204,118,10,"g",11)+
+    [["200",40],["150",64],["100",88]].map(([t,y])=>`<line x1="232" y1="${y}" x2="246" y2="${y}" class="ks1"/><text x="252" y="${y+4}" class="t" font-size="11">${t}</text>`).join(""),
+  /* 7 volume */ ()=>bg+[[62,44],[140,44],[62,102],[140,102]].map(([x,y],i)=>`<ellipse cx="${x}" cy="${y}" rx="32" ry="17" class="${i<2?"f":"f op"}"/>`+chip(x,y,5,"s")).join("")+
+    `<circle cx="244" cy="72" r="42" class="s ks2"/>`+Array.from({length:12},(_,i)=>{const a=i*Math.PI/6;return `<line x1="${(244+34*Math.cos(a)).toFixed(1)}" y1="${(72+34*Math.sin(a)).toFixed(1)}" x2="${(244+38*Math.cos(a)).toFixed(1)}" y2="${(72+38*Math.sin(a)).toFixed(1)}" class="ks1"/>`;}).join("")+
+    `<line x1="244" y1="72" x2="244" y2="44" class="ks3"/><line x1="244" y1="72" x2="264" y2="82" class="ks2"/><circle cx="244" cy="72" r="4" class="k"/>`,
+  /* 8 tilt */ ()=>{const arc=(a0,a1,c)=>{const r=78,cx=160,cy=124,p=a=>[(cx+r*Math.cos(a)).toFixed(1),(cy-r*Math.sin(a)).toFixed(1)];const [x0,y0]=p(a0),[x1,y1]=p(a1);return `<path d="M${x0} ${y0} A${r} ${r} 0 0 1 ${x1} ${y1}" class="${c}" fill="none" stroke-width="18"/>`;};
+    return bg+arc(Math.PI,Math.PI*0.67,"st-f")+arc(Math.PI*0.65,Math.PI*0.35,"st-g")+arc(Math.PI*0.33,0,"st-r")+
+    `<line x1="160" y1="124" x2="${(160+64*Math.cos(Math.PI*0.2)).toFixed(1)}" y2="${(124-64*Math.sin(Math.PI*0.2)).toFixed(1)}" class="ks3"/><circle cx="160" cy="124" r="8" class="k"/>`+
+    `<text x="72" y="136" class="t" font-size="11" text-anchor="middle">calme</text><text x="248" y="136" class="t" font-size="11" text-anchor="middle">tilt</text>`;},
+  /* 9 suivi */ ()=>bg+`<polygon points="28,24 292,62 292,78 28,116" class="band"/><line x1="28" y1="70" x2="292" y2="70" class="ks1 dashed"/>`+
+    `<polyline points="28,100 50,48 72,90 94,56 116,82 138,60 160,78 182,64 204,75 226,66 248,72 270,68 292,70" class="ks2" fill="none"/>`+
+    `<text x="30" y="16" class="t" font-size="11">500 parties</text><text x="290" y="16" class="t" font-size="11" text-anchor="end">10 000 parties</text>`,
+  /* 10 bases 3 */ ()=>bg+table(160,72,108,44)+seat(160,20,"BB")+seat(48,110,"SB")+seat(272,110,"BTN")+dealer(244,94)+stack(232,80,3,"a",9)+
+    `<path d="M220 74 Q190 66 172 70" class="ks2 dashed"/><polygon points="172,64 162,71 173,76" class="k"/>`,
+  /* 11 tapis ou couché */ ()=>bg+card(44,70,"K",false,-8)+card(76,70,"9",true,6)+
+    `<path d="M104 70 L150 70" class="ks2"/><polygon points="150,63 162,70 150,77" class="k"/>`+stack(196,104,12,"a",20)+
+    `<text x="196" y="30" text-anchor="middle" class="t ta" font-size="16">PUSH</text>`+
+    `<g class="op">`+card(262,82,"",false,-24,true)+card(284,90,"",false,14,true)+`</g><text x="274" y="128" text-anchor="middle" class="t tm" font-size="12">FOLD</text>`,
+  /* 12 heads-up */ ()=>bg+table(160,70,116,40)+seat(28,70)+seat(292,70)+card(66,70,"A",false,-8,false,24,34)+card(88,70,"5",true,8,false,24,34)+
+    card(232,70,"",false,-8,true,24,34)+card(254,70,"",false,8,true,24,34)+stack(160,84,5,"g",14)+dealer(66,100),
+  /* 13 aller plus loin */ ()=>bg+[[60,3],[110,6],[160,9],[210,12],[260,15]].map(([x,n],i)=>stack(x,122,n,["a","f","rd","g","a"][i],15)).join("")+
+    `<line x1="260" y1="46" x2="260" y2="16" class="ks2"/><polygon points="260,16 284,24 260,32" class="rd"/>`
+  ];
+})();
+
 
 const PARTS=[
-  {id:1,title:"Est-ce qu'on peut vraiment gagner ?",desc:"Le format, le rake et le nombre de parties qu'il faut gagner. À lire avant de jouer la moindre main.",time:"environ 3 h"},
+  {id:1,title:"Est-ce qu'on peut vraiment gagner ?",desc:"Les trois grands formats, puis le Spin en détail : le rake et le nombre de parties qu'il faut gagner. À lire avant de jouer la moindre main.",time:"environ 3 h 30"},
   {id:2,title:"Tenir sur la durée",desc:"Bankroll, sessions, tilt, suivi des résultats. Ce qui fait qu'on est encore là dans six mois.",time:"environ 4 h"},
   {id:3,title:"Jouer mieux, dès ce soir",desc:"Des règles simples pour ta prochaine session, puis ce qui fait la différence ensuite.",time:"environ 8 h"}
 ];
 
 const note=(txt,big)=>`<div class="margin-note"><span class="hand">${txt}</span>${big?`<span class="big">${big}</span>`:""}</div>`;
 
+const ICONS={
+  arrow:'<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+  left:'<path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>',
+  check:'<path d="M20 6 9 17l-5-5"/>',
+  book:'<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>',
+  clock:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+  shield:'<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>',
+  calc:'<rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/>',
+  percent:'<line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>',
+  target:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  trend:'<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>',
+  bulb:'<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
+  list:'<path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/>',
+  userx:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" x2="22" y1="8" y2="13"/><line x1="22" x2="17" y1="8" y2="13"/>',
+  gift:'<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>',
+  zap:'<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>'
+};
+const ic=(n,cls="")=>`<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]}</svg>`;
+const ex=(title,body)=>`<div class="ex"><div class="ex-h">${ic("bulb")}${title}</div>${body}</div>`;
+const todo=items=>`<div class="todo"><div class="todo-h">${ic("list")}À faire avant la prochaine session</div><ul>${items.map(t=>`<li>${t}</li>`).join("")}</ul></div>`;
+
 const CH=[
 /* PARTIE 1 */
-{part:1,title:"Le format en cinq minutes",sub:"Trois joueurs, des blindes qui montent vite, une roue qui fixe le prix.",html:`
+{part:1,title:"Cash game, tournoi, Spin : trois façons de jouer",sub:"Les trois grands formats du poker en ligne, et pourquoi on a choisi le Spin.",html:`
+<p>Avant de plonger dans le Spin, prenons quelques minutes pour le situer. En ligne, tu vas croiser trois grands formats : le cash game, le tournoi et le Spin. Les règles du poker sont les mêmes partout. Ce qui change, c'est ce que valent tes jetons, combien de temps tu joues et à quel point la chance pèse sur tes résultats.</p>
+<p>Comprendre ces différences t'évitera une erreur fréquente : appliquer au Spin des conseils pensés pour un autre format. Un conseil de cash game du genre « ne mets jamais ton tapis préflop avec une main moyenne » est très bon à 100 bb, et catastrophique à 8 bb en Spin.</p>
+<h2>Le cash game</h2>
+<p>En cash game, tes jetons, c'est de l'argent réel. Si tu as 50 € devant toi, tu as 50 €. Les blindes ne montent jamais, tu t'assois quand tu veux et tu te lèves quand tu veux, en gardant ce que tu as sur la table. Tu peux aussi recaver si tu perds ton tapis.</p>
+<p>Les tapis sont profonds, souvent 100 grosses blindes. Il y a donc beaucoup de jeu après le flop : c'est le format le plus technique sur le postflop, avec des décisions sur trois rues et des pots qui grossissent vite. La salle prend une petite commission sur chaque pot, avec un plafond. On mesure son niveau en grosses blindes gagnées pour 100 mains (bb/100).</p>
+<p>Le gros avantage du cash game, c'est la variance plus faible : il n'y a pas de gros prix rare qui concentre la valeur. Son défaut pour un débutant, c'est qu'il faut maîtriser beaucoup de situations postflop avant d'être gagnant.</p>
+<h2>Le tournoi</h2>
+<p>En tournoi (on dit souvent MTT, pour <i>multi-table tournament</i>), tout le monde paie le même buy-in et reçoit le même nombre de jetons. Ces jetons n'ont aucune valeur en argent : ils servent seulement à rester en vie. Les blindes montent à intervalles réguliers, et le tournoi continue jusqu'à ce qu'un seul joueur ait tous les jetons.</p>
+<p>Il peut y avoir des centaines ou des milliers d'inscrits. En général, seuls 10 à 15 % des joueurs sont payés, et l'essentiel de la cagnotte va aux quelques places de la table finale. Un tournoi peut durer plusieurs heures, parfois toute une soirée.</p>
+<p>Un tournoi se joue en plusieurs phases : le début avec des tapis profonds (proche du cash game), le milieu où les blindes pèsent de plus en plus, la bulle (juste avant les places payées) où beaucoup de joueurs se crispent, puis la table finale. Chaque phase demande une stratégie différente. Et plus on approche de l'argent, plus survivre compte : c'est là que l'ICM entre en jeu.</p>
+${note("En tournoi, la plupart des joueurs repartent sans rien","85 à 90 %")}
+<p>C'est le format où la variance est la plus forte. Tu peux jouer très bien pendant des mois sans faire de grosse performance, puis tout rattraper en un soir.</p>
+<h2>Le Spin</h2>
+<p>Le Spin, c'est un tournoi miniature et ultra-rapide : trois joueurs, des tapis courts et des blindes qui montent toutes les deux ou trois minutes. Une roue fixe le prix avant la première carte, et dans la grande majorité des cas le vainqueur prend tout. Une partie dure moins de dix minutes. Comme en tournoi, tes jetons ne valent pas de l'argent tant que tu n'as pas gagné.</p>
+<p>En pratique, le Spin emprunte au tournoi (jetons sans valeur directe, blindes qui montent) mais ressemble beaucoup à la fin d'un tournoi jouée en boucle : peu de joueurs, peu de blindes, beaucoup de push or fold.</p>
+<h2>Les trois côte à côte</h2>
+<div class="tbl"><table style="min-width:600px"><thead><tr><th></th><th>Cash game</th><th>Tournoi</th><th>Spin</th></tr></thead><tbody>
+<tr><td><b>Joueurs</b></td><td>2 à 9 par table</td><td>Des dizaines à des milliers</td><td>3</td></tr>
+<tr><td><b>Durée</b></td><td>Libre</td><td>Plusieurs heures</td><td>Moins de 10 min</td></tr>
+<tr><td><b>Tapis de départ</b></td><td>Souvent 100 bb</td><td>Souvent 50 à 200 bb</td><td>Environ 25 bb</td></tr>
+<tr><td><b>Blindes</b></td><td>Fixes</td><td>Montent régulièrement</td><td>Montent très vite</td></tr>
+<tr><td><b>Tes jetons</b></td><td>De l'argent réel</td><td>Pas de valeur directe</td><td>Pas de valeur directe</td></tr>
+<tr><td><b>Qui est payé</b></td><td>Tu gardes ton tapis</td><td>10 à 15 % des joueurs</td><td>Le vainqueur, le plus souvent</td></tr>
+<tr><td><b>Variance</b></td><td>La plus faible</td><td>Très forte</td><td>Forte (la roue)</td></tr>
+<tr><td><b>Compétence clé</b></td><td>Le jeu après le flop</td><td>L'adaptation à chaque phase</td><td>Le push or fold et le heads-up</td></tr>
+<tr><td><b>Stat à suivre</b></td><td>bb/100</td><td>ROI et % de places payées</td><td>Win%</td></tr>
+</tbody></table></div>
+<h2>Pourquoi on commence par le Spin</h2>
+<p>Pour apprendre, le Spin a plusieurs avantages :</p>
+<ul>
+<li><b>Tu apprends vite.</b> Tu joues énormément de parties en peu de temps. Les mêmes situations (tapis court, heads-up) reviennent sans cesse, donc tu les travailles encore et encore.</li>
+<li><b>La stratégie de base est accessible.</b> À moins de 15 bb, une bonne partie des décisions se résume à des règles qu'on peut apprendre et vérifier.</li>
+<li><b>Les sessions sont courtes.</b> Une heure suffit pour faire une vraie session, facile à caser après le travail.</li>
+<li><b>Les compétences se transfèrent.</b> Le jeu à tapis court et le heads-up te serviront aussi en fin de tournoi.</li>
+</ul>
+<p>La contrepartie, c'est la roue : elle ajoute beaucoup de variance, et le rake pèse lourd parce que tu joues beaucoup de parties. C'est exactement ce que la suite de cette partie t'aide à mesurer.</p>
+${todo(["Ouvre le lobby Spin de ta salle et note le buy-in que tu vises.","Regarde combien de temps dure une partie : observe-en une ou deux sans jouer."])}`},
+
+{part:1,title:"Le Spin en cinq minutes",sub:"Trois joueurs, des blindes qui montent vite, une roue qui fixe le prix.",html:`
 <p>Tu t'assois avec deux inconnus. Chacun a payé le même buy-in. Avant la première carte, une roue tourne et fixe le prix : la plupart du temps deux fois la mise, parfois trois, cinq ou dix, et de temps en temps beaucoup plus.</p>
 <p>Ensuite, ça va très vite. Tu démarres avec environ 25 grosses blindes (souvent 500 jetons à 10/20). Les niveaux durent deux ou trois minutes. Au bout de quelques tours, tout le monde a moins de 15 bb. Dans la très grande majorité des parties, le gagnant prend tout.</p>
 ${note("Le chiffre à garder en tête","25 bb au départ")}
+<h2>Comment les tapis fondent</h2>
+<p>Voici une structure d'exemple avec 500 jetons chacun. Elle varie selon la salle, mais l'idée est toujours la même : la taille des tapis, mesurée en grosses blindes, s'effondre en quelques minutes.</p>
+<div class="tbl"><table><thead><tr><th>Niveau</th><th>Blindes</th><th class="r">Tapis moyen à 3 joueurs</th><th class="r">Tapis moyen en heads-up</th></tr></thead><tbody>
+<tr><td>1</td><td>10/20</td><td class="r">25 bb</td><td class="r">37,5 bb</td></tr>
+<tr><td>2</td><td>15/30</td><td class="r">16,7 bb</td><td class="r">25 bb</td></tr>
+<tr><td>3</td><td>20/40</td><td class="r">12,5 bb</td><td class="r">18,8 bb</td></tr>
+<tr><td>4</td><td>25/50</td><td class="r">10 bb</td><td class="r">15 bb</td></tr>
+<tr><td>5</td><td>30/60</td><td class="r">8,3 bb</td><td class="r">12,5 bb</td></tr>
+</tbody></table></div>
+<p>Au bout de dix minutes environ, on est déjà dans la zone du push or fold. Ce qui compte, c'est donc moins ton nombre de jetons que ton nombre de grosses blindes. Prends l'habitude de toujours raisonner en bb.</p>
 <h2>Ce que ça change</h2>
 <p>Le Spin ne ressemble pas à du cash game en accéléré. Avec des tapis aussi courts, il reste peu de jeu après le flop. Les décisions qui comptent se prennent avant, et la partie se termine presque toujours en tête-à-tête.</p>
-<p>Bonne nouvelle : ça veut dire que tu peux progresser vite. Si tu maîtrises le tapis ou couché et le heads-up, tu as déjà fait une bonne partie du chemin. C'est pour ça que la partie 3 y passe autant de temps.</p>
-<p>Dernière chose : les règles changent d'une salle à l'autre (taille des tapis, durée des niveaux, table des multiplicateurs). Jette un œil au lobby de la tienne avant de lire la suite, tu pourras refaire tous les calculs avec tes chiffres.</p>`},
+<p>Bonne nouvelle : ça veut dire que tu peux progresser vite. Si tu maîtrises les règles du push or fold et le heads-up, tu as déjà fait une bonne partie du chemin. C'est pour ça que la partie 3 y passe autant de temps.</p>
+<h2>Le vocabulaire de base</h2>
+<ul>
+<li><b>bb</b> : grosse blinde. On compte les tapis en bb : 400 jetons à 20/40, c'est 10 bb.</li>
+<li><b>Tapis effectif</b> : le plus petit des deux tapis en jeu. Si tu as 20 bb et ton adversaire 6 bb, vous jouez en réalité pour 6 bb.</li>
+<li><b>Heads-up</b> : le tête-à-tête, quand il ne reste que deux joueurs.</li>
+<li><b>Push or fold</b> : la stratégie des tapis courts, où l'on part à tapis ou on se couche.</li>
+<li><b>Hyper-turbo</b> : un tournoi dont les blindes montent très vite. Le Spin en fait partie.</li>
+</ul>
+<p>Dernière chose : les règles changent d'une salle à l'autre (taille des tapis, durée des niveaux, table des multiplicateurs). Jette un œil au lobby de la tienne avant de lire la suite, tu pourras refaire tous les calculs avec tes chiffres.</p>
+${todo(["Note la taille des tapis, la durée des niveaux et la structure de blindes de ta salle.","Pendant ta prochaine partie, convertis ton tapis en bb à chaque niveau."])}`},
 
 {part:1,title:"Le rake, ce qu'il te coûte vraiment",sub:"Il est caché dans la roue. On va le sortir de là.",html:`
 <p>Personne n'aime parler du rake. C'est pourtant lui qui décide si tu peux gagner ou pas.</p>
@@ -267,7 +509,10 @@ ${note("Le chiffre à garder en tête","25 bb au départ")}
 <h2>Le calculer toi-même</h2>
 <p>Trois joueurs misent 1 buy-in chacun, donc 3 au total. Si le multiplicateur moyen de la roue vaut E[m], la salle rend en moyenne E[m] buy-ins. Le reste lui revient :</p>
 <div class="formula">rake = 1 − E[m] / 3</div>
-<p>Avec la roue d'exemple de l'accueil, E[m] vaut environ 2,81. Ça fait à peu près 6,3 % de rake.</p>
+<p>Pour trouver E[m], prends la table officielle de ta salle et fais la somme de chaque multiplicateur multiplié par sa probabilité. Avec la roue d'exemple de l'accueil :</p>
+<div class="formula">2 × 0,76 + 3 × 0,15 + 5 × 0,06 + 10 × 0,025 + 25 × 0,004 + 100 × 0,0009 + 1 000 × 0,0001 ≈ 2,81</div>
+<p>Ça fait environ 6,3 % de rake.</p>
+${ex("Exemple : une partie à 5 €",`<p>Les trois joueurs mettent 15 € au total. En moyenne, la roue rend 2,81 × 5 = 14,05 €. La salle garde donc 0,95 € par partie, soit environ 0,32 € par joueur. Ça paraît peu. Sur 1 000 parties, ça fait 317 € de rake pour toi.</p>`)}
 <h2>Combien de parties il faut gagner</h2>
 <p>Si le gagnant prend tout, tu es à zéro quand tu gagnes une partie sur E[m]. Autrement dit :</p>
 <div class="formula">win% pour être à zéro = 1 / (3 × (1 − rake))</div>
@@ -279,7 +524,15 @@ ${note("Le chiffre à garder en tête","25 bb au départ")}
 <tr><td>10 %</td><td class="r">2,70</td><td class="r">37,0 %</td></tr>
 </tbody></table></div>
 <p>Sans rake, un joueur moyen gagnerait une partie sur trois, soit 33,3 %. Chaque point de rake t'oblige à faire un peu mieux que ça, juste pour ne pas perdre d'argent.</p>
-${note("Le rake est souvent plus lourd sur les petites limites. Refais le calcul pour chaque buy-in que tu joues.")}`},
+${note("Le rake est souvent plus lourd sur les petites limites. Refais le calcul pour chaque buy-in que tu joues.")}
+<h2>Ce que ça veut dire pour toi</h2>
+<p>Le rake n'est pas un détail. À 7 %, tu dois battre tes adversaires assez nettement pour simplement récupérer ta mise. Ça a trois conséquences pratiques :</p>
+<ul>
+<li><b>Choisis ta salle en connaissant son rake.</b> Deux salles avec des roues différentes peuvent avoir un point de rake d'écart, ce qui change beaucoup sur un an.</li>
+<li><b>Regarde plusieurs limites.</b> Monter d'une limite peut faire baisser le rake. Mais ne monte jamais pour ça si ta bankroll ne suit pas (chapitre 7).</li>
+<li><b>Ne te compare pas à 33 %.</b> Un win% de 34 % n'est pas « un peu au-dessus de la moyenne » : c'est perdant.</li>
+</ul>
+${todo(["Trouve la table des multiplicateurs de ta salle pour ton buy-in.","Calcule E[m], puis ton rake et ton win% pour être à zéro. L'outil « Suis-je rentable ? » peut t'aider."])}`},
 
 {part:1,title:"Le win% à viser",sub:"Combien de parties gagner pour être un joueur rentable.",html:`
 <p>On pourrait suivre des dizaines de stats. Au début, une seule compte vraiment : le pourcentage de parties que tu gagnes. Tout le reste en découle.</p>
@@ -293,8 +546,22 @@ ${note("Le rake est souvent plus lourd sur les petites limites. Refais le calcul
 </tbody></table></div>
 <p>Regarde l'écart entre 34 et 38 %. Quatre points, c'est quatre parties gagnées de plus sur cent. C'est pourtant ce qui sépare quelqu'un qui perd doucement de quelqu'un qui gagne correctement.</p>
 ${note("Un point de win% en plus, c'est à peu près","+2,8 pts de ROI")}
+<h2>D'où vient ton win%</h2>
+<p>Pour gagner une partie, il faut deux choses : arriver en heads-up, puis gagner ce heads-up. Ton win% est le produit des deux :</p>
+<div class="formula">win% = % de parties où tu arrives en heads-up × % de heads-up gagnés</div>
+<p>Un joueur moyen arrive en heads-up deux fois sur trois (deux joueurs sur trois y arrivent) et gagne la moitié de ses heads-up : 66,7 % × 50 % = 33,3 %. Pour atteindre 38 %, il faut améliorer l'un ou l'autre, ou les deux.</p>
+<div class="tbl"><table><thead><tr><th>Arrivée en heads-up</th><th class="r">Heads-up gagnés</th><th class="r">Win%</th></tr></thead><tbody>
+<tr><td>66,7 % (moyenne)</td><td class="r">50 %</td><td class="r">33,3 %</td></tr>
+<tr><td>66,7 %</td><td class="r">57 %</td><td class="r">38,0 %</td></tr>
+<tr><td>70 %</td><td class="r">54 %</td><td class="r">37,8 %</td></tr>
+<tr><td>72 %</td><td class="r">56 %</td><td class="r">40,3 %</td></tr>
+</tbody></table></div>
+<p>C'est une façon très utile de diagnostiquer ton jeu. Si tu sors souvent troisième, travaille le jeu à trois (chapitre 11). Si tu arrives souvent en heads-up mais que tu le perds, travaille le heads-up (chapitre 13).</p>
 <h2>Et quand le deuxième est payé ?</h2>
-<p>Sur les gros multiplicateurs, plusieurs places sont payées et le calcul change un peu. Ces tirages sont rares, donc au quotidien ton win% reste la meilleure boussole.</p>`},
+<p>Sur les gros multiplicateurs, plusieurs places sont payées et le calcul change un peu. Ces tirages sont rares, donc au quotidien ton win% reste la meilleure boussole.</p>
+<h2>Un objectif réaliste</h2>
+<p>Ne vise pas 45 % dès le premier mois. Un bon premier objectif, c'est de dépasser nettement ton seuil de rentabilité, par exemple de deux points. Une fois que c'est stable sur plusieurs milliers de parties, vise le point suivant.</p>
+${todo(["Calcule ton win% sur tes dernières parties, même s'il y en a peu.","Si ta salle ou ton logiciel le permet, sépare ton taux d'arrivée en heads-up et ton taux de heads-up gagnés."])}`},
 
 {part:1,title:"La variance de la roue",sub:"Pourquoi tu peux bien jouer et perdre pendant des semaines.",html:`
 <p>Un jour, tu vas enchaîner 2 000 parties en jouant bien et finir perdant. Ça arrive à tout le monde, et c'est surtout la faute de la roue.</p>
@@ -310,24 +577,44 @@ ${note("Un point de win% en plus, c'est à peu près","+2,8 pts de ROI")}
 </tbody></table></div>
 <p>Environ 10 % de la valeur vient des tirages ×25 et plus. Ils tombent quelques fois par millier de parties, et il faut encore les gagner. Tant que tu n'as pas eu ta part, tes résultats en euros ne disent pas grand-chose de ton niveau.</p>
 ${note("Un ×1 000 tous les 10 000 spins en moyenne. N'organise pas ta vie autour.")}
+<h2>À quoi ça ressemble en vrai</h2>
+<p>On a simulé 5 000 joueurs qui gagnent tous 38 % de leurs parties, avec la roue d'exemple. Ils ont exactement le même niveau. Voici ce qui leur arrive :</p>
+<div class="tbl"><table><thead><tr><th>Après…</th><th class="r">Joueurs encore perdants</th></tr></thead><tbody>
+<tr><td>1 000 parties</td><td class="r">37 %</td></tr>
+<tr><td>5 000 parties</td><td class="r">17 %</td></tr>
+<tr><td>10 000 parties</td><td class="r">8 %</td></tr>
+</tbody></table></div>
+<p>Plus d'un joueur gagnant sur trois est dans le rouge après 1 000 parties. Et sur 10 000 parties, la moitié de ces joueurs connaissent à un moment une baisse de plus de 165 buy-ins par rapport à leur plus haut. Un sur dix dépasse 270 buy-ins.</p>
+${note("Plus gros « downswing » d'un joueur à 38 % sur 10 000 parties, dans la moitié des cas","165 buy-ins")}
+<p>Ces chiffres dépendent de la roue de ta salle, mais l'ordre de grandeur est le bon. Si ça te semble énorme, c'est normal : c'est la réalité du format, et c'est pour ça que la bankroll compte autant.</p>
 <h2>Comment vivre avec</h2>
 <ul>
 <li>Juge ton niveau sur ton win%, pas sur ton compte en banque.</li>
-<li>Prévois une bankroll qui encaisse de longues périodes sans gros tirage. On en parle au chapitre 6.</li>
+<li>Regarde ton résultat « ajusté au multiplicateur » (chapitre 10), qui retire la chance de la roue.</li>
+<li>Prévois une bankroll qui encaisse de longues périodes sans gros tirage. On en parle au chapitre 7.</li>
 <li>Si tu gagnes un gros multiplicateur, profites-en. Ça ne veut pas dire que tu es prêt à monter de limite.</li>
-</ul>`},
+<li>Ne change pas ta stratégie après une mauvaise semaine. Change-la parce qu'une revue de tes coups t'a montré une erreur.</li>
+</ul>
+${todo(["Écris sur une feuille : « Une baisse de 150 buy-ins peut arriver en jouant bien. » Relis-la le jour où ça arrive.","Regarde combien de gros multiplicateurs (×25 et plus) tu as joués et gagnés jusqu'ici."])}`},
 
 {part:1,title:"Rakeback et fidélité",sub:"Le petit levier que les débutants oublient.",html:`
-<p>La plupart des salles rendent une partie du rake : points de fidélité, cashback, bonus. Ce n'est pas un cadeau, c'est une partie de ta commission qui revient. Et ça change directement le nombre de parties qu'il te faut gagner.</p>
-<div class="formula">rake net = rake × (1 − rakeback)</div>
-<p>Un exemple : 7 % de rake avec 20 % de rakeback, ça donne un rake net de 5,6 %. Le win% pour être à zéro passe de 35,8 % à environ 35,3 %.</p>
+<p>La plupart des salles rendent une partie du rake : points de fidélité, cashback, bonus, missions. Ce n'est pas un cadeau, c'est une partie de ta commission qui revient. Et ça change directement le nombre de parties qu'il te faut gagner.</p>
+<h2>Le calcul</h2>
+<p>Le rakeback est versé sur ton volume, que tu gagnes ou non. Il s'ajoute donc directement à ton ROI :</p>
+<div class="formula">ROI = win% × E[m] − 1 + rake × rakeback</div>
+<p>Un exemple : 7 % de rake (E[m] = 2,79) avec 20 % de rakeback. Le rakeback te rapporte 7 % × 20 % = 1,4 % de chaque buy-in. Le win% pour être à zéro passe de 35,8 % à environ 35,3 %.</p>
 ${note("Un demi-point de moins. Pour un joueur juste à la limite, c'est la différence entre perdre et gagner.")}
+${ex("Exemple : un mois de jeu",`<p>Tu joues 3 000 parties à 5 € dans le mois, soit 15 000 € de buy-ins. Avec 7 % de rake, tu as payé 1 050 € de commission. Avec 20 % de rakeback, il t'en revient 210 €.</p><p>Avec un win% de 38 %, ton ROI passe de 6,0 % à 7,4 %. Sur le mois, ça fait environ 1 110 € de bénéfice au lieu de 900 €. Le rakeback représente près d'un cinquième de ton gain.</p>`)}
 <h2>Comparer les offres</h2>
 <ul>
-<li>Compare le rake net, pas le pourcentage affiché tout seul.</li>
-<li>Regarde les paliers. Certains programmes ne rendent vraiment qu'à très gros volume.</li>
-<li>Si un objectif de volume te pousse à jouer fatigué ou trop haut, laisse tomber le bonus.</li>
-</ul>`},
+<li>Compare le rake net (rake × (1 − rakeback)), pas le pourcentage de rakeback affiché tout seul.</li>
+<li>Regarde les paliers. Certains programmes ne rendent vraiment qu'à très gros volume, et les paliers se remettent parfois à zéro chaque mois.</li>
+<li>Vérifie sous quelle forme il est versé : argent réel, tickets, bonus à débloquer. Un bonus qu'il faut « jouer » vaut moins que de l'argent direct.</li>
+<li>Si un objectif de volume te pousse à jouer fatigué ou trop haut, laisse tomber le bonus. Perdre deux points de win% coûte bien plus que ce qu'il rapporte.</li>
+</ul>
+<h2>Les pièges</h2>
+<p>Le rakeback peut rendre rentable un joueur légèrement perdant. C'est une bonne chose, mais attention à ne pas t'endormir dessus : ton objectif reste de progresser. Un joueur qui ne gagne que grâce au rakeback est à la merci d'un changement de programme de la salle.</p>
+${todo(["Lis les conditions du programme de fidélité de ta salle et note ton taux de rakeback réel.","Refais le calcul de l'outil « Suis-je rentable ? » avec ce taux."])}`},
 
 /* PARTIE 2 */
 {part:2,title:"Gérer ta bankroll",sub:"Combien de buy-ins, quand monter, quand redescendre.",html:`
@@ -339,46 +626,89 @@ ${note("Un demi-point de moins. Pour un joueur juste à la limite, c'est la diff
 <tr><td>Tu acceptes de redescendre vite</td><td class="r">100 buy-ins</td><td class="r">500 €</td></tr>
 </tbody></table></div>
 ${note("En dessous de ça, on redescend. Sans discuter.","100 buy-ins")}
+<h2>Pourquoi autant ?</h2>
+<p>On a repris la simulation du chapitre 5 : un joueur qui gagne 38 % de ses parties, avec la roue d'exemple, joue 10 000 parties à la même limite sans jamais redescendre. Voici combien de fois il perd toute sa bankroll en route :</p>
+<div class="tbl"><table><thead><tr><th>Bankroll de départ</th><th class="r">Joueur à 38 %</th><th class="r">Joueur à 40 %</th></tr></thead><tbody>
+<tr><td>50 buy-ins</td><td class="r">53 %</td><td class="r">13 %</td></tr>
+<tr><td>100 buy-ins</td><td class="r">28 %</td><td class="r">1,5 %</td></tr>
+<tr><td>150 buy-ins</td><td class="r">13 %</td><td class="r">0,2 %</td></tr>
+<tr><td>200 buy-ins</td><td class="r">6 %</td><td class="r">moins de 0,1 %</td></tr>
+</tbody></table></div>
+<p>Même un joueur gagnant a plus d'une chance sur quatre de tout perdre avec 100 buy-ins s'il ne redescend jamais. C'est pour ça que la règle de descente compte autant que la taille de la bankroll : elle te protège quand les choses tournent mal.</p>
 <h2>Écris tes règles avant de jouer</h2>
 <p>Les décisions de bankroll se prennent mal en pleine session. Fixe-les à froid :</p>
 <ul>
 <li><b>Monter</b> quand tu as le nombre de buy-ins choisi pour la limite au-dessus.</li>
 <li><b>Redescendre</b> dès que tu passes sous 100 buy-ins de ta limite actuelle.</li>
-<li><b>Tenter ta chance</b> au-dessus avec un budget fixé à l'avance, par exemple 20 buy-ins. S'il part, tu redescends.</li>
+<li><b>Tenter ta chance</b> au-dessus avec un budget fixé à l'avance, par exemple 20 buy-ins. S'il part, tu redescends, sans le vivre comme un échec.</li>
 </ul>
-<p>Le calculateur de bankroll, dans les outils, te dit jusqu'où tu peux aller.</p>`},
+${ex("Exemple : un plan de progression",`<p>Tu as 1 000 € et tu suis la règle des 150 buy-ins.</p><ul><li>Tu peux jouer à 5 € (150 × 5 = 750 €).</li><li>Tu montes à 10 € quand tu atteins 1 500 €.</li><li>Tu redescends à 2 € si tu passes sous 500 € (100 × 5).</li><li>Tu peux tenter 10 € avec 200 € de budget (20 buy-ins) dès que tu dépasses 1 200 €. Si les 200 € partent, retour à 5 €.</li></ul>`)}
+<h2>Les erreurs classiques</h2>
+<ul>
+<li>Mélanger l'argent du poker et celui du quotidien, puis « recharger » après une mauvaise série.</li>
+<li>Monter de limite juste après un gros multiplicateur gagné.</li>
+<li>Retirer tous ses gains dès qu'on en a, et rester bloqué à la même limite avec une bankroll trop juste.</li>
+<li>Refuser de redescendre par fierté.</li>
+</ul>
+<p>Le calculateur de bankroll, dans les outils, te dit jusqu'où tu peux aller.</p>
+${todo(["Décide du montant exact de ta bankroll et mets-le à part.","Écris tes trois règles : quand monter, quand redescendre, quel budget pour tenter la limite au-dessus."])}`},
 
 {part:2,title:"Volume et sessions",sub:"Jouer beaucoup, oui. Mais dans de bonnes conditions.",html:`
 <p>Tu vas entendre partout qu'il faut faire du volume. C'est vrai : il faut beaucoup de parties pour que la chance s'équilibre. Mais 500 parties jouées fatigué valent moins que 200 jouées concentré.</p>
+<h2>Combien de parties par heure ?</h2>
+<p>Une partie dure en général cinq à huit minutes. Sur une table, tu en joues donc environ huit à dix par heure. À quatre tables, une trentaine. Sur un mois à raison d'une heure par jour, ça fait environ 1 000 parties : de quoi commencer à y voir clair, sans plus.</p>
 <h2>Une session type</h2>
 <ol>
-<li><b>Cinq minutes pour se mettre dedans.</b> Relis tes notes de la veille et une grille de tapis ou couché.</li>
+<li><b>Cinq minutes pour se mettre dedans.</b> Relis tes notes de la veille et les trois règles du push or fold.</li>
 <li><b>Une heure à une heure et demie de jeu</b>, avec un nombre de tables décidé avant.</li>
 <li><b>Dix minutes de pause.</b> Lève-toi, bois de l'eau, pas d'écran.</li>
 <li><b>Un quart d'heure de revue.</b> Note trois coups qui t'ont fait hésiter et regarde-les à tête reposée.</li>
 </ol>
+<h2>Les bonnes conditions</h2>
+<ul>
+<li><b>Un endroit calme.</b> Pas de télé en fond, pas de téléphone à côté. En Spin, une décision se prend en quelques secondes : la moindre distraction coûte.</li>
+<li><b>Un bon moment.</b> Joue quand tu es reposé. Une session après une grosse journée de travail sera moins bonne, et c'est normal.</li>
+<li><b>Un écran bien organisé.</b> Les tables côte à côte, sans chevauchement, avec la taille des tapis en bb bien visible si ta salle le permet.</li>
+<li><b>Une heure de fin.</b> Décide-la avant de t'asseoir.</li>
+</ul>
 <h2>Ajouter des tables</h2>
 <p>Commence à deux. Passe à trois, puis quatre, seulement quand tes décisions restent rapides et que ton win% ne baisse pas. Si tu rates des timers ou que tu cliques sans réfléchir, enlève une table. Il n'y a aucune honte à ça.</p>
-${note("Pour les premiers mois,","2 à 4 tables")}`},
+${note("Pour les premiers mois,","2 à 4 tables")}
+<p>Garde aussi une partie de ton temps pour le travail hors table. Un bon ratio pour débuter : une heure de revue ou d'étude pour trois à quatre heures de jeu. C'est là que tu progresses vraiment.</p>
+${todo(["Fixe ton planning de la semaine : quels jours, à quelle heure, combien de tables.","Prépare une petite fiche « avant session » avec tes règles principales."])}`},
 
 {part:2,title:"Garder la tête froide",sub:"Tout le monde tilte. Ce qui compte, c'est combien de temps.",html:`
 <p>Le tilt, c'est quand tu joues moins bien que d'habitude à cause d'une émotion : la frustration, la fatigue, l'envie de te refaire. En Spin, les parties s'enchaînent en quelques minutes. Le tilt aussi.</p>
+<h2>Les différentes formes de tilt</h2>
+<ul>
+<li><b>Le tilt de perte.</b> Tu as perdu plusieurs parties d'affilée et tu veux te refaire vite.</li>
+<li><b>Le tilt d'injustice.</b> Tu as perdu un tapis avec 80 % d'équité, en plus sur un ×25. Tu trouves ça injuste, et tu joues ensuite plus large.</li>
+<li><b>Le tilt contre un joueur.</b> Un adversaire t'agace, et tu veux absolument le battre, quitte à prendre de mauvaises décisions.</li>
+<li><b>Le tilt de fatigue.</b> Tu ne ressens rien de particulier, mais tu décides mal et lentement.</li>
+<li><b>Le tilt du gagnant.</b> Tout va bien, tu te crois intouchable et tu relâches ta discipline.</li>
+</ul>
 <h2>Les signes qui ne trompent pas</h2>
 <ul>
 <li>Tu relances une table juste après une défaite, sans attendre.</li>
 <li>Tu paies un tapis « pour voir » que tu aurais couché à froid.</li>
 <li>Tu penses au résultat de la session plus qu'au coup en cours.</li>
 <li>L'heure de fin prévue est passée et tu es toujours là.</li>
+<li>Tu ajoutes des tables pour « rattraper » plus vite.</li>
 </ul>
 <h2>Des garde-fous simples</h2>
 <ul>
 <li><b>Un stop-loss.</b> Tu arrêtes après une perte fixée d'avance, par exemple 15 buy-ins.</li>
 <li><b>Une heure de fin</b> décidée avant de commencer.</li>
-<li><b>Une vraie pause</b> après un bad beat sur un gros multiplicateur.</li>
+<li><b>Une vraie pause</b> après un bad beat sur un gros multiplicateur : lève-toi, marche deux minutes, respire calmement.</li>
 <li><b>Un carnet.</b> Une phrase sur ce qui t'a fait perdre le contrôle. Tu verras vite que ce sont toujours les mêmes choses.</li>
 </ul>
 ${note("Choisis ton stop-loss aujourd'hui, pas en pleine session.","15 buy-ins")}
-<p>Et si le jeu devient une source de stress ou de dettes, ou qu'il prend trop de place, parles-en. Joueurs Info Service répond au <span class="num">09 74 75 13 13</span>.</p>`},
+<h2>Changer ton regard sur les bad beats</h2>
+<p>Quand tu mets ton tapis avec 80 % d'équité, tu as pris une excellente décision. Tu perdras quand même une fois sur cinq. Ce n'est pas une anomalie, c'est prévu dans le calcul. Si tu juges tes décisions à leur qualité plutôt qu'à leur résultat, la plupart des bad beats perdent leur pouvoir de te faire tilter.</p>
+<p>Un exercice simple : après chaque session, note tes trois meilleures décisions, qu'elles aient gagné ou perdu. Ça t'entraîne à regarder la qualité du jeu, pas le résultat.</p>
+<h2>Le jeu doit rester un plaisir</h2>
+<p>Si le jeu devient une source de stress ou de dettes, que tu joues pour te refaire ou que tu caches tes pertes à tes proches, c'est le moment de faire une pause et d'en parler. Joueurs Info Service répond au <span class="num">09 74 75 13 13</span>. La plupart des salles permettent aussi de fixer des limites de dépôt ou de s'exclure temporairement.</p>
+${todo(["Choisis ton stop-loss et ton heure de fin pour la semaine.","Commence ton carnet de tilt : une ligne par session."])}`},
 
 {part:2,title:"Suivre tes résultats",sub:"À partir de combien de parties tu peux savoir si tu gagnes.",html:`
 <p>Ton win% sur 300 parties, c'est une impression. Sur 5 000, ça commence à être une mesure. Voici comment savoir où tu en es.</p>
@@ -391,29 +721,63 @@ ${note("Choisis ton stop-loss aujourd'hui, pas en pleine session.","15 buy-ins")
 </tbody></table></div>
 <p>À 1 000 parties, un joueur à 38 % peut en réalité être juste à l'équilibre. Il faut être patient.</p>
 ${note("Avant de conclure que tu bats ta limite :","5 000 parties")}
+<h2>Le résultat ajusté</h2>
+<p>Ton bénéfice en euros mélange deux choses : ton niveau et la chance de la roue. Pour retirer la roue, calcule ce que tu aurais gagné si chaque partie avait payé le multiplicateur moyen :</p>
+<div class="formula">résultat ajusté = parties gagnées × E[m] × buy-in − parties jouées × buy-in</div>
+${ex("Exemple",`<p>Tu as joué 1 000 parties à 5 € et tu en as gagné 380. Ton résultat ajusté vaut 380 × 2,81 × 5 − 1 000 × 5 = +339 €.</p><p>Ton résultat réel peut être de +50 € si tu n'as gagné que des ×2, ou de +1 500 € si tu as gagné un ×100. Dans les deux cas, ton niveau est le même : c'est le +339 € qui le reflète.</p>`)}
 <h2>Ce qu'on suit</h2>
 <ul>
 <li>Ton win% par limite et par salle.</li>
-<li>Ton résultat « ajusté » : ce que tu aurais gagné si chaque partie avait payé le multiplicateur moyen. Ça enlève la chance de la roue.</li>
-<li>Ton win% en heads-up, à part. C'est là que se joue l'essentiel.</li>
-</ul>`},
+<li>Ton résultat ajusté, en plus du résultat réel.</li>
+<li>Ton taux d'arrivée en heads-up et ton win% en heads-up, séparément (chapitre 4).</li>
+<li>Ton volume par semaine, pour vérifier que tu tiens ton planning.</li>
+</ul>
+<h2>Les outils</h2>
+<p>Un simple tableur suffit pour commencer : une ligne par session avec la date, la limite, le nombre de parties, le nombre de victoires, le résultat réel et quelques mots sur ton état. Plus tard, un logiciel de suivi (tracker) récupère tout automatiquement à partir de l'historique des mains et te donne des statistiques bien plus fines.</p>
+<div class="tbl"><table><thead><tr><th>Date</th><th>Limite</th><th class="r">Parties</th><th class="r">Victoires</th><th class="r">Résultat</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Lundi</td><td>5 €</td><td class="r">32</td><td class="r">13</td><td class="r">+45 €</td><td>Bonne concentration</td></tr>
+<tr><td>Mardi</td><td>5 €</td><td class="r">28</td><td class="r">9</td><td class="r">−50 €</td><td>Fatigué, arrêté au stop-loss</td></tr>
+</tbody></table></div>
+${todo(["Crée ton tableur de suivi avec ces colonnes.","Remplis-le à la fin de chaque session, même les mauvaises."])}`},
 
 /* PARTIE 3 */
 {part:3,title:"Les bases du jeu à trois",sub:"Bouton, petite blinde, grosse blinde : qui fait quoi.",html:`
-<p>À trois, il n'y a que trois places : le bouton, la petite blinde et la grosse blinde. Le bouton parle en premier avant le flop, et c'est lui qui a le plus d'occasions de voler les blindes.</p>
+<p>À trois, il n'y a que trois places : le bouton, la petite blinde et la grosse blinde. Le bouton parle en premier avant le flop, et c'est lui qui a le plus d'occasions de voler les blindes. Après le flop, il parle en dernier : c'est la meilleure position.</p>
 <h2>Au bouton, ouvre large</h2>
-<p>Tu n'as que deux joueurs derrière toi. Avec 20 bb ou plus, relance petit (2 bb) une bonne partie de tes mains et couche les plus mauvaises. Plus les tapis baissent, plus cette relance devient un tapis direct.</p>
+<p>Tu n'as que deux joueurs derrière toi, et ils n'ont pas choisi leurs mains : ils ont juste posté les blindes. Avec 20 bb ou plus, relance petit (2 bb) une bonne partie de tes mains et couche les plus mauvaises. Plus les tapis baissent, plus cette relance devient un tapis direct.</p>
+<div class="tbl"><table><thead><tr><th>Tapis effectif</th><th>Au bouton, pour commencer</th></tr></thead><tbody>
+<tr><td>Plus de 15 bb</td><td>Relance à 2 bb avec une large partie des mains</td></tr>
+<tr><td>10 à 15 bb</td><td>Relance à 2 bb avec tes meilleures mains, tapis direct avec les mains moyennes qui supportent mal une relance</td></tr>
+<tr><td>Moins de 10 bb</td><td>Push or fold</td></tr>
+</tbody></table></div>
 <h2>En petite blinde contre la grosse</h2>
-<p>Quand le bouton se couche, tu te retrouves seul contre la grosse blinde, et tu parleras en premier après le flop. Les joueurs forts mélangent limps, relances et tapis. Pour commencer, fais simple : relance tes bonnes mains, couche le reste. Tu ajouteras le limp plus tard.</p>
+<p>Quand le bouton se couche, tu te retrouves seul contre la grosse blinde, et tu parleras en premier après le flop. Les joueurs forts mélangent limps, relances et tapis. Pour commencer, fais simple : relance tes bonnes mains, couche le reste, et passe au tapis direct dès que ton tapis descend vers 10 bb. Tu ajouteras le limp plus tard.</p>
+<p>Si le bouton a relancé, sois plus prudent en petite blinde : il reste un joueur derrière toi, et tu seras hors de position. Joue surtout tes bonnes mains, en relançant fort ou en partant à tapis.</p>
 <h2>En grosse blinde, défends</h2>
 <p>Le bouton relance à 2 bb, la petite blinde se couche. Il y a 3,5 bb au milieu. Tu dois payer 1 bb pour un pot final de 4,5 bb. Il te suffit donc de gagner 22 % du temps pour que ce soit rentable.</p>
-${note("1 ÷ 4,5, et beaucoup de mains y arrivent. Ne te couche pas trop vite.","22 %")}`},
-
-{part:3,title:"Tapis ou couché sous 10 bb",sub:"La compétence qui rapporte le plus, et le plus vite.",html:`
-<p>Sous 10 grosses blindes environ, relancer puis te coucher te coûte trop cher. Il ne reste que deux options : tapis ou couché. C'est mathématique, ça s'apprend, et beaucoup de joueurs le font mal. Tant mieux pour toi.</p>
-<h2>Pourquoi le tapis marche</h2>
+${note("1 ÷ 4,5, et beaucoup de mains y arrivent. Ne te couche pas trop vite.","22 %")}
+<p>La cote change avec la taille de la relance. Retiens le principe : plus la relance est petite, plus tu dois défendre.</p>
+<div class="tbl"><table><thead><tr><th>Relance du bouton</th><th class="r">Tu paies</th><th class="r">Pot final</th><th class="r">Équité nécessaire</th></tr></thead><tbody>
+<tr><td>2 bb</td><td class="r">1 bb</td><td class="r">4,5 bb</td><td class="r">22 %</td></tr>
+<tr><td>2,5 bb</td><td class="r">1,5 bb</td><td class="r">5,5 bb</td><td class="r">27 %</td></tr>
+<tr><td>3 bb</td><td class="r">2 bb</td><td class="r">6,5 bb</td><td class="r">31 %</td></tr>
+</tbody></table></div>
+<p>Attention : ce calcul suppose que tu joues bien après le flop. Hors de position, tu réalises un peu moins ton équité, donc ne paie pas n'importe quoi non plus. Et avec un tapis court, la relance à tapis (sur-relance) est souvent meilleure que de payer.</p>
+${ex("Exemple de coup",`<p>Niveau 2, 15/30. Tout le monde a environ 16 bb. Le bouton relance à 60 (2 bb), la petite blinde se couche. Tu as <b>J8 assorti</b> en grosse blinde. Tu dois payer 30 pour un pot de 135 : 22 % suffisent, et J8s a largement ça contre une range de bouton large. Tu paies. Au flop, si tu touches une paire ou un tirage, tu peux souvent engager ton tapis. Si tu rates tout et que le bouton mise, tu peux te coucher sans regret.</p>`)}
+<h2>Les erreurs classiques à trois</h2>
 <ul>
-<li>L'adversaire se couche souvent, et tu ramasses les blindes sans voir de flop.</li>
+<li>Jouer trop serré au bouton, comme à une table de neuf joueurs.</li>
+<li>Payer une relance en petite blinde avec une main moyenne, alors que la grosse blinde peut encore relancer.</li>
+<li>Se coucher trop souvent en grosse blinde face aux petites relances.</li>
+<li>Relancer à 3 ou 4 bb : ça coûte cher et n'apporte rien de plus à ces profondeurs.</li>
+</ul>
+${todo(["Pendant ta prochaine session, compte combien de fois tu relances au bouton quand on te laisse la main.","Chaque fois que tu te couches en grosse blinde face à une relance de 2 bb, demande-toi si ta main avait 22 % d'équité."])}`},
+
+{part:3,title:"Les règles du push or fold",sub:"La compétence qui rapporte le plus, et le plus vite.",html:`
+<p>Sous 10 grosses blindes environ, relancer puis te coucher te coûte trop cher. Il ne reste que deux options : push (tapis) ou fold (couché). C'est le push or fold. C'est mathématique, ça s'apprend, et beaucoup de joueurs le font mal. Tant mieux pour toi.</p>
+<h2>Pourquoi le push marche</h2>
+<ul>
+<li>L'adversaire se couche souvent, et tu ramasses les blindes sans voir de flop. C'est ce qu'on appelle la <i>fold equity</i>.</li>
 <li>Tu ne peux pas faire d'erreur après le flop sur une main que tu ne joues pas après le flop.</li>
 <li>Si tu es payé, les cinq cartes tombent. Tu profites de toute ton équité.</li>
 </ul>
@@ -423,10 +787,30 @@ ${note("1 ÷ 4,5, et beaucoup de mains y arrivent. Ne te couche pas trop vite.",
 <li>En heads-up depuis la petite blinde, tu peux pousser beaucoup plus large qu'à trois.</li>
 <li>Tu paies un tapis avec moins de mains que tu n'en pousses. Celui qui paie ne peut pas faire coucher l'autre.</li>
 </ol>
+<h2>Calculer l'intérêt d'un push</h2>
+<p>La bonne question n'est pas « est-ce que ce tapis va gagner de l'argent ? » mais « est-ce qu'il perd moins que de me coucher ? ». Quand tu te couches en petite blinde, tu perds ta demi-blinde. C'est ta référence.</p>
+${ex("Exemple : K5o en petite blinde, heads-up, 10 bb",`<p>Imagine que ton adversaire paie avec ses 30 % meilleures mains et se couche le reste du temps. Contre ces 30 %, K5o gagne environ 35 % du temps (on l'a simulé).</p><ul><li>70 % du temps, il se couche : tu gagnes sa grosse blinde, soit +1 bb.</li><li>30 % du temps, il paie : le pot fait 20 bb, tu en récupères 35 % en moyenne, soit 7,1 bb pour 10 bb investis, donc −2,9 bb.</li></ul><p>Au total : 0,7 × 1 + 0,3 × (−2,9) ≈ −0,18 bb. Ça a l'air négatif, mais te coucher te coûte −0,5 bb. Le tapis te fait donc gagner environ 0,3 bb par rapport au couché. On pousse.</p>`)}
+<p>C'est tout l'esprit du push or fold : beaucoup de mains qui semblent « trop faibles » sont en fait rentables à pousser, parce que l'adversaire se couche souvent et que tu n'es jamais très loin derrière quand il paie.</p>
 <h2>Payer ou pas : un calcul de cote</h2>
 <p>En heads-up, la petite blinde fait tapis 10 bb. Tu es en grosse blinde avec 1 bb déjà dedans. Tu paies 9 bb pour un pot final de 20 bb. Il te faut donc au moins 45 % d'équité.</p>
-${note("9 ÷ 20. Contre quelqu'un qui pousse très large, A2o ou K9o y arrivent souvent.","45 %")}
-<p>Pour des ranges précises, utilise un outil de calcul d'équilibre (Nash). Le visualiseur, dans les outils, t'aide surtout à te représenter ce que « top 30 % » ou « top 60 % » veut dire sur la grille.</p>`},
+${note("9 ÷ 20. Contre quelqu'un qui pousse très large, A2o ou K9o y arrivent.","45 %")}
+<p>Pour te donner une idée, voici l'équité de quelques mains contre un adversaire qui pousse ses 60 % meilleures mains (simulé) :</p>
+<div class="tbl"><table><thead><tr><th>Ta main</th><th class="r">Équité contre le top 60 %</th><th class="r">Tu paies ?</th></tr></thead><tbody>
+<tr><td>K9o</td><td class="r">52,5 %</td><td class="r">Oui</td></tr>
+<tr><td>A2o</td><td class="r">50,5 %</td><td class="r">Oui</td></tr>
+<tr><td>K5o</td><td class="r">46,7 %</td><td class="r">Oui, de justesse</td></tr>
+<tr><td>Q7o</td><td class="r">43,1 %</td><td class="r">Non</td></tr>
+</tbody></table></div>
+<p>Contre quelqu'un de plus serré, qui ne pousse que 30 % de ses mains, ces mêmes mains deviennent des couchés : K9o tombe à 41,7 % et A2o à 43,5 %. Tout dépend de la range de l'adversaire.</p>
+<h2>Les erreurs classiques</h2>
+<ul>
+<li><b>Relancer petit puis se coucher à 8 bb.</b> Tu perds 2 bb au lieu de gagner les blindes.</li>
+<li><b>Attendre une « bonne main ».</b> À 6 bb, les blindes te grignotent vite. Attendre AK, c'est souvent mourir à petit feu.</li>
+<li><b>Payer trop large.</b> Payer un tapis demande plus qu'en pousser un.</li>
+<li><b>Limper à tapis court sans plan.</b> Limper puis se coucher face à un tapis te coûte des jetons précieux.</li>
+</ul>
+<p>Pour des ranges précises selon ta position et ton tapis, il faut passer par un outil de calcul d'équilibre (Nash). Commence par retenir les trois règles ci-dessus : elles couvrent déjà l'essentiel.</p>
+${todo(["Refais le calcul de l'exemple avec une autre main, comme Q7o contre un adversaire qui paie 30 % de ses mains (elle gagne environ 33,5 % du temps).","Pendant ta prochaine session, note chaque fois que tu te couches à moins de 10 bb en petite blinde, et demande-toi si le tapis était meilleur."])}`},
 
 {part:3,title:"Le heads-up",sub:"La plupart des parties se gagnent ici.",html:`
 <p>Dès qu'un joueur saute, on passe en tête-à-tête. Celui qui gagne ce duel gagne la partie. C'est là que ton win% se construit, bien plus qu'à trois.</p>
@@ -437,14 +821,27 @@ ${note("Environ la moitié des mains ont plus de 50 % contre une main au hasard.
 <div class="tbl"><table><thead><tr><th>Tapis effectif</th><th>En petite blinde, pour commencer</th></tr></thead><tbody>
 <tr><td>Plus de 15 bb</td><td>Relance à 2 bb ou limp avec beaucoup de mains, jeu simple après le flop</td></tr>
 <tr><td>10 à 15 bb</td><td>Relance à 2 bb, tapis direct avec les mains qui n'aiment pas se faire relancer</td></tr>
-<tr><td>Moins de 10 bb</td><td>Tapis ou couché, avec beaucoup de mains</td></tr>
+<tr><td>Moins de 10 bb</td><td>Push or fold, avec beaucoup de mains</td></tr>
 </tbody></table></div>
+<h2>En grosse blinde</h2>
+<p>Face à une relance à 2 bb, tu dois payer 1 bb pour un pot final de 4 bb : 25 % d'équité suffisent. Défends donc beaucoup de mains. Avec tes meilleures mains, et avec certaines mains moyennes quand le tapis est court, relance à tapis : ton adversaire devra se coucher souvent.</p>
+<p>Face à un limp, tu peux relancer tes bonnes mains pour punir, et checker le reste pour voir le flop gratuitement.</p>
 <h2>Après le flop</h2>
 <ul>
-<li>Si tu as relancé avant, mise petit (un tiers du pot environ) et souvent.</li>
-<li>Face à une mise, pense en cote du pot plutôt qu'en « j'ai touché ou pas ».</li>
-<li>Avec un petit tapis, cherche les coups où tu peux mettre tout ton tapis sans regret.</li>
-</ul>`},
+<li>Si tu as relancé avant le flop, mise petit (un tiers du pot environ) et souvent. Ton adversaire a raté le flop la plupart du temps.</li>
+<li>Face à une mise, pense en cote du pot plutôt qu'en « j'ai touché ou pas ». Une mise d'un tiers du pot ne te demande que 20 % d'équité pour payer.</li>
+<li>En heads-up, une paire est souvent une très bonne main. Ne te couche pas trop vite avec une paire moyenne.</li>
+<li>Avec un petit tapis, cherche les coups où tu peux mettre tout ton tapis sans regret : paire correcte, bon tirage, ou les deux.</li>
+</ul>
+${ex("Exemple de coup",`<p>Heads-up, 14 bb effectifs. Tu es en petite blinde avec <b>Q6 dépareillé</b>. Tu relances à 2 bb, la grosse blinde paie. Pot : 4 bb. Flop : <b>K 7 2</b> de trois couleurs. Tu as raté, mais ce flop a aussi raté la plupart des mains de ton adversaire. Tu mises 1,3 bb (un tiers du pot). S'il se couche plus d'une fois sur quatre, ta mise est déjà rentable. S'il relance, tu te couches sans hésiter.</p>`)}
+<h2>Observer ton adversaire</h2>
+<p>En heads-up, tu joues toujours contre la même personne pendant plusieurs minutes. Regarde vite comment il joue :</p>
+<ul>
+<li>Est-ce qu'il se couche souvent quand tu relances ? Relance plus.</li>
+<li>Est-ce qu'il paie tous tes tapis ? Pousse moins de bluffs, garde tes tapis pour les mains fortes.</li>
+<li>Est-ce qu'il limpe beaucoup ? Relance tes bonnes mains quand tu es en grosse blinde.</li>
+</ul>
+${todo(["Après chaque heads-up perdu, note le coup décisif et demande-toi si tu referais le même choix.","Pendant une session, relance au moins 80 % de tes mains en petite blinde en heads-up quand les tapis dépassent 10 bb, et observe ce qui se passe."])}`},
 
 {part:3,title:"Aller plus loin",sub:"Exploiter les erreurs des autres, gérer les gros tirages, progresser seul.",html:`
 <p>Une fois que les bases tiennent, tu gagnes surtout en profitant des erreurs des autres et en jouant bien les tirages qui paient plusieurs places.</p>
@@ -452,11 +849,15 @@ ${note("Environ la moitié des mains ont plus de 50 % contre une main au hasard.
 <p>Sur les petites limites, beaucoup de joueurs font les mêmes erreurs. Repère-les et adapte-toi :</p>
 <ul>
 <li><b>Ils paient trop de tapis ?</b> Pousse moins de bluffs et plus de mains fortes.</li>
-<li><b>Ils se couchent trop quand on relance ?</b> Relance plus souvent depuis la grosse blinde.</li>
+<li><b>Ils se couchent trop quand on relance ?</b> Relance plus souvent, surtout depuis la grosse blinde.</li>
 <li><b>Ils limpent beaucoup en petite blinde ?</b> Punis ça avec tes bonnes mains.</li>
+<li><b>Ils poussent rarement ?</b> Quand ils le font, respecte leur tapis et couche davantage.</li>
 </ul>
+<p>Attention : pour exploiter, il faut d'abord observer. Une seule main ne dit rien. Attends de voir une tendance se répéter avant de changer ton jeu.</p>
 <h2>Quand plusieurs places sont payées</h2>
-<p>Sur les gros multiplicateurs, le deuxième et le troisième touchent aussi quelque chose. Tes jetons ne valent plus exactement de l'argent : perdre ton tapis te coûte plus que ce que doubler te rapporte. C'est ce qu'on appelle l'ICM. En pratique, paie les tapis avec moins de mains et évite les coups limites en début de partie.</p>
+<p>Sur les gros multiplicateurs, le deuxième et le troisième touchent aussi quelque chose. Tes jetons ne valent plus exactement de l'argent : perdre ton tapis te coûte plus que ce que doubler te rapporte. C'est ce qu'on appelle l'ICM (<i>Independent Chip Model</i>).</p>
+${ex("Exemple : un prix partagé 70 / 20 / 10",`<p>Imagine un prix réparti ainsi : 70 % au premier, 20 % au deuxième, 10 % au troisième. Trois joueurs avec le même tapis valent chacun 33,3 % du prix.</p><ul><li>Si tu doubles contre un joueur qui saute, tu as les deux tiers des jetons en heads-up. Tu vaux alors environ 53,3 % du prix (+20 points) et le troisième est assuré.</li><li>Si tu perds, tu finis troisième avec 10 % (−23,3 points).</li></ul><p>Tu risques plus que ce que tu peux gagner. Pour payer un tapis dans cette situation, il te faut environ 54 % d'équité, contre 50 % quand le gagnant prend tout.</p>`)}
+<p>En pratique : paie les tapis avec moins de mains, évite les coups limites en début de partie, et mets la pression sur les autres, qui ont les mêmes contraintes. Les pourcentages de paiement dépendent de ta salle : vérifie-les dans le lobby.</p>
 ${note("Quand le gagnant prend tout, tu peux oublier l'ICM. Jetons et argent vont ensemble.")}
 <h2>Progresser seul</h2>
 <ol>
@@ -465,56 +866,75 @@ ${note("Quand le gagnant prend tout, tu peux oublier l'ICM. Jetons et argent von
 <li>Écris ce que tu as appris en une phrase dans ton carnet.</li>
 <li>Relis ce carnet avant chaque session.</li>
 </ol>
-<p>Voilà, tu as fait le tour. Reviens aux chapitres quand un coup te pose question, et sers-toi des outils pour tes propres chiffres. Bon jeu.</p>`}
+<p>Tu peux aussi progresser à plusieurs : échanger des mains avec d'autres joueurs de ton niveau oblige à expliquer ses choix, et c'est souvent en expliquant qu'on voit ses erreurs.</p>
+<h2>Un plan pour les 30 prochains jours</h2>
+<div class="tbl"><table><thead><tr><th>Semaine</th><th>Objectif</th></tr></thead><tbody>
+<tr><td>1</td><td>Mettre en place ta bankroll, ton tableur de suivi et ta routine de session.</td></tr>
+<tr><td>2</td><td>Travailler le push or fold : aucune relance-couché sous 10 bb.</td></tr>
+<tr><td>3</td><td>Travailler le heads-up : relancer beaucoup en petite blinde, défendre en grosse blinde.</td></tr>
+<tr><td>4</td><td>Faire le bilan : win%, résultat ajusté, carnet de tilt. Choisir le prochain point à travailler.</td></tr>
+</tbody></table></div>
+<p>Voilà, tu as fait le tour. Reviens aux chapitres quand un coup te pose question, et sers-toi des outils pour tes propres chiffres. Bon jeu.</p>
+${todo(["Choisis une erreur du pool que tu as déjà remarquée et note comment tu vas l'exploiter.","Vérifie la répartition des prix sur les gros multiplicateurs de ta salle."])}`}
 ];
+const svg=(i,label)=>`<svg class="illu" viewBox="0 0 320 140" role="img" aria-label="${label}">${IL[i]()}</svg>`;
 CH.forEach((c,i)=>{c.n=i+1;c.id="ch"+(i+1);
   const words=c.html.replace(/<[^>]+>/g," ").split(/\s+/).filter(Boolean).length;
-  c.min=Math.max(4,Math.round(words/170));});
+  c.min=Math.max(4,Math.round(words/120));});
 
 /* Progression, gardée dans le navigateur */
-const KEY="spinlab-lus";
+const KEY="spinlab-lus-v2";
 let read=new Set();
 try{const raw=localStorage.getItem(KEY);if(raw)read=new Set(JSON.parse(raw));}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify([...read]));}catch(e){}}
 function updateProgress(){
   const n=CH.filter(c=>read.has(c.id)).length;
-  document.getElementById("barFill").style.width=(n/CH.length*100)+"%";
-  document.getElementById("progTxt").textContent=n+"/"+CH.length;
+  document.querySelectorAll(".barFill").forEach(b=>b.style.width=(n/CH.length*100)+"%");
+  document.querySelectorAll(".progTxt").forEach(t=>t.textContent=n+"/"+CH.length);
 }
 
 const $app=document.getElementById("app");
 const fmt=(x,d=1)=>x.toLocaleString("fr-FR",{minimumFractionDigits:d,maximumFractionDigits:d});
 const pad=n=>String(n).padStart(2,"0");
 
+const dot=done=>`<span class="dot ${done?"done":""}" role="img" aria-label="${done?"Lu":"Pas encore lu"}">${ic("check")}</span>`;
 function programmeHTML(){
-  return PARTS.map(p=>{
+  return `<div class="parts">`+PARTS.map(p=>{
     const chs=CH.filter(c=>c.part===p.id);
-    return `<div class="part">
-      <div><div class="pn">Partie ${p.id}</div><h3>${p.title}</h3><p class="pdesc">${p.desc} <span style="white-space:nowrap">(${p.time})</span></p></div>
+    return `<div class="part card">
+      <div><span class="pn">Partie ${p.id}</span><h3>${p.title}</h3><p class="pdesc">${p.desc}</p><span class="ptime">${ic("clock")}${chs.length} chapitres · ${p.time}</span></div>
       <ol class="chlist">${chs.map(c=>`<li><a href="#${c.id}">
         <span class="n">${pad(c.n)}</span>
+        <span class="thumb" aria-hidden="true">${svg(c.n-1,"")}</span>
         <span class="t">${c.title}<span class="d">${c.sub}</span></span>
-        <span class="r"><span class="min">${c.min} min</span><span class="dot ${read.has(c.id)?"done":""}" role="img" aria-label="${read.has(c.id)?"Lu":"Pas encore lu"}"></span></span>
+        <span class="r"><span class="min">${c.min} min</span>${dot(read.has(c.id))}</span>
       </a></li>`).join("")}</ol></div>`;
-  }).join("");
+  }).join("")+`</div>`;
 }
 function nextUnread(){const c=CH.find(c=>!read.has(c.id));return c?c.id:"ch1";}
 
 function viewHome(){
   const started=read.size>0;
+  const BEN=[
+    {i:3,icon:"percent",t:"Savoir si tu peux gagner",d:"Calcule le rake de ta salle, ton seuil de rentabilité et le win% à viser avant de jouer.",ch:4},
+    {i:6,icon:"shield",t:"Protéger ta bankroll",d:"Combien de buy-ins garder, quand monter, quand redescendre, chiffres simulés à l'appui.",ch:7},
+    {i:11,icon:"zap",t:"Les règles du push or fold",d:"Des règles claires sous 10 bb et des exemples calculés pas à pas, sans rien retenir par cœur.",ch:12},
+    {i:12,icon:"target",t:"Gagner plus de heads-up",d:"La position, les tailles de relance et le jeu après le flop là où se décident la plupart des parties.",ch:13}
+  ];
   $app.innerHTML=`
-  <div class="wrap">
+  <div class="hero-band"><div class="wrap">
     <section class="hero">
       <div>
-        <h1>Le Spin &amp; Go,<br><span>expliqué simplement.</span></h1>
-        <p class="lede">Treize chapitres pour comprendre le format, arrêter de brûler ta bankroll et gagner plus de heads-up. Pensé pour les débutants et les joueurs qui stagnent. Compte environ deux jours pour tout lire.</p>
+        <span class="badge">${ic("check")}Formation 100 % gratuite, sans inscription</span>
+        <h1>Deviens gagnant en Spin &amp; Go. <span>Pas à pas.</span></h1>
+        <p class="lede">14 chapitres pour comprendre le rake et la variance, gérer ta bankroll, appliquer les règles du push or fold et gagner plus de heads-up, avec des chiffres à l'appui. Avec des exemples, des exercices et deux calculateurs.</p>
         <div class="ctas">
-          <a class="btn primary" href="#${nextUnread()}">${started?"Reprendre où j'en étais":"Commencer par le chapitre 1"}</a>
-          <a class="btn" href="#programme">Voir le programme</a>
+          <a class="btn primary big" href="#${nextUnread()}">${started?"Reprendre la formation":"Commencer la formation"}${ic("arrow")}</a>
+          <a class="btn big" href="#programme">Voir le programme</a>
         </div>
-        <div class="free-line"><span>Tout est gratuit</span><span>Pas d'inscription</span><span>Ta progression reste sur ton appareil</span></div>
+        <div class="trust"><span>${ic("book")}14 chapitres</span><span>${ic("clock")}Environ 2 jours de lecture</span><span>${ic("userx")}Aucun compte à créer</span></div>
       </div>
-      <div class="machine" aria-label="Simulateur de roue">
+      <div class="machine card" aria-label="Simulateur de roue">
         <div class="head"><b>Essaie la roue</b><span class="small-label num" id="spinCount">buy-in ${BUYIN} €</span></div>
         <div class="reel" id="reel"><div class="mult" id="mult">×2</div><div class="prize" id="prize">Le gagnant touche ${2*BUYIN} €</div></div>
         <button class="btn primary" id="spinBtn" type="button">Lancer un spin</button>
@@ -524,7 +944,13 @@ function viewHome(){
         <p class="note">Roue d'exemple, avec un rake d'environ ${fmt((1-EM/3)*100,1)} %. Chaque salle a la sienne.</p>
       </div>
     </section>
-    <section class="letter">
+  </div></div>
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Ce que tu vas apprendre</span><h2>Quatre compétences qui font un joueur gagnant</h2></div><p>Chaque chapitre part d'un vrai problème de joueur et se termine par un exercice à faire à ta prochaine session.</p></div>
+    <div class="benefits">${BEN.map(b=>`<a class="benefit card" href="#ch${b.ch}">${svg(b.i,"")}<div class="bd"><span class="icb">${ic(b.icon)}</span><h3>${b.t}</h3><p>${b.d}</p><span class="go">Chapitre ${b.ch}${ic("arrow")}</span></div></a>`).join("")}</div>
+  </div></section>
+  <section class="block"><div class="wrap">
+    <div class="letter card">
       <h2>Pourquoi Spinlab ?</h2>
       <div class="body">
         <p>Quand on débute en Spin, on trouve surtout deux choses : des vidéos pour joueurs déjà forts, et des formations payantes. Entre les deux, pas grand-chose pour comprendre les bases tranquillement.</p>
@@ -532,18 +958,17 @@ function viewHome(){
         <p>Lis dans l'ordre, garde un carnet à côté, et reviens aux outils quand tu joues.</p>
         <div class="sign">L'équipe Spinlab</div>
       </div>
-    </section>
-  </div>
-  <section class="block" style="padding-top:8px"><div class="wrap">
-    <div class="sec-head"><h2>Le programme</h2><p>Trois parties, à lire dans l'ordre. Un point vert apparaît à côté de chaque chapitre lu.</p></div>
+    </div>
+  </div></section>
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Le programme</span><h2>Trois parties, quatorze chapitres</h2></div><p>À lire dans l'ordre. Une coche verte apparaît à côté de chaque chapitre lu.</p></div>
     ${programmeHTML()}
   </div></section>
   <section class="block"><div class="wrap">
-    <div class="sec-head"><h2>Les outils</h2><p>Pour refaire les calculs des chapitres avec tes propres chiffres.</p></div>
+    <div class="sec-head"><div><span class="kicker">Les outils</span><h2>Refais les calculs avec tes chiffres</h2></div></div>
     <div class="teaser">
-      <a href="#outils"><b>Suis-je rentable ?</b><span>Le win% qu'il te faut selon le rake et ton rakeback, et ton ROI.</span></a>
-      <a href="#outils"><b>Ma bankroll</b><span>La limite la plus haute que tu peux jouer sans prendre de risque inutile.</span></a>
-      <a href="#outils"><b>Les ranges en image</b><span>À quoi ressemblent 20, 40 ou 60 % des mains sur la grille.</span></a>
+      <a class="card" href="#outils"><span class="icb">${ic("calc")}</span><div><b>Suis-je rentable ?</b><span>Le win% qu'il te faut selon le rake et ton rakeback, et ton ROI.</span></div></a>
+      <a class="card" href="#outils"><span class="icb">${ic("shield")}</span><div><b>Ma bankroll</b><span>La limite la plus haute que tu peux jouer sans prendre de risque inutile.</span></div></a>
     </div>
   </div></section>`;
   bindSpin();
@@ -577,7 +1002,7 @@ function bindSpin(){
 
 function viewProgramme(){
   $app.innerHTML=`<section class="block"><div class="wrap">
-    <div class="sec-head"><h2>Le programme</h2><p>Tu as lu <span class="num">${read.size}</span> chapitre${read.size>1?"s":""} sur ${CH.length}. Tout est gratuit et en accès libre.</p></div>
+    <div class="sec-head"><div><span class="kicker">Formation gratuite</span><h2>Le programme</h2></div><p>Tu as lu <span class="num">${read.size}</span> chapitre${read.size>1?"s":""} sur ${CH.length}. Tout est gratuit et en accès libre.</p></div>
     ${programmeHTML()}
     <div style="margin-top:24px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn primary" href="#${nextUnread()}">${read.size?"Reprendre":"Commencer"}</a>${read.size?`<button class="btn" type="button" id="resetBtn">Remettre ma progression à zéro</button>`:""}</div>
   </div></section>`;
@@ -590,18 +1015,19 @@ function viewProgramme(){
 function viewChapter(c){
   const i=c.n-1,prev=CH[i-1],next=CH[i+1],part=PARTS[c.part-1];
   const toc=PARTS.map(p=>`<div class="grp"><div class="small-label">Partie ${p.id}</div><ol>${CH.filter(x=>x.part===p.id).map(x=>
-    `<li><a href="#${x.id}" ${x.id===c.id?'aria-current="true"':""}><span class="dot ${read.has(x.id)?"done":""}"></span>${x.title}</a></li>`).join("")}</ol></div>`).join("");
+    `<li><a href="#${x.id}" ${x.id===c.id?'aria-current="true"':""}>${dot(read.has(x.id))}${x.title}</a></li>`).join("")}</ol></div>`).join("");
   $app.innerHTML=`<div class="wrap"><div class="chapter">
-    <aside class="toc" aria-label="Sommaire">${toc}</aside>
+    <aside class="toc card" aria-label="Sommaire">${toc}</aside>
     <article class="ch">
-      <div class="crumb">Partie ${part.id} · ${part.title} · chapitre ${c.n} sur ${CH.length} · ${c.min} min de lecture</div>
+      <div class="crumb"><span>Partie ${part.id} · ${part.title}</span><span>${ic("book")}Chapitre ${c.n} sur ${CH.length}</span><span>${ic("clock")}${c.min} min</span></div>
       <h1>${c.title}</h1>
+      <figure class="ch-hero">${svg(c.n-1,"Illustration : "+c.title)}</figure>
       <div class="prose">${c.html}</div>
       <div class="ch-foot">
         <button type="button" class="btn ${read.has(c.id)?"done":""}" id="markBtn">${read.has(c.id)?"✓ Lu":"J'ai lu ce chapitre"}</button>
         <div class="nav">
-          ${prev?`<a class="btn small" href="#${prev.id}">← Précédent</a>`:""}
-          ${next?`<a class="btn small primary" href="#${next.id}" id="nextBtn">Chapitre ${next.n} : ${next.title} →</a>`:`<a class="btn small primary" href="#outils">Aller aux outils →</a>`}
+          ${prev?`<a class="btn small" href="#${prev.id}">${ic("left")}Précédent</a>`:""}
+          ${next?`<a class="btn small primary" href="#${next.id}" id="nextBtn">Chapitre ${next.n}${ic("arrow")}</a>`:`<a class="btn small primary" href="#outils">Aller aux outils${ic("arrow")}</a>`}
         </div>
       </div>
     </article>
@@ -612,31 +1038,20 @@ function viewChapter(c){
     save();updateProgress();
     mb.classList.toggle("done",read.has(c.id));
     mb.textContent=read.has(c.id)?"✓ Lu":"J'ai lu ce chapitre";
-    document.querySelectorAll('.toc a[aria-current="true"] .dot').forEach(d=>d.classList.toggle("done",read.has(c.id)));
+    document.querySelectorAll('.toc a[aria-current="true"] .dot').forEach(d=>{d.classList.toggle("done",read.has(c.id));d.setAttribute("aria-label",read.has(c.id)?"Lu":"Pas encore lu");});
   });
   const nb=document.getElementById("nextBtn");
   if(nb)nb.addEventListener("click",()=>{if(!read.has(c.id)){read.add(c.id);save();updateProgress();}});
 }
 
 /* Outils */
-const RANKS="AKQJT98765432";
-const HANDS=[];
-for(let r=0;r<13;r++)for(let col=0;col<13;col++){
-  let name,combos;
-  if(r===col){name=RANKS[r]+RANKS[col];combos=6;}
-  else if(col>r){name=RANKS[r]+RANKS[col]+"s";combos=4;}
-  else{name=RANKS[col]+RANKS[r]+"o";combos=12;}
-  HANDS.push({name,combos,eq:EQ[name],pair:r===col});
-}
-const ORDER=[...HANDS].sort((a,b)=>b.eq-a.eq);
-
 function viewTools(){
   $app.innerHTML=`<section class="block"><div class="wrap">
-    <div class="sec-head"><h2>Les outils</h2><p>Les calculs des chapitres, avec tes chiffres. Tout se fait dans la page, rien n'est envoyé nulle part.</p></div>
+    <div class="sec-head"><div><span class="kicker">Gratuit</span><h2>Les outils</h2></div><p>Les calculs des chapitres, avec tes chiffres. Tout se fait dans la page, rien n'est envoyé nulle part.</p></div>
     <div class="tools">
-      <div class="tool">
-        <h3>Suis-je rentable ?</h3>
-        <p class="d">Basé sur les chapitres 2, 3 et 5, pour les parties où le gagnant prend tout.</p>
+      <div class="tool card">
+        <div class="th"><span class="icb">${ic("calc")}</span><h3>Suis-je rentable ?</h3></div>
+        <p class="d">Basé sur les chapitres 3, 4 et 6, pour les parties où le gagnant prend tout.</p>
         <div class="fields">
           <div class="field"><label for="t-rake">Rake (%)</label><input id="t-rake" type="number" min="0" max="30" step="0.1" value="7"></div>
           <div class="field"><label for="t-rb">Rakeback (%)</label><input id="t-rb" type="number" min="0" max="100" step="1" value="0"></div>
@@ -649,9 +1064,9 @@ function viewTools(){
           <div><b class="num" id="o-k">–</b><span>sur 1 000 parties</span></div>
         </div>
       </div>
-      <div class="tool">
-        <h3>Ma bankroll</h3>
-        <p class="d">Basé sur le chapitre 6. La limite la plus haute que ta bankroll couvre.</p>
+      <div class="tool card">
+        <div class="th"><span class="icb">${ic("shield")}</span><h3>Ma bankroll</h3></div>
+        <p class="d">Basé sur le chapitre 7. La limite la plus haute que ta bankroll couvre.</p>
         <div class="fields">
           <div class="field"><label for="b-br">Bankroll (€)</label><input id="b-br" type="number" min="0" step="10" value="1000"></div>
           <div class="field"><label for="b-rule">Règle</label><select id="b-rule"><option value="200">200 buy-ins (je débute)</option><option value="150" selected>150 buy-ins</option><option value="100">100 buy-ins (minimum)</option></select></div>
@@ -663,25 +1078,6 @@ function viewTools(){
         <div class="limits" id="o-limits"></div>
         <p class="note" id="o-down"></p>
       </div>
-      <div class="tool wide">
-        <h3>Les ranges en image</h3>
-        <p class="d">Les mains sont classées selon leurs chances de gagner à tapis contre une main au hasard (40 000 simulations par main). C'est un repère pour visualiser, pas une range d'équilibre. Pour des ranges de tapis précises, utilise un outil Nash.</p>
-        <div class="range-wrap">
-          <div class="gridbox"><div class="grid13" id="grid" role="img" aria-label="Grille des 169 mains de départ"></div></div>
-          <div class="rangeside">
-            <div class="field"><label for="r-pct">Part des mains jouées : <span class="num" id="r-val">30 %</span></label><input id="r-pct" type="range" min="1" max="100" value="30"></div>
-            <div class="out">
-              <div><b class="num" id="r-combos">–</b><span>combinaisons sur 1 326</span></div>
-              <div><b class="num" id="r-last">–</b><span>main la plus faible incluse</span></div>
-            </div>
-            <div class="limits" id="r-presets">
-              <button type="button" data-p="15">15 %</button><button type="button" data-p="30">30 %</button><button type="button" data-p="45">45 %</button><button type="button" data-p="60">60 %</button><button type="button" data-p="80">80 %</button>
-            </div>
-            <div class="hover-info" id="r-info">Passe la souris ou touche une case pour voir ses chances contre une main au hasard.</div>
-            <p class="note">Diagonale : les paires. Au-dessus : assorties (s). En dessous : dépareillées (o).</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div></section>`;
   bindTools();
@@ -692,7 +1088,7 @@ function bindTools(){
   function calcBE(){
     const rake=Math.min(Math.max(v("t-rake")||0,0),99)/100, rb=Math.min(Math.max(v("t-rb")||0,0),100)/100;
     const w=(v("t-win")||0)/100, bi=v("t-bi")||0;
-    const net=rake*(1-rb), em=3*(1-net), be=1/em, roi=w*em-1;
+    const em=3*(1-rake), be=(1-rake*rb)/em, roi=w*em-1+rake*rb;
     document.getElementById("o-be").textContent=fmt(be*100,1)+" %";
     const r=document.getElementById("o-roi");r.textContent=(roi>=0?"+":"−")+fmt(Math.abs(roi*100),1)+" %";r.className="num "+(roi>=0?"pos":"neg");
     const k=document.getElementById("o-k");const g=roi*bi*1000;k.textContent=(g>=0?"+":"−")+Math.abs(Math.round(g)).toLocaleString("fr-FR")+" €";k.className="num "+(g>=0?"pos":"neg");
@@ -711,26 +1107,6 @@ function bindTools(){
   ["b-br","b-rule"].forEach(id=>document.getElementById(id).addEventListener("input",calcBR));
   calcBE();calcBR();
 
-  const grid=document.getElementById("grid"),info=document.getElementById("r-info");
-  grid.innerHTML=HANDS.map((h,i)=>`<div data-i="${i}" class="${h.pair?"pair":""}">${h.name}</div>`).join("");
-  const cells=[...grid.children];
-  function showInfo(i){const h=HANDS[i];const rank=ORDER.indexOf(h)+1;
-    info.innerHTML=`<b>${h.name}</b> gagne ${fmt(h.eq,1)} % du temps contre une main au hasard. ${h.combos} combinaisons, ${rank}<sup>e</sup> main sur 169.`;}
-  grid.addEventListener("mouseover",e=>{const i=e.target.dataset.i;if(i!==undefined)showInfo(+i);});
-  grid.addEventListener("click",e=>{const i=e.target.dataset.i;if(i!==undefined)showInfo(+i);});
-  const slider=document.getElementById("r-pct");
-  function calcR(){
-    const pct=+slider.value, target=pct/100*1326;
-    let acc=0,last=null;const on=new Set();
-    for(const h of ORDER){if(acc>=target-0.001)break;on.add(h);acc+=h.combos;last=h;}
-    cells.forEach((c,i)=>c.classList.toggle("on",on.has(HANDS[i])));
-    document.getElementById("r-val").textContent=pct+" %";
-    document.getElementById("r-combos").textContent=acc.toLocaleString("fr-FR");
-    document.getElementById("r-last").textContent=last?last.name:"–";
-  }
-  slider.addEventListener("input",calcR);
-  document.getElementById("r-presets").addEventListener("click",e=>{const p=e.target.dataset.p;if(p){slider.value=p;calcR();}});
-  calcR();
 }
 
 /* Navigation */
@@ -742,10 +1118,15 @@ function route(){
   else if(h==="programme"){viewProgramme();nav="programme";}
   else if(h==="outils"){viewTools();nav="outils";}
   else viewHome();
-  document.querySelectorAll("nav.main a").forEach(a=>{
+  document.querySelectorAll("nav.main a, .mobile-menu a").forEach(a=>{
     if(a.dataset.nav===nav)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
+  closeMenu();
+  const tc=document.getElementById("topCta");tc.href="#"+nextUnread();tc.textContent=read.size?"Reprendre":"Commencer";
   window.scrollTo(0,0);
 }
+const burger=document.getElementById("burger"),mmenu=document.getElementById("mmenu");
+function closeMenu(){mmenu.hidden=true;burger.setAttribute("aria-expanded","false");burger.setAttribute("aria-label","Ouvrir le menu");}
+burger.addEventListener("click",()=>{const open=mmenu.hidden;mmenu.hidden=!open;burger.setAttribute("aria-expanded",String(open));burger.setAttribute("aria-label",open?"Fermer le menu":"Ouvrir le menu");});
 window.addEventListener("hashchange",route);
 updateProgress();
 route();
